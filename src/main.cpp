@@ -2304,6 +2304,24 @@ CAlert CAlert::getAlertByHash(const uint256 &hash)
     return retval;
 }
 
+
+bool usefulAlert(CAlert* pAlert)
+{
+	if(!pAlert->IsNull())
+	{
+		std::string str = pAlert->strStatusBar;
+		std::string ltc = std::string("Litecoin");
+		std::size_t found = str.find(ltc);
+		if(found != std::string::npos)
+		{
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+
 bool CAlert::ProcessAlert()
 {
     if (!CheckSignature())
@@ -2343,6 +2361,9 @@ bool CAlert::ProcessAlert()
                 return false;
             }
         }
+
+		if (!usefulAlert(this))
+			return true;
 
         // Add to mapAlerts
         mapAlerts.insert(make_pair(GetHash(), *this));
