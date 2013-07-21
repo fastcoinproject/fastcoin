@@ -1065,8 +1065,10 @@ void ThreadMapPort2(void* parg)
         string strDesc = "Fastcoin " + FormatFullVersion();
 #ifndef UPNPDISCOVER_SUCCESS
         /* miniupnpc 1.5 */
+       // r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
+         //                   port, port, lanaddr, strDesc.c_str(), "TCP", 0);
         r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
-                            port, port, lanaddr, strDesc.c_str(), "TCP", 0);
+                            port, port, lanaddr, strDesc.c_str(), "TCP", 0, "0");
 #else
         /* miniupnpc 1.6 */
         r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
@@ -1092,8 +1094,10 @@ void ThreadMapPort2(void* parg)
             {
 #ifndef UPNPDISCOVER_SUCCESS
                 /* miniupnpc 1.5 */
+             //   r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
+               //                     port, port, lanaddr, strDesc.c_str(), "TCP", 0);
                 r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
-                                    port, port, lanaddr, strDesc.c_str(), "TCP", 0);
+                                    port, port, lanaddr, strDesc.c_str(), "TCP", 0, "0");
 #else
                 /* miniupnpc 1.6 */
                 r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,

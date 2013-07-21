@@ -97,7 +97,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Create tabs
     overviewPage = new OverviewPage();
 
-    miningPage = new MiningPage(this);
+    //miningPage = new MiningPage(this);
 
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
@@ -115,7 +115,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     centralWidget = new QStackedWidget(this);
     centralWidget->addWidget(overviewPage);
-    centralWidget->addWidget(miningPage);
+ //   centralWidget->addWidget(miningPage);
     centralWidget->addWidget(transactionsPage);
     centralWidget->addWidget(addressBookPage);
     centralWidget->addWidget(receiveCoinsPage);
@@ -137,13 +137,13 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
     labelEncryptionIcon = new QLabel();
-    labelMiningIcon = new QLabel();
+   // labelMiningIcon = new QLabel();
     labelConnectionsIcon = new QLabel();
     labelBlocksIcon = new QLabel();
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelEncryptionIcon);
     frameBlocksLayout->addStretch();
-    frameBlocksLayout->addWidget(labelMiningIcon);
+   // frameBlocksLayout->addWidget(labelMiningIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelConnectionsIcon);
     frameBlocksLayout->addStretch();
@@ -200,10 +200,10 @@ void BitcoinGUI::createActions()
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
 
-    miningAction = new QAction(QIcon(":/icons/mining"), tr("&Mining"), this);
-    miningAction->setToolTip(tr("Configure mining"));
-    miningAction->setCheckable(true);
-    tabGroup->addAction(miningAction);
+   // miningAction = new QAction(QIcon(":/icons/mining"), tr("&Mining"), this);
+  //  miningAction->setToolTip(tr("Configure mining"));
+   // miningAction->setCheckable(true);
+ //   tabGroup->addAction(miningAction);
 
     historyAction = new QAction(QIcon(":/icons/history"), tr("&Transactions"), this);
     historyAction->setToolTip(tr("Browse transaction history"));
@@ -245,7 +245,8 @@ void BitcoinGUI::createActions()
 #endif
 
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));    connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
+    connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
+    //connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -344,7 +345,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(historyAction);
     toolbar->addAction(addressBookAction);
-    toolbar->addAction(miningAction);
+  //  toolbar->addAction(miningAction);
 #ifdef FIRST_CLASS_MESSAGING
     toolbar->addAction(firstClassMessagingAction);
 #endif
@@ -386,8 +387,8 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
         setNumBlocks(clientModel->getNumBlocks(), clientModel->getNumBlocksOfPeers());
         connect(clientModel, SIGNAL(numBlocksChanged(int,int)), this, SLOT(setNumBlocks(int,int)));
 
-        setMining(false, 0);
-        connect(clientModel, SIGNAL(miningChanged(bool,int)), this, SLOT(setMining(bool,int)));
+      //  setMining(false, 0);
+       // connect(clientModel, SIGNAL(miningChanged(bool,int)), this, SLOT(setMining(bool,int)));
 
         // Report errors from network/worker thread
         connect(clientModel, SIGNAL(error(QString,QString,bool)), this, SLOT(error(QString,QString,bool)));
@@ -414,7 +415,7 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         receiveCoinsPage->setModel(walletModel->getAddressTableModel());
         sendCoinsPage->setModel(walletModel);
         signVerifyMessageDialog->setModel(walletModel);
-        miningPage->setModel(clientModel);
+       // miningPage->setModel(clientModel);
 
         setEncryptionStatus(walletModel->getEncryptionStatus());
         connect(walletModel, SIGNAL(encryptionStatusChanged(int)), this, SLOT(setEncryptionStatus(int)));
@@ -616,7 +617,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     progressBarLabel->setToolTip(tooltip);
     progressBar->setToolTip(tooltip);
 }
-
+/*
 void BitcoinGUI::setMining(bool mining, int hashrate)
 {
     if (mining)
@@ -630,7 +631,7 @@ void BitcoinGUI::setMining(bool mining, int hashrate)
         labelMiningIcon->setToolTip(tr("Not mining Fastcoins"));
     }
 }
-
+*/
 void BitcoinGUI::error(const QString &title, const QString &message, bool modal)
 {
     // Report errors from network/worker thread
@@ -732,7 +733,7 @@ void BitcoinGUI::gotoOverviewPage()
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
-
+/*
 void BitcoinGUI::gotoMiningPage()
 {
     miningAction->setChecked(true);
@@ -741,7 +742,7 @@ void BitcoinGUI::gotoMiningPage()
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
-
+*/
 void BitcoinGUI::gotoHistoryPage()
 {
     historyAction->setChecked(true);

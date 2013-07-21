@@ -42,7 +42,7 @@ void ExitTimeout(void* parg)
 
 void StartShutdown()
 {
-#ifdef QT_GUI
+#ifdef QT_GUI_LIB
     // ensure we leave the Qt main loop for a clean GUI exit (Shutdown() is called in bitcoin.cpp afterwards)
     uiInterface.QueueShutdown();
 #else
@@ -83,7 +83,7 @@ void Shutdown(void* parg)
         Sleep(50);
         printf("Fastcoin exited\n\n");
         fExit = true;
-#ifndef QT_GUI
+#ifndef QT_GUI_LIB
         // ensure non UI client get's exited here, but let Bitcoin-Qt reach return 0; in bitcoin.cpp
         exit(0);
 #endif
@@ -115,7 +115,7 @@ void HandleSIGHUP(int)
 //
 // Start
 //
-#if !defined(QT_GUI)
+#if !defined(QT_GUI_LIB)
 bool AppInit(int argc, char* argv[])
 {
     bool fRet = false;
@@ -256,10 +256,10 @@ std::string HelpMessage()
         "  -detachdb              " + _("Detach block and address databases. Increases shutdown time (default: 0)") + "\n" +
         "  -paytxfee=<amt>        " + _("Fee per KB to add to transactions you send") + "\n" +
         "  -mininput=<amt>        " + _("When creating transactions, ignore inputs with value less than this (default: 0.0001)") + "\n" +
-#ifdef QT_GUI
+#ifdef QT_GUI_LIB
         "  -server                " + _("Accept command line and JSON-RPC commands") + "\n" +
 #endif
-#if !defined(WIN32) && !defined(QT_GUI)
+#if !defined(WIN32) && !defined(QT_GUI_LIB)
         "  -daemon                " + _("Run in the background as a daemon and accept commands") + "\n" +
 #endif
         "  -testnet               " + _("Use the test network") + "\n" +
@@ -378,7 +378,7 @@ bool AppInit2()
 
     bitdb.SetDetach(GetBoolArg("-detachdb", false));
 
-#if !defined(WIN32) && !defined(QT_GUI)
+#if !defined(WIN32) && !defined(QT_GUI_LIB)
     fDaemon = GetBoolArg("-daemon");
 #else
     fDaemon = false;
@@ -390,7 +390,7 @@ bool AppInit2()
         fServer = GetBoolArg("-server");
 
     /* force fServer when running without GUI */
-#if !defined(QT_GUI)
+#if !defined(QT_GUI_LIB)
     fServer = true;
 #endif
     fPrintToConsole = GetBoolArg("-printtoconsole");
@@ -435,7 +435,7 @@ bool AppInit2()
     if (!lock.try_lock())
         return InitError(strprintf(_("Cannot obtain a lock on data directory %s.  Fastcoin is probably already running."), GetDataDir().string().c_str()));
 
-#if !defined(WIN32) && !defined(QT_GUI)
+#if !defined(WIN32) && !defined(QT_GUI_LIB)
     if (fDaemon)
     {
         // Daemonize
@@ -761,7 +761,7 @@ bool AppInit2()
      // Add wallet transactions that aren't already in a block to mapTransactions
     pwalletMain->ReacceptWalletTransactions();
 
-#if !defined(QT_GUI)
+#if !defined(QT_GUI_LIB)
     // Loop until process is exit()ed from shutdown() function,
     // called from ThreadRPCServer thread when a "stop" command is received.
     while (1)
