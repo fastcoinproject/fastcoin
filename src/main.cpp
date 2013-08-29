@@ -2422,7 +2422,8 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
 unsigned char pchMessageStart[4] = { 0xfb, 0xc0, 0xb6, 0xdb }; // Fastcoin: increase each by adding 2 to bitcoin's value.
 
 
-bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
+//bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
+bool ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 {
     static map<CService, CPubKey> mapReuseKey;
     RandAddSeedPerfmon();
@@ -2718,6 +2719,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                         vector<CInv> vInv;
                         vInv.push_back(CInv(MSG_BLOCK, hashBestChain));
                         pfrom->PushMessage("inv", vInv);
+                        //pfrom->PushInv(vInv);
                         pfrom->hashContinue = 0;
                     }
                 }
@@ -2990,6 +2992,14 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         }
     }
 
+    else if (strCommand == "getudpcook")
+    {
+        uint64 cookie;
+        RAND_bytes((unsigned char *)&cookie, sizeof(cookie));
+
+        pfrom->nUDPCookie = cookie;
+        pfrom->PushMessage("udpcook", cookie);
+    }
 
     else
     {
@@ -3247,7 +3257,8 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
                     vInv.push_back(inv);
                     if (vInv.size() >= 1000)
                     {
-                        pto->PushMessage("inv", vInv);
+                        pto->PushInv(vInv);
+                                //PushMessage("inv", vInv);
                         vInv.clear();
                     }
                 }
@@ -3255,7 +3266,8 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
             pto->vInventoryToSend = vInvWait;
         }
         if (!vInv.empty())
-            pto->PushMessage("inv", vInv);
+            pto->PushInv(vInv);
+            //pto->PushMessage("inv", vInv);
 
 
         //

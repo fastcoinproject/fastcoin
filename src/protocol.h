@@ -70,6 +70,7 @@ class CMessageHeader
 enum
 {
     NODE_NETWORK = (1 << 0),
+    NODE_UDP = (1 << 5),
 };
 
 /** A CService with information about it as peer */

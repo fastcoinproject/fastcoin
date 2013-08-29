@@ -9,6 +9,7 @@
 #include "bitcoinrpc.h"
 #include "net.h"
 #include "init.h"
+#include "udp.h"
 #include "util.h"
 #include "ui_interface.h"
 #include <boost/filesystem.hpp>
@@ -246,6 +247,7 @@ std::string HelpMessage()
         "  -bantime=<n>           " + _("Number of seconds to keep misbehaving peers from reconnecting (default: 86400)") + "\n" +
         "  -maxreceivebuffer=<n>  " + _("Maximum per-connection receive buffer, <n>*1000 bytes (default: 5000)") + "\n" +
         "  -maxsendbuffer=<n>     " + _("Maximum per-connection send buffer, <n>*1000 bytes (default: 1000)") + "\n" +
+        "  -udp                   " + _("Use UDP for fast relaying (default: 1)") + "\n" +
 #ifdef USE_UPNP
 #if USE_UPNP
         "  -upnp                  " + _("Use UPnP to map the listening port (default: 1 when listening)") + "\n" +
@@ -746,6 +748,11 @@ bool AppInit2()
 
     if (!CreateThread(StartNode, NULL))
         InitError(_("Error: could not start node"));
+
+    if (!fNoListen && GetBoolArg("-udp", true)) {
+        nLocalServices |= NODE_UDP;
+        CreateThread(ThreadUDPServer, NULL); //
+    }
 
     if (fServer)
         CreateThread(ThreadRPCServer, NULL);

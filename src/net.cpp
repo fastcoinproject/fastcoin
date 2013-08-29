@@ -13,6 +13,8 @@
 #include "addrman.h"
 #include "ui_interface.h"
 
+#include "udp.h"
+
 #ifdef WIN32
 #include <string.h>
 #endif
@@ -87,6 +89,24 @@ unsigned short GetListenPort()
 {
     return (unsigned short)(GetArg("-port", GetDefaultPort()));
 }
+
+void CNode::PushInv(vector<CInv> &vInv)
+{
+    if (nUDPSubMask & USM_INV_BCAST)
+    {
+    CDataStream vData(SER_NETWORK, PROTOCOL_VERSION);
+    vData << vInv;
+      printf("UDP MSG SENT\n");
+        SendUDPMessage(this, "inv", vData);
+        printf("UDP MSG END");
+    }
+
+    else {
+         printf("TCP MSG SENT\n");
+        PushMessage("inv", vInv);
+    }
+}
+
 
 void CNode::PushGetBlocks(CBlockIndex* pindexBegin, uint256 hashEnd)
 {
@@ -1064,9 +1084,6 @@ void ThreadMapPort2(void* parg)
 
         string strDesc = "Fastcoin " + FormatFullVersion();
 #ifndef UPNPDISCOVER_SUCCESS
-        /* miniupnpc 1.5 */
-       // r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
-         //                   port, port, lanaddr, strDesc.c_str(), "TCP", 0);
         r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
                             port, port, lanaddr, strDesc.c_str(), "TCP", 0, "0");
 #else
@@ -1078,6 +1095,20 @@ void ThreadMapPort2(void* parg)
         if(r!=UPNPCOMMAND_SUCCESS)
             printf("AddPortMapping(%s, %s, %s) failed with code %d (%s)\n",
                 port, port, lanaddr, r, strupnperror(r));
+
+#ifndef UPNPDISCOVER_SUCCESS
+        r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
+                            port, port, lanaddr, strDesc.c_str(), "UDP", 0, "0");
+#else
+        /* miniupnpc 1.6 */
+        r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
+                            port, port, lanaddr, strDesc.c_str(), "UDP", 0, "0");
+#endif
+
+        if(r!=UPNPCOMMAND_SUCCESS)
+            printf("AddPortMapping(%s, %s, %s) UDP failed with code %d (%s)\n",
+                port, port, lanaddr, r, strupnperror(r));
+
         else
             printf("UPnP Port Mapping successful.\n");
         int i = 1;
@@ -1892,6 +1923,7 @@ bool StopNode()
     if (vnThreadsRunning[THREAD_MINER] > 0) printf("ThreadBitcoinMiner still running\n");
     if (vnThreadsRunning[THREAD_RPCLISTENER] > 0) printf("ThreadRPCListener still running\n");
     if (vnThreadsRunning[THREAD_RPCHANDLER] > 0) printf("ThreadsRPCServer still running\n");
+    if (vnThreadsRunning[THREAD_UDP] > 0) printf("ThreadUDP still running\n");
 #ifdef USE_UPNP
     if (vnThreadsRunning[THREAD_UPNP] > 0) printf("ThreadMapPort still running\n");
 #endif
