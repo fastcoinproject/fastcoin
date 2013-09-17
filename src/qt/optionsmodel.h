@@ -28,12 +28,12 @@ public:
         Fee,               // qint64
         DisplayUnit,       // BitcoinUnits::Unit
         DisplayAddresses,  // bool
-        DetachDatabases,   // bool
         Language,          // QString
         OptionIDRowCount,
     };
 
     void Init();
+    void Reset();
 
     /* Migrate settings from wallet.dat after app initialization */
     bool Upgrade(); /* returns true if settings upgraded */
@@ -44,10 +44,10 @@ public:
 
     /* Explicit getters */
     qint64 getTransactionFee();
-    bool getMinimizeToTray();
-    bool getMinimizeOnClose();
-    int getDisplayUnit();
-    bool getDisplayAddresses();
+    bool getMinimizeToTray() { return fMinimizeToTray; }
+    bool getMinimizeOnClose() { return fMinimizeOnClose; }
+    int getDisplayUnit() { return nDisplayUnit; }
+    bool getDisplayAddresses() { return bDisplayAddresses; }
     QString getLanguage() { return language; }
 
 private:
