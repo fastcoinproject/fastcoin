@@ -1472,8 +1472,9 @@ public:
         }
 
         // Check the header
+
         if (!CheckProofOfWork(GetPoWHash(), nBits))
-            return error("CBlock::ReadFromDisk() : errors in block header");
+            return error("CBlock::ReadFromDisk() : errors in block header %d",pos.nPos);
 
         return true;
     }

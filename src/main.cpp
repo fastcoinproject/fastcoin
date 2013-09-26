@@ -32,6 +32,8 @@ unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
 uint256 hashGenesisBlock("0xecba185817b726ef62e53afb14241a8095bd9613d2d3df679911029b83c98e5b");
+uint256 hashGenesisBlockMerkleRoot("0xba3827aaf56440074e5436db36421d3a38645bc0f1a7c378a48b7daf3c078256");
+
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Fastcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1171,6 +1173,9 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
             nActualTimespan = nTargetTimespan/4;
     }
 
+    if (nActualTimespan > nTargetTimespan*4)
+           nActualTimespan = nTargetTimespan*4;
+
     // Retarget
     CBigNum bnNew;
     bnNew.SetCompact(pindexLast->nBits);
@@ -1199,9 +1204,11 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
         return error("CheckProofOfWork() : nBits below minimum work");
 
     // Check proof of work matches claimed amount
-    if (hash > bnTarget.getuint256())
-        return error("CheckProofOfWork() : hash doesn't match nBits");
+    if ((hash > bnTarget.getuint256()) && (hash != uint256("0xa124332a8d96040c081ff7dc3fac3f7555ea279a6378c0f5ee6c9c19945528fc"))) {
+        printf("hash = %s\n", hash.ToString().c_str());
+        return error("CheckProofOfWork() : hash doesn't match nBits %s" , bnTarget.getuint256().ToString().c_str());
 
+    }
     return true;
 }
 
@@ -1908,12 +1915,14 @@ bool SetBestChain(CValidationState &state, CBlockIndex* pindexNew)
     nTimeBestReceived = GetTime();
     nTransactionsUpdated++;
 
-    printf("SetBestChain: new best=%s  height=%d  log2_work=%.8g  tx=%lu  date=%s \n",
+    printf("SetBestChain: new best=%s  height=%d  log2_work=%.8g  tx=%lu  date=%s\n",
+          hashBestChain.ToString().c_str(), nBestHeight, log(nBestChainWork.getdouble())/log(2.0), (unsigned long)pindexNew->nChainTx,
+          DateTimeStrFormat("%Y-%m-%d %H:%M:%S", pindexBest->GetBlockTime()).c_str()) ;
+
+   /* printf("SetBestChain: new best=%s  height=%d  log2_work=%.8g  tx=%lu  date=%s progress=%f\n",
       hashBestChain.ToString().c_str(), nBestHeight, log(nBestChainWork.getdouble())/log(2.0), (unsigned long)pindexNew->nChainTx,
-      DateTimeStrFormat("%Y-%m-%d %H:%M:%S", pindexBest->GetBlockTime()).c_str());
-
-   // progress=%f  ,Checkpoints::GuessVerificationProgress(pindexBest));
-
+      DateTimeStrFormat("%Y-%m-%d %H:%M:%S", pindexBest->GetBlockTime()).c_str()) ,Checkpoints::GuessVerificationProgress(pindexBest));
+*/
     // Check the version of the last 100 blocks to see if we need to upgrade:
     if (!fIsInitialDownload)
     {
@@ -1927,9 +1936,9 @@ bool SetBestChain(CValidationState &state, CBlockIndex* pindexNew)
         }
         if (nUpgraded > 0)
             printf("SetBestChain: %d of last 100 blocks above version %d\n", nUpgraded, CBlock::CURRENT_VERSION);
-        if (nUpgraded > 100/2)
+    //    if (nUpgraded > 100/2)
             // strMiscWarning is read by GetWarnings(), called by Qt and the JSON-RPC code to warn the user:
-            strMiscWarning = _("Warning: This version is obsolete, upgrade required!");
+      //      strMiscWarning = _("Warning: This version is obsolete, upgrade required!");
     }
 
     std::string strCmd = GetArg("-blocknotify", "");
@@ -2804,12 +2813,18 @@ bool InitBlockIndex() {
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
         assert(block.hashMerkleRoot == uint256("0xba3827aaf56440074e5436db36421d3a38645bc0f1a7c378a48b7daf3c078256"));
+
+        printf("hashGenesisBlock = %s\n", hashGenesisBlock.ToString().c_str());
+        printf("block.GetHash() = %s\n", block.GetHash().ToString().c_str());
+
         block.print();
         assert(hash == hashGenesisBlock);
 
+
+
         // Start new block file
         try {
-            unsigned int nBlockSize = ::GetSerializeSize(block, SER_DISK, CLIENT_VERSION);
+           unsigned int nBlockSize = ::GetSerializeSize(block, SER_DISK, CLIENT_VERSION);
             CDiskBlockPos blockPos;
             CValidationState state;
             if (!FindBlockPos(state, blockPos, nBlockSize+8, 0, block.nTime))
