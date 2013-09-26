@@ -59,5 +59,4 @@ namespace Checkpoints
         }
         return NULL;
     }
-
 }
