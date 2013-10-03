@@ -59,12 +59,12 @@ QDateTime ClientModel::getLastBlockDate() const
     else
         return QDateTime::fromTime_t(1296688602); // Genesis block's time (testnet)
 }
-/*
+
 double ClientModel::getVerificationProgress() const
 {
     return Checkpoints::GuessVerificationProgress(pindexBest);
 }
-*/
+
 void ClientModel::updateTimer()
 {
     // Some quantities (such as number of blocks) change so fast that we don't want to be notified for each change.
