@@ -53,7 +53,7 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f):
     titleTextWidth  = fm.width(titleText);
     pixPaint.drawText(newPixmap.width()-titleTextWidth-paddingRight,paddingTop,titleText); //newPixmap.width()-titleTextWidth-
 
-    fz.setPixelSize(11*fontFactor);
+    fz.setPixelSize(11);
     pixPaint.setFont(fz);
 
     // if the version string is to long, reduce size
@@ -65,7 +65,7 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f):
     }
     pixPaint.drawText(newPixmap.width()-titleTextWidth-paddingRight+2,paddingTop+titleVersionVSpace,versionText); //
 
-    fz.setPixelSize(8*fontFactor);
+    fz.setPixelSize(8.5);
     pixPaint.setFont(fz);
 
     pixPaint.drawText(newPixmap.width()-titleTextWidth-paddingRight,paddingTop+titleCopyrightVSpace,copyrightText); //newPixmap.width()-titleTextWidth-
@@ -73,7 +73,7 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f):
     // draw testnet string if -testnet is on
     if(QApplication::applicationName().contains(QString("-testnet"))) {
         // draw copyright stuff
-        QFont boldFont = QFont(font, 10*fontFactor);
+        QFont boldFont = QFont(font, 10);
         boldFont.setWeight(QFont::Bold);
         pixPaint.setFont(boldFont);
         fm = pixPaint.fontMetrics();
@@ -84,7 +84,7 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f):
     pixPaint.end();
 
     //showmstatusmessage
-    fz.setPixelSize(11*fontFactor);
+    fz.setPixelSize(11);
     QRect r(15, 310, 500, 15);
     this->setMessageRect(r, Qt::AlignCenter); // Setting the message position.
     this->setFont(fz);
