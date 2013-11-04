@@ -5,9 +5,10 @@
 #include <QPainter>
 #include <QApplication>
 
-SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
+SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f):
     QSplashScreen(pixmap, f)
 {
+
     // set reference point, paddings
     int paddingRight            = 30;
     int paddingTop              = 50;
@@ -37,7 +38,7 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
     pixPaint.setPen(QColor(100,100,100));
 
     // check font size and drawing with
-    pixPaint.setFont(QFont(font, 33*fontFactor));
+    pixPaint.setFont(QFont(font, 28*fontFactor));
     QFontMetrics fm = pixPaint.fontMetrics();
     int titleTextWidth  = fm.width(titleText);
     if(titleTextWidth > 160) {
@@ -45,12 +46,15 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
         fontFactor = 0.75;
     }
 
-    pixPaint.setFont(QFont(font, 33*fontFactor));
+    QFont fz(font, 28*fontFactor);
+    fz.setStyleStrategy(QFont::PreferAntialias);
+    pixPaint.setFont(fz);
     fm = pixPaint.fontMetrics();
     titleTextWidth  = fm.width(titleText);
-    pixPaint.drawText(paddingRight,paddingTop,titleText); //newPixmap.width()-titleTextWidth-
+    pixPaint.drawText(newPixmap.width()-titleTextWidth-paddingRight,paddingTop,titleText); //newPixmap.width()-titleTextWidth-
 
-    pixPaint.setFont(QFont(font, 15*fontFactor));
+    fz.setPixelSize(11*fontFactor);
+    pixPaint.setFont(fz);
 
     // if the version string is to long, reduce size
     fm = pixPaint.fontMetrics();
@@ -59,11 +63,12 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
         pixPaint.setFont(QFont(font, 10*fontFactor));
         titleVersionVSpace -= 5;
     }
-    pixPaint.drawText(paddingRight+2,paddingTop+titleVersionVSpace,versionText); //
+    pixPaint.drawText(newPixmap.width()-titleTextWidth-paddingRight+2,paddingTop+titleVersionVSpace,versionText); //
 
-    // draw copyright stuff
-    pixPaint.setFont(QFont(font, 10*fontFactor));
-    pixPaint.drawText(paddingRight,paddingTop+titleCopyrightVSpace,copyrightText); //newPixmap.width()-titleTextWidth-
+    fz.setPixelSize(8*fontFactor);
+    pixPaint.setFont(fz);
+
+    pixPaint.drawText(newPixmap.width()-titleTextWidth-paddingRight,paddingTop+titleCopyrightVSpace,copyrightText); //newPixmap.width()-titleTextWidth-
 
     // draw testnet string if -testnet is on
     if(QApplication::applicationName().contains(QString("-testnet"))) {
@@ -78,5 +83,31 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
 
     pixPaint.end();
 
+    //showmstatusmessage
+    fz.setPixelSize(11*fontFactor);
+    QRect r(15, 310, 500, 15);
+    this->setMessageRect(r, Qt::AlignCenter); // Setting the message position.
+    this->setFont(fz);
+
     this->setPixmap(newPixmap);
+}
+
+void SplashScreen::drawContents(QPainter *painter)
+{
+ QPixmap textPix = QSplashScreen::pixmap();
+ painter->setPen(this->color);
+ painter->drawText(this->rect, this->alignement, this->message);
+}
+
+void SplashScreen::showStatusMessage(const QString &message, const QColor &color)
+{
+ this->message = message;
+ this->color = color;
+ this->showMessage(this->message, this->alignement, this->color);
+}
+
+void SplashScreen::setMessageRect(QRect rect, int alignement)
+{
+ this->rect = rect;
+ this->alignement = alignement;
 }
