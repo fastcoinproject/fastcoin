@@ -1,4 +1,3 @@
----
 name: "fastcoin"
 suites:
 - "lucid"
@@ -45,9 +44,10 @@ script: |
   git archive HEAD | tar -x -C $OUTDIR/src
   cp $OUTDIR/src/doc/README $OUTDIR
   cp $OUTDIR/src/COPYING $OUTDIR
-  mkdir src/obj
+  mkdir src/obj 
+  sed -i 's/uniform_int_distribution.hpp/uniform_int.hpp/' src/main.cpp 
   cd src
-  make -f makefile.unix STATIC=1 OPENSSL_INCLUDE_PATH="$INSTDIR/include" OPENSSL_LIB_PATH="$INSTDIR/lib" $MAKEOPTS fastcoind USE_UPNP=0 DEBUGFLAGS=
+  make -f makefile.unix STATIC=1 OPENSSL_INCLUDE_PATH="$INSTDIR/include" OPENSSL_LIB_PATH="$INSTDIR/lib" $MAKEOPTS fastcoind USE_UPNP=- DEBUGFLAGS=
   mkdir -p $OUTDIR/bin/$GBUILD_BITS
   install -s fastcoind $OUTDIR/bin/$GBUILD_BITS
   cd ..
