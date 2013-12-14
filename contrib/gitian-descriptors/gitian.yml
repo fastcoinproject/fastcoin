@@ -1,3 +1,4 @@
+---
 name: "fastcoin"
 suites:
 - "lucid"
@@ -51,6 +52,6 @@ script: |
   mkdir -p $OUTDIR/bin/$GBUILD_BITS
   install -s fastcoind $OUTDIR/bin/$GBUILD_BITS
   cd ..
-  qmake INCLUDEPATH="$INSTDIR/include" LIBS="-L$INSTDIR/lib" RELEASE=1 USE_QRCODE=1
+  qmake INCLUDEPATH="$INSTDIR/include" LIBS="-L$INSTDIR/lib" RELEASE=1 USE_QRCODE=1  
   make $MAKEOPTS
   install -s fastcoin-qt $OUTDIR/bin/$GBUILD_BITS
