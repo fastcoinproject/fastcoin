@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 8.5.1
+!define VERSION 8.5.3
 !define COMPANY "Fastcoin project"
 !define URL http://www.fastcoin.ws/
 
@@ -45,13 +45,13 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile fastcoin-8.5.1-win32-setup.exe
+OutFile fastcoin-8.5.3-win32-setup.exe
 InstallDir $PROGRAMFILES\Fastcoin
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion 0.6.3.0
+VIProductVersion 8.5.3.0
 VIAddVersionKey ProductName Fastcoin
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
