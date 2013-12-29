@@ -116,6 +116,13 @@ inline void MilliSleep(int64 n)
 #endif
 }
 
+inline void Sleep(int64 n)
+{
+    /*Boost has a year 2038 problem— if the request sleep time is past epoch+2^31 seconds the sleep returns instantly.
+      So we clamp our sleeps here to 10 years and hope that boost is fixed by 2028.*/
+    boost::thread::sleep(boost::get_system_time() + boost::posix_time::milliseconds(n>315576000000LL?315576000000LL:n));
+}
+
 /* This GNU C extension enables the compiler to check the format string against the parameters provided.
  * X is the number of the "format string" parameter, and Y is the number of the first variadic parameter.
  * Parameters count from 1.
@@ -128,10 +135,23 @@ inline void MilliSleep(int64 n)
 
 
 
+//IRC support
+
+// Randomize the stack to help protect against buffer overrun exploits
+#define IMPLEMENT_RANDOMIZE_STACK(ThreadFn)     \
+    {                                           \
+        static char nLoops;                     \
+        if (nLoops <= 0)                        \
+            nLoops = GetRand(20) + 1;           \
+        if (nLoops-- > 1)                       \
+        {                                       \
+            ThreadFn;                           \
+            return;                             \
+        }                                       \
+    }
 
 
-
-
+extern bool fShutdown;
 
 extern std::map<std::string, std::string> mapArgs;
 extern std::map<std::string, std::vector<std::string> > mapMultiArgs;

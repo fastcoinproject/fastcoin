@@ -3,6 +3,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "irc.h"
 #include "db.h"
 #include "net.h"
 #include "init.h"
@@ -27,7 +28,7 @@
 using namespace std;
 using namespace boost;
 
-static const int MAX_OUTBOUND_CONNECTIONS = 8;
+static const int MAX_OUTBOUND_CONNECTIONS = 12;
 
 bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOutbound = NULL, const char *strDest = NULL, bool fOneShot = false);
 
@@ -1185,8 +1186,6 @@ void MapPort(bool)
 
 
 
-
-
 // DNS seeds
 // Each pair gives a source name and a seed name.
 // The first name is used as information source for addrman.
@@ -1759,10 +1758,19 @@ void StartNode(boost::thread_group& threadGroup)
     // Start threads
     //
 
+    // Send and receive from sockets, accept connections
+
+    // Get addresses from IRC and advertise ours
+    // threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "irc", &ThreadIRCSeed));
+
+    if (!NewThread(ThreadIRCSeed, NULL))
+        printf("Error: CreateThread(ThreadIRCSeed) failed\n");
+
     if (!GetBoolArg("-dnsseed", true))
         printf("DNS seeding disabled\n");
     else
         threadGroup.create_thread(boost::bind(&TraceThread<boost::function<void()> >, "dnsseed", &ThreadDNSAddressSeed));
+
 
 #ifdef USE_UPNP
     // Map ports with UPnP

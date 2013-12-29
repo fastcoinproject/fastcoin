@@ -14,6 +14,7 @@ using namespace std;
 using namespace boost;
 
 int nGotIRCAddresses = 0;
+bool fShutdown = false;
 
 void ThreadIRCSeed2(void* parg);
 
@@ -213,7 +214,7 @@ void ThreadIRCSeed2(void* parg)
     if (mapArgs.count("-connect") || fNoListen)
         return;
 
-    if (!GetBoolArg("-irc", false))
+    if (GetBoolArg("-irc", false))
         return;
 
     printf("ThreadIRCSeed started\n");
@@ -293,7 +294,7 @@ void ThreadIRCSeed2(void* parg)
                 Send(hSocket, strprintf("NICK %s\r", strMyName.c_str()).c_str());
             }
         }
-        
+
         if (fTestNet) {
             Send(hSocket, "JOIN #fastcoinTEST3\r");
             Send(hSocket, "WHO #fastcoinTEST3\r");
