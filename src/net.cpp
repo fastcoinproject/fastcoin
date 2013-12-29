@@ -1761,10 +1761,7 @@ void StartNode(boost::thread_group& threadGroup)
     // Send and receive from sockets, accept connections
 
     // Get addresses from IRC and advertise ours
-    // threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "irc", &ThreadIRCSeed));
-
-    if (!NewThread(ThreadIRCSeed, NULL))
-        printf("Error: CreateThread(ThreadIRCSeed) failed\n");
+    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "irc", &ThreadIRCSeed3));
 
     if (!GetBoolArg("-dnsseed", true))
         printf("DNS seeding disabled\n");
