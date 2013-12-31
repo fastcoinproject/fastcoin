@@ -133,7 +133,7 @@ bool Wait(int nSeconds)
        if (fShutdown)
             return false;
         boost::this_thread::interruption_point();
-        Sleep(1000);
+        Sleep2(1000);
     }
     return true;
 }
@@ -297,7 +297,7 @@ void ThreadIRCSeed2(void* parg)
             else
                 return;
         }
-        Sleep(500);
+        Sleep2(500);
 
         // Get our external IP from the IRC server and re-nick before joining the channel
         CNetAddr addrFromIRC;
