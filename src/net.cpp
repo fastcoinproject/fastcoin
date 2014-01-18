@@ -1065,8 +1065,10 @@ void ThreadMapPort2(void* parg)
         string strDesc = "Fastcoin " + FormatFullVersion();
 #ifndef UPNPDISCOVER_SUCCESS
         /* miniupnpc 1.5 */
+       // r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
+         //                   port, port, lanaddr, strDesc.c_str(), "TCP", 0);
         r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
-                            port, port, lanaddr, strDesc.c_str(), "TCP", 0);
+                            port, port, lanaddr, strDesc.c_str(), "TCP", 0, "0");
 #else
         /* miniupnpc 1.6 */
         r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
@@ -1092,8 +1094,10 @@ void ThreadMapPort2(void* parg)
             {
 #ifndef UPNPDISCOVER_SUCCESS
                 /* miniupnpc 1.5 */
+             //   r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
+               //                     port, port, lanaddr, strDesc.c_str(), "TCP", 0);
                 r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
-                                    port, port, lanaddr, strDesc.c_str(), "TCP", 0);
+                                    port, port, lanaddr, strDesc.c_str(), "TCP", 0, "0");
 #else
                 /* miniupnpc 1.6 */
                 r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
@@ -1150,9 +1154,10 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-    // {"fastcoinpool.org", "dnsseed.fastcoinpool.org"},
-    // {"bytesized-vps.com", "dnsseed.bytesized-vps.com"},
-    // {"xurious.com", "dnsseed.ltc.xurious.com"},
+    {"fastcoin.ws","u1.fastcoin.ws"},
+    {"fastcoin.ca","u1.fastcoin.ca"},
+    {"fastcoinfor.me","a1.fastcoinfor.me"},
+    {"fastcoin.ws","a1.fastcoin.ws"},
 };
 
 void ThreadDNSAddressSeed(void* parg)

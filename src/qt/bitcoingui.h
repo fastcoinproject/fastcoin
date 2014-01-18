@@ -118,7 +118,7 @@ public slots:
     /** Set number of blocks shown in the UI */
     void setNumBlocks(int count, int countOfPeers);
     /** Set mining status and hashrate in the UI */
-    void setMining(bool mining, int hashrate);
+//    void setMining(bool mining, int hashrate);
     /** Set the encryption status as shown in the UI.
        @param[in] status            current encryption status
        @see WalletModel::EncryptionStatus
@@ -142,7 +142,7 @@ private slots:
     /** Switch to overview (home) page */
     void gotoOverviewPage();
     /** Switch to mining page */
-    void gotoMiningPage();
+   // void gotoMiningPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
     /** Switch to address book page */
