@@ -12,7 +12,6 @@ src/build.h
 .bitcoin
 #compilation and Qt preprocessor part
 *.qm
-Makefile
 fastcoin-qt
 #resources cpp
 qrc_*.cpp

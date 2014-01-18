@@ -1,5 +1,5 @@
 ---
-name: "litecoin-deps"
+name: "fastcoin-deps"
 suites:
 - "lucid"
 architectures:
@@ -10,14 +10,15 @@ packages:
 - "zip"
 - "faketime"
 - "wine"
+- "psmisc"
 reference_datetime: "2011-01-30 00:00:00"
 remotes: []
 files:
-- "openssl-1.0.1b.tar.gz"
+- "openssl-1.0.1c.tar.gz"
 - "db-4.8.30.NC.tar.gz"
 - "miniupnpc-1.6.tar.gz"
 - "zlib-1.2.7.tar.gz"
-- "libpng-1.5.12.tar.gz"
+- "libpng-1.5.9.tar.gz"
 - "qrencode-3.2.0.tar.bz2"
 script: |
   #
@@ -25,8 +26,8 @@ script: |
   export FAKETIME=$REFERENCE_DATETIME
   export TZ=UTC
   #
-  tar xzf openssl-1.0.1b.tar.gz
-  cd openssl-1.0.1b
+  tar xzf openssl-1.0.1c.tar.gz
+  cd openssl-1.0.1c
   ./Configure --cross-compile-prefix=i586-mingw32msvc- mingw
   make
   cd ..
@@ -50,19 +51,19 @@ script: |
   make -f win32/Makefile.gcc PREFIX=i586-mingw32msvc- $MAKEOPTS
   cd ..
   #
-  tar xzf libpng-1.5.12.tar.gz
-  cd libpng-1.5.12
+  tar xzf libpng-1.5.9.tar.gz
+  cd libpng-1.5.9
   ./configure -disable-shared CC=i586-mingw32msvc-cc AR=i586-mingw32msvc-ar STRIP=i586-mingw32msvc-strip RANLIB=i586-mingw32msvc-ranlib OBJDUMP=i586-mingw32msvc-objdump LD=i586-mingw32msvc-ld LDFLAGS="-L../zlib-1.2.7/" CFLAGS="-I../zlib-1.2.7/"
   make $MAKEOPTS
   cd ..
   #
   tar xjf qrencode-3.2.0.tar.bz2
   cd qrencode-3.2.0
-  ./configure CC=i586-mingw32msvc-cc AR=i586-mingw32msvc-ar STRIP=i586-mingw32msvc-strip RANLIB=i586-mingw32msvc-ranlib OBJDUMP=i586-mingw32msvc-objdump LD=i586-mingw32msvc-ld png_LIBS="../libpng-1.5.12/.libs/libpng15.a ../zlib-1.2.7/libz.a" png_CFLAGS="-I../libpng-1.5.12"
+  ./configure CC=i586-mingw32msvc-cc AR=i586-mingw32msvc-ar STRIP=i586-mingw32msvc-strip RANLIB=i586-mingw32msvc-ranlib OBJDUMP=i586-mingw32msvc-objdump LD=i586-mingw32msvc-ld png_LIBS="../libpng-1.5.9/.libs/libpng15.a ../zlib-1.2.7/libz.a" png_CFLAGS="-I../libpng-1.5.9"
   make $MAKEOPTS
   cd ..
   #
-  zip -r $OUTDIR/litecoin-deps-0.0.4.zip \
+  zip -r $OUTDIR/fastcoin-deps-0.0.4.zip \
     $(ls qrencode-*/{qrencode.h,.libs/libqrencode.{,l}a} | sort) \
     $(ls db-*/build_unix/{libdb_cxx.a,db.h,db_cxx.h,libdb.a,.libs/libdb_cxx-?.?.a} | sort) \
     $(find openssl-* -name '*.a' -o -name '*.h' | sort) \

@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2011-2012 Litecoin Developers
+// Copyright (c) 2011-2012 Fastcoin Developers
 // Copyright (c) 2013 Fastcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -14,9 +14,9 @@ using namespace std;
 using namespace boost;
 
 int nGotIRCAddresses = 0;
+bool fShutdown = false;
 
 void ThreadIRCSeed2(void* parg);
-
 
 
 
@@ -86,6 +86,8 @@ bool RecvLineIRC(SOCKET hSocket, string& strLine)
         {
             if (fShutdown)
                 return false;
+            boost::this_thread::interruption_point();
+
             vector<string> vWords;
             ParseString(strLine, ' ', vWords);
             if (vWords.size() >= 1 && vWords[0] == "PING")
@@ -124,12 +126,14 @@ bool Wait(int nSeconds)
 {
     if (fShutdown)
         return false;
+    boost::this_thread::interruption_point();
     printf("IRC waiting %d seconds to reconnect\n", nSeconds);
     for (int i = 0; i < nSeconds; i++)
     {
-        if (fShutdown)
+       if (fShutdown)
             return false;
-        Sleep(1000);
+        boost::this_thread::interruption_point();
+        Sleep2(1000);
     }
     return true;
 }
@@ -186,7 +190,22 @@ bool GetIPFromIRC(SOCKET hSocket, string strMyName, CNetAddr& ipRet)
     return true;
 }
 
+void ThreadIRCSeed3()
+{
 
+    try
+    {
+        ThreadIRCSeed2(NULL);
+    }
+    catch (std::exception& e) {
+        fShutdown=true;
+        //PrintExceptionContinue(&e, "ThreadIRCSeed3()");
+    } catch (...) {
+        fShutdown=true;
+        //PrintExceptionContinue(NULL, "ThreadIRCSeed3()");
+    }
+    printf("ThreadIRCSeed exited\n");
+}
 
 void ThreadIRCSeed(void* parg)
 {
@@ -213,14 +232,14 @@ void ThreadIRCSeed2(void* parg)
     if (mapArgs.count("-connect") || fNoListen)
         return;
 
-    if (!GetBoolArg("-irc", false))
+    if (GetBoolArg("-irc", false))
         return;
 
     printf("ThreadIRCSeed started\n");
     int nErrorWait = 10;
     int nRetryWait = 10;
 
-    while (!fShutdown)
+    loop
     {
         CService addrConnect("92.243.23.21", 6667); // irc.lfnet.org
 
@@ -278,7 +297,7 @@ void ThreadIRCSeed2(void* parg)
             else
                 return;
         }
-        Sleep(500);
+        Sleep2(500);
 
         // Get our external IP from the IRC server and re-nick before joining the channel
         CNetAddr addrFromIRC;
@@ -293,7 +312,7 @@ void ThreadIRCSeed2(void* parg)
                 Send(hSocket, strprintf("NICK %s\r", strMyName.c_str()).c_str());
             }
         }
-        
+
         if (fTestNet) {
             Send(hSocket, "JOIN #fastcoinTEST3\r");
             Send(hSocket, "WHO #fastcoinTEST3\r");
@@ -308,8 +327,9 @@ void ThreadIRCSeed2(void* parg)
         int64 nStart = GetTime();
         string strLine;
         strLine.reserve(10000);
-        while (!fShutdown && RecvLineIRC(hSocket, strLine))
+        while (RecvLineIRC(hSocket, strLine))
         {
+            boost::this_thread::interruption_point();
             if (strLine.empty() || strLine.size() > 900 || strLine[0] != ':')
                 continue;
 
