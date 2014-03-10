@@ -45,6 +45,11 @@ labeled 'stale'.
 * https://drive.google.com/?tab=wo&authuser=0#folders/0B37Llt3dDAzHcmdWRE1yLXZaSU0 `Android`
 * https://docs.google.com/file/d/0B-lUxAN4BdWcM2g0ZlNtWllHZTQ/edit?usp=sharing `Dev`
 
+## Download bootstrap
+
+* https://www.dropbox.com/s/tbo0atlqaoojd7w/bootstrap.dat `bootstrap.dat`
+* https://www.dropbox.com/s/uhof8ocyvtwofbq/bootstrap.dat.xz] `bootstrap.dat.xz`
+
 ## Forums
 
 * http://fastcointalk.org
