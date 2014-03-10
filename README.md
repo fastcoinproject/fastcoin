@@ -48,7 +48,7 @@ labeled 'stale'.
 ## Download bootstrap
 
 * https://www.dropbox.com/s/tbo0atlqaoojd7w/bootstrap.dat `bootstrap.dat`
-* https://www.dropbox.com/s/uhof8ocyvtwofbq/bootstrap.dat.xz] `bootstrap.dat.xz`
+* https://www.dropbox.com/s/uhof8ocyvtwofbq/bootstrap.dat.xz `bootstrap.dat.xz`
 
 ## Forums
 
