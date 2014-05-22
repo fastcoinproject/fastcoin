@@ -63,7 +63,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
         <source>These are your Fastcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Ovo su vaše Fastcoin adrese za primanje isplate. Možda žefast dati drukčiju adresu svakom primatelju tako da možete pratiti tko je platio.</translation>
+        <translation>Ovo su vaše Fastcoin adrese za primanje isplate. Možda želite dati drukčiju adresu svakom primatelju tako da možete pratiti tko je platio.</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -249,7 +249,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+0"/>
         <source>Are you sure you wish to encrypt your wallet?</source>
-        <translation>Jeste li sigurni da žefast šifrirati svoj novčanik?</translation>
+        <translation>Jeste li sigurni da želite šifrirati svoj novčanik?</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1340,7 +1340,7 @@ Adresa:%4
     <message>
         <location line="+1"/>
         <source>Are you sure you want to send %1?</source>
-        <translation>Jeste li sigurni da žefast poslati %1?</translation>
+        <translation>Jeste li sigurni da želite poslati %1?</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -1494,7 +1494,7 @@ Adresa:%4
     <message>
         <location line="+12"/>
         <source>Enter the message you want to sign here</source>
-        <translation>Upišite poruku koju žefast potpisati ovdje</translation>
+        <translation>Upišite poruku koju želite potpisati ovdje</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2863,7 +2863,7 @@ for example: alertnotify=echo %%s | mail -s &quot;Fastcoin Alert&quot; admin@foo
     <message>
         <location line="-57"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Unesite nod s kojim se žefast spojiti and attempt to keep the connection open</translation>
+        <translation>Unesite nod s kojim se želite spojiti and attempt to keep the connection open</translation>
     </message>
     <message>
         <location line="-25"/>

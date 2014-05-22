@@ -1899,7 +1899,7 @@ Inscriptio: %4
     <message>
         <location line="+5"/>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation>Hoc frustum non acceptum est ab ulla alia nodis et probabifastr non acceptum erit!</translation>
+        <translation>Hoc frustum non acceptum est ab ulla alia nodis et probabiliter non acceptum erit!</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2332,7 +2332,7 @@ exempli gratia: alertnotify=echo %%s | mail -s &quot;Fastcoin Notificatio&quot; 
     <message>
         <location line="+3"/>
         <source>Cannot obtain a lock on data directory %s. Fastcoin is probably already running.</source>
-        <translation>Non posse serare datorum indicem %s.  Fastcoin probabifastr iam operatur.</translation>
+        <translation>Non posse serare datorum indicem %s.  Fastcoin probabiliter iam operatur.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2362,7 +2362,7 @@ exempli gratia: alertnotify=echo %%s | mail -s &quot;Fastcoin Notificatio&quot; 
     <message>
         <location line="+6"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>Hoc est prae-dimittum experimentala aedes - utere eo periculo tuo proprio - nofast utere fodendo vel applicationibus mercatoriis</translation>
+        <translation>Hoc est prae-dimittum experimentala aedes - utere eo periculo tuo proprio - nolite utere fodendo vel applicationibus mercatoriis</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2882,7 +2882,7 @@ exempli gratia: alertnotify=echo %%s | mail -s &quot;Fastcoin Notificatio&quot; 
     <message>
         <location line="-25"/>
         <source>Unable to bind to %s on this computer. Fastcoin is probably already running.</source>
-        <translation>Non posse conglutinare ad %s in hoc cumputatro.  Fastcoin probabifastr iam operatur.</translation>
+        <translation>Non posse conglutinare ad %s in hoc cumputatro.  Fastcoin probabiliter iam operatur.</translation>
     </message>
     <message>
         <location line="+64"/>

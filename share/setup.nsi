@@ -5,9 +5,9 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 8.5.3
+!define VERSION 0.8.7.1
 !define COMPANY "Fastcoin project"
-!define URL http://www.fastcoin.ws/
+!define URL http://www.fastcoin.org/
 
 # MUI Symbol Definitions
 !define MUI_ICON "../share/pixmaps/bitcoin.ico"
@@ -45,13 +45,13 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile fastcoin-8.5.3-win32-setup.exe
+OutFile fastcoin-${VERSION}-win32-setup.exe
 InstallDir $PROGRAMFILES\Fastcoin
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion 8.5.3.0
+VIProductVersion ${VERSION}
 VIAddVersionKey ProductName Fastcoin
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
@@ -67,7 +67,7 @@ Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
     File ../release/fastcoin-qt.exe
-    File /oname=license.txt ../COPYING
+    File /oname=COPYING.txt ../COPYING
     File /oname=readme.txt ../doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
     File ../src/fastcoind.exe
@@ -101,7 +101,7 @@ Section -post SEC0001
     WriteRegStr HKCR "fastcoin" "URL Protocol" ""
     WriteRegStr HKCR "fastcoin" "" "URL:Fastcoin"
     WriteRegStr HKCR "fastcoin\DefaultIcon" "" $INSTDIR\fastcoin-qt.exe
-    WriteRegStr HKCR "fastcoin\shell\open\command" "" '"$INSTDIR\fastcoin-qt.exe" "$$1"'
+    WriteRegStr HKCR "fastcoin\shell\open\command" "" '"$INSTDIR\fastcoin-qt.exe" "%1"'
 SectionEnd
 
 # Macro for selecting uninstaller sections
@@ -120,7 +120,7 @@ done${UNSECTION_ID}:
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
     Delete /REBOOTOK $INSTDIR\fastcoin-qt.exe
-    Delete /REBOOTOK $INSTDIR\license.txt
+    Delete /REBOOTOK $INSTDIR\COPYING.txt
     Delete /REBOOTOK $INSTDIR\readme.txt
     RMDir /r /REBOOTOK $INSTDIR\daemon
     RMDir /r /REBOOTOK $INSTDIR\src

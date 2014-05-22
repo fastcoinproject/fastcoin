@@ -53,7 +53,7 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f):
     titleTextWidth  = fm.width(titleText);
     pixPaint.drawText(newPixmap.width()-titleTextWidth-paddingRight,paddingTop,titleText); //newPixmap.width()-titleTextWidth-
 
-    fz.setPixelSize(11);
+    fz.setPixelSize(10);
     pixPaint.setFont(fz);
 
     // if the version string is to long, reduce size

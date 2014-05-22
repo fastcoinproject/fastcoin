@@ -1,3 +1,7 @@
+// Copyright (c) 2011-2013 The Bitcoin developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef BITCOINGUI_H
 #define BITCOINGUI_H
 
@@ -126,6 +130,8 @@ private:
     void saveWindowGeometry();
     /** Restore window size and position */
     void restoreWindowGeometry();
+    /** Enable or disable all wallet-related actions */
+    void setWalletActionsEnabled(bool enabled);
 
 public slots:
     /** Set number of connections shown in the UI */

@@ -782,7 +782,7 @@ Adresse: %4
     <message>
         <location line="+1"/>
         <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>Angiv sprog, f.eks &quot;de_DE&quot; (standard: systemlokafastt)</translation>
+        <translation>Angiv sprog, f.eks &quot;de_DE&quot; (standard: systemlokalitet)</translation>
     </message>
     <message>
         <location line="+1"/>

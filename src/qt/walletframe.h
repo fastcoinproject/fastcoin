@@ -1,9 +1,7 @@
-/*
- * Qt4 bitcoin GUI.
- *
- * W.J. van der Laan 2011-2012
- * The Bitcoin Developers 2011-2013
- */
+// Copyright (c) 2011-2013 The Bitcoin developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef WALLETFRAME_H
 #define WALLETFRAME_H
 
@@ -13,6 +11,7 @@ class BitcoinGUI;
 class ClientModel;
 class WalletModel;
 class WalletStack;
+class WalletView;
 
 class WalletFrame : public QFrame
 {
@@ -37,6 +36,8 @@ private:
     BitcoinGUI *gui;
     ClientModel *clientModel;
     WalletStack *walletStack;
+
+    WalletView *currentWalletView();
 
 public slots:
     /** Switch to overview (home) page */

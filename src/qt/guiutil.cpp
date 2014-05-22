@@ -1,3 +1,7 @@
+// Copyright (c) 2011-2014 The Bitcoin developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include <QApplication>
 
 #include "guiutil.h"
@@ -181,6 +185,12 @@ void copyEntryData(QAbstractItemView *view, int column, int role)
     }
 }
 
+void setClipboard(const QString& str)
+{
+    QApplication::clipboard()->setText(str, QClipboard::Clipboard);
+    QApplication::clipboard()->setText(str, QClipboard::Selection);
+}
+
 QString getSaveFileName(QWidget *parent, const QString &caption,
                                  const QString &dir,
                                  const QString &filter,
@@ -280,11 +290,11 @@ bool ToolTipToRichTextFilter::eventFilter(QObject *obj, QEvent *evt)
     {
         QWidget *widget = static_cast<QWidget*>(obj);
         QString tooltip = widget->toolTip();
-        if(tooltip.size() > size_threshold && !tooltip.startsWith("<qt/>") && !Qt::mightBeRichText(tooltip))
+        if(tooltip.size() > size_threshold && !tooltip.startsWith("<qt") && !Qt::mightBeRichText(tooltip))
         {
-            // Prefix <qt/> to make sure Qt detects this as rich text
+            // Envelop with <qt></qt> to make sure Qt detects this as rich text
             // Escape the current message as HTML and replace \n by <br>
-            tooltip = "<qt/>" + HtmlEscape(tooltip, true);
+            tooltip = "<qt>" + HtmlEscape(tooltip, true) + "</qt>";
             widget->setToolTip(tooltip);
             return true;
         }

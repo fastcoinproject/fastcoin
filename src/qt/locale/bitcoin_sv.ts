@@ -2679,7 +2679,7 @@ till exempel: alertnotify=echo %%s | mail -s &quot;Fastcoin Alert&quot; admin@fo
     <message>
         <location line="+4"/>
         <source>Transaction amount too small</source>
-        <translation>Transaktions belopp för fastn</translation>
+        <translation>Transaktions belopp för liten</translation>
     </message>
     <message>
         <location line="+1"/>

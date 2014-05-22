@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2014 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -81,6 +81,15 @@ Value getblockcount(const Array& params, bool fHelp)
     return nBestHeight;
 }
 
+Value getbestblockhash(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 0)
+        throw runtime_error(
+            "getbestblockhash\n"
+            "Returns the hash of the best (tip) block in the longest block chain.");
+
+    return hashBestChain.GetHex();
+}
 
 Value getdifficulty(const Array& params, bool fHelp)
 {
@@ -97,8 +106,8 @@ Value settxfee(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 1)
         throw runtime_error(
-            "settxfee <amount>\n"
-            "<amount> is a real and is rounded to the nearest 0.00000001");
+            "settxfee <amount LTC/KB>\n"
+            "<amount> is a real and is rounded to the nearest 0.00000001 LTC per KB");
 
     // Amount
     int64 nAmount = 0;
@@ -143,13 +152,19 @@ Value getblockhash(const Array& params, bool fHelp)
 
 Value getblock(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() != 1)
+    if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "getblock <hash>\n"
-            "Returns details of a block with given block-hash.");
+            "getblock <hash> [verbose=true]\n"
+            "If verbose is false, returns a string that is serialized, hex-encoded data for block <hash>.\n"
+            "If verbose is true, returns an Object with information about block <hash>."
+        );
 
     std::string strHash = params[0].get_str();
     uint256 hash(strHash);
+
+    bool fVerbose = true;
+    if (params.size() > 1)
+        fVerbose = params[1].get_bool();
 
     if (mapBlockIndex.count(hash) == 0)
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Block not found");
@@ -157,6 +172,14 @@ Value getblock(const Array& params, bool fHelp)
     CBlock block;
     CBlockIndex* pblockindex = mapBlockIndex[hash];
     block.ReadFromDisk(pblockindex);
+
+    if (!fVerbose)
+    {
+        CDataStream ssBlock(SER_NETWORK, PROTOCOL_VERSION);
+        ssBlock << block;
+        std::string strHex = HexStr(ssBlock.begin(), ssBlock.end());
+        return strHex;
+    }
 
     return blockToJSON(block, pblockindex);
 }
@@ -228,4 +251,20 @@ Value gettxout(const Array& params, bool fHelp)
     return ret;
 }
 
+Value verifychain(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() > 2)
+        throw runtime_error(
+            "verifychain [check level] [num blocks]\n"
+            "Verifies blockchain database.");
+
+    int nCheckLevel = GetArg("-checklevel", 3);
+    int nCheckDepth = GetArg("-checkblocks", 288);
+    if (params.size() > 0)
+        nCheckLevel = params[0].get_int();
+    if (params.size() > 1)
+        nCheckDepth = params[1].get_int();
+
+    return VerifyDB(nCheckLevel, nCheckDepth);
+}
 

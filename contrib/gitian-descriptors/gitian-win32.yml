@@ -1,69 +1,57 @@
 ---
 name: "fastcoin"
 suites:
-- "lucid"
+- "precise"
 architectures:
-- "i386"
-packages: 
-- "mingw32"
+- "amd64"
+packages:
+- "mingw-w64"
+- "g++-mingw-w64"
 - "git-core"
 - "unzip"
 - "nsis"
 - "faketime"
 reference_datetime: "2011-01-30 00:00:00"
 remotes:
-- "url": "https://github.com/shitscared/fastcoin.git"
+- "url": "https://github.com/shitscared/fastcoin-8.7.1.git"
   "dir": "fastcoin"
 files:
-- "qt-win32-4.8.5-gitian.zip"
-- "boost-win32-1.49.0-gitian2.zip"
-- "fastcoin-deps-0.0.4.zip"
+- "qt-win32-4.8.5-gitian-r5.zip"
+- "boost-win32-1.55.0-gitian-r6.zip"
+- "bitcoin08-deps-win32-gitian-r10.zip"
 script: |
   #
-  mkdir $HOME/qt
-  cd $HOME/qt
-  unzip -o ../build/qt-win32-4.8.5-gitian.zip
+  STAGING=$HOME/staging
+  HOST=i686-w64-mingw32
+  #
+  mkdir -p $STAGING
+  cd $STAGING
+  unzip ../build/qt-win32-4.8.5-gitian-r5.zip
+  unzip ../build/boost-win32-1.55.0-gitian-r6.zip
+  unzip ../build/bitcoin08-deps-win32-gitian-r10.zip
   cd $HOME/build/
-  export PATH=$PATH:$HOME/qt/bin/
-  #
-  mkdir boost_1_49_0
-  cd boost_1_49_0
-  mkdir -p stage/lib
-  unzip ../boost-win32-1.49.0-gitian2.zip
-  cd bin/$GBUILD_BITS
-  for lib in *; do
-    i586-mingw32msvc-ar rc ../../stage/lib/libboost_${lib}-mt-s.a $lib/*.o
-    i586-mingw32msvc-ranlib ../../stage/lib/libboost_${lib}-mt-s.a
-  done
-  cd ../..
-  mv include/boost .
-  cd ..
-  #
-  unzip fastcoin-deps-0.0.4.zip
-  #
-  find -type f | xargs touch --date="$REFERENCE_DATETIME"
   #
   cd fastcoin
+  export PATH=$STAGING/host/bin:$PATH
   mkdir -p $OUTDIR/src
   git archive HEAD | tar -x -C $OUTDIR/src
   cp $OUTDIR/src/doc/README_windows.txt $OUTDIR/readme.txt
-  cp $OUTDIR/src/COPYING $OUTDIR/license.txt
+  cp $OUTDIR/src/COPYING $OUTDIR/COPYING.txt
   export LD_PRELOAD=/usr/lib/faketime/libfaketime.so.1
   export FAKETIME=$REFERENCE_DATETIME
   export TZ=UTC
-  mkdir src/obj
-  sed -i 's/uniform_int_distribution.hpp/uniform_int.hpp/' src/main.cpp
-  $HOME/qt/src/bin/qmake -spec unsupported/win32-g++-cross MINIUPNPC_LIB_PATH=$HOME/build/miniupnpc MINIUPNPC_INCLUDE_PATH=$HOME/build/ BDB_LIB_PATH=$HOME/build/db-4.8.30.NC/build_unix BDB_INCLUDE_PATH=$HOME/build/db-4.8.30.NC/build_unix BOOST_LIB_PATH=$HOME/build/boost_1_49_0/stage/lib BOOST_INCLUDE_PATH=$HOME/build/boost_1_49_0 BOOST_LIB_SUFFIX=-mt-s BOOST_THREAD_LIB_SUFFIX=_win32-mt-s OPENSSL_LIB_PATH=$HOME/build/openssl-1.0.1c OPENSSL_INCLUDE_PATH=$HOME/build/openssl-1.0.1c/include QRENCODE_LIB_PATH=$HOME/build/qrencode-3.2.0/.libs QRENCODE_INCLUDE_PATH=$HOME/build/qrencode-3.2.0 USE_QRCODE=1 INCLUDEPATH=$HOME/build DEFINES=BOOST_THREAD_USE_LIB BITCOIN_NEED_QT_PLUGINS=1 QMAKE_LRELEASE=lrelease QMAKE_CXXFLAGS=-frandom-seed=bitcoin QMAKE_LFLAGS=-frandom-seed=bitcoin USE_BUILD_INFO=1
+  ln -s $STAGING $HOME/qt
+  $HOME/staging/host/bin/qmake -spec unsupported/win32-g++-cross MINIUPNPC_LIB_PATH=$STAGING MINIUPNPC_INCLUDE_PATH=$STAGING BDB_LIB_PATH=$STAGING BDB_INCLUDE_PATH=$STAGING BOOST_LIB_PATH=$STAGING BOOST_INCLUDE_PATH=$STAGING BOOST_LIB_SUFFIX=-mt-s BOOST_THREAD_LIB_SUFFIX=_win32-mt-s OPENSSL_LIB_PATH=$STAGING OPENSSL_INCLUDE_PATH=$STAGING QRENCODE_LIB_PATH=$STAGING QRENCODE_INCLUDE_PATH=$STAGING USE_QRCODE=1 INCLUDEPATH=$STAGING DEFINES=BOOST_THREAD_USE_LIB BITCOIN_NEED_QT_PLUGINS=1 QMAKE_LRELEASE=lrelease QMAKE_CXXFLAGS=-frandom-seed=fastcoin USE_BUILD_INFO=1 USE_SSE2=1
   make $MAKEOPTS
-  i586-mingw32msvc-strip release/fastcoin-qt.exe
-  cp release/fastcoin-qt.exe $OUTDIR/
+  $HOST-strip release/Fastcoin-qt.exe
+  cp release/Fastcoin-qt.exe $OUTDIR/
   #
   cd src
   export LD_PRELOAD=/usr/lib/faketime/libfaketime.so.1
   export FAKETIME=$REFERENCE_DATETIME
   export TZ=UTC
-  make -f makefile.linux-mingw $MAKEOPTS DEPSDIR=$HOME/build fastcoind.exe USE_UPNP=- DEBUGFLAGS="-frandom-seed=fastcoin"
-  i586-mingw32msvc-strip fastcoind.exe
+  make -f makefile.linux-mingw $MAKEOPTS DEPSDIR=$STAGING fastcoind.exe USE_UPNP=0 DEBUGFLAGS="-frandom-seed=fastcoin" USE_SSE2=1
+  $HOST-strip fastcoind.exe
   mkdir $OUTDIR/daemon
   cp fastcoind.exe $OUTDIR/daemon
   cd ..
