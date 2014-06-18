@@ -1,3 +1,5 @@
+## Fastcoin
+
 Fastcoin - a fork of Litecoin version with fast blocks and transactions. Like Litecoin it uses scrypt as a proof of work scheme.
 
 	- Total coins will be 165,888,000.
@@ -7,8 +9,7 @@ Fastcoin - a fork of Litecoin version with fast blocks and transactions. Like Li
 	- 4 confirmations per transaction.
 	- Ports: connection 9526, RPC 9527.
 
-Development process
-===================
+## Development process
 
 Developers work in their own trees, then submit pull requests when
 they think their feature or bug fix is ready.
@@ -34,3 +35,31 @@ in this manner will have their corresponding issue labeled 'stagnant'.
 Issues with no commits will be given a similar warning, and closed after
 15 days from their last activity. Issues closed in this manner will be 
 labeled 'stale'. 
+
+## Download binaries
+
+* https://github.com/fastcoinproject/fastcoin `Source`
+* https://sourceforge.net/projects/fastcoin/files/win32 `Win32`
+* https://sourceforge.net/projects/fastcoin/files/debian_ubuntu_mint/ `Linux`
+* https://sourceforge.net/projects/fastcoin/files/mac/ `Mac`
+* https://sourceforge.net/projects/fastcoin/files/android/ `Android`
+* https://sourceforge.net/p/fastcoin/code/ci/master/tree/ `Dev`
+
+## Download bootstrap
+
+* https://archive.org/download/fastcoin_bootstrap/bootstrap.dat `bootstrap.dat`
+* https://archive.org/download/fastcoin_bootstrap/bootstrap.dat.xz `bootstrap.dat.xz`
+* https://sourceforge.net/projects/fastcoin/files/bootstrap `bootstrap.dat.xz`
+
+## Forums
+
+* http://fastcointalk.org
+
+## Social
+
+* https://twitter.com/fast_coin
+* https://www.facebook.com/pages/Fastcoinca/593923330628082
+* https://webchat.freenode.net/?channels=#fastcoin
+
+
+
