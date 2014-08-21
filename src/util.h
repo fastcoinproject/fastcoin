@@ -136,7 +136,6 @@ inline void Sleep2(int64 n)
 
 
 
-//IRC support
 
 // Randomize the stack to help protect against buffer overrun exploits
 #define IMPLEMENT_RANDOMIZE_STACK(ThreadFn)     \

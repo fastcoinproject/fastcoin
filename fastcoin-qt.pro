@@ -161,7 +161,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/serialize.h \
     src/main.h \
     src/net.h \
-    src/irc.h \
     src/key.h \
     src/db.h \
     src/walletdb.h \
@@ -246,7 +245,6 @@ SOURCES += src/qt/bitcoin.cpp \
     src/main.cpp \
     src/init.cpp \
     src/net.cpp \
-    src/irc.cpp \
     src/bloom.cpp \
     src/checkpoints.cpp \
     src/addrman.cpp \
