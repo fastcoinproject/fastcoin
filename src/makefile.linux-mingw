@@ -70,7 +70,6 @@ OBJS= \
     obj/keystore.o \
     obj/main.o \
     obj/net.o \
-    obj/irc.o \
     obj/protocol.o \
     obj/bitcoinrpc.o \
     obj/rpcdump.o \
