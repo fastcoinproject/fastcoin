@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.8.7.1
+!define VERSION 0.8.7.2
 !define COMPANY "Fastcoin project"
 !define URL http://www.fastcoin.org/
 
@@ -35,11 +35,17 @@ Var StartMenuGroup
 # Installer pages
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_STARTMENU Application $StartMenuGroup
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
+
+
+;Component-selection page
+;Descriptions
+LangString DESC_SecBootstrap ${LANG_ENGLISH} "Downloads and installs bootstrap.dat"
 
 # Installer languages
 !insertmacro MUI_LANGUAGE English
@@ -79,6 +85,35 @@ Section -Main SEC0000
     # Remove old wxwidgets-based-bitcoin executable and locales:
     Delete /REBOOTOK $INSTDIR\fastcoin.exe
     RMDir /r /REBOOTOK $INSTDIR\locale
+SectionEnd
+
+Section /o "Download bootstrap" SecBootstrap
+
+  CreateDirectory "$APPDATA\Fastcoin"
+  SetOutPath "$APPDATA\Fastcoin"
+  DetailPrint "Downloading http://edge.fastcoin.ws/bootstrap.exe"
+  NSISdl::download /TIMEOUT=30000 http://edge.fastcoin.ws/bootstrap.exe "$APPDATA\Fastcoin\bootstrap.exe"
+  
+  Pop $0
+  StrCmp $0 success success
+    SetDetailsView show
+    DetailPrint "download failed from http://edge.fastcoin.ws/bootstrap.xz $0"
+  success:
+
+  ClearErrors
+  
+  DetailPrint "Extracting bootstrap.dat......."
+  nsExec::ExecToLog '"$APPDATA\Fastcoin\bootstrap.exe" -o"$APPDATA\Fastcoin" -y'
+  Rename "$APPDATA\Fastcoin\bootstrap" "$APPDATA\Fastcoin\bootstrap.dat" 
+  ClearErrors
+
+  DetailPrint "Removing existing blockchain files"
+  RMDir /r "$APPDATA\Fastcoin\blocks"
+  RMDir /r "$APPDATA\Fastcoin\chainstate"
+
+  Delete "$APPDATA\Fastcoin\bootstrap.exe"
+
+  DetailPrint "Done"
 SectionEnd
 
 Section -post SEC0001
@@ -160,3 +195,4 @@ Function un.onInit
     !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuGroup
     !insertmacro SELECT_UNSECTION Main ${UNSEC0000}
 FunctionEnd
+

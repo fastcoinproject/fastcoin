@@ -1190,6 +1190,9 @@ void MapPort(bool)
 static const char *strMainNetDNSSeed[][2] = {
     {"ns-1470.awsdns-55.org","u2.fastcoin.ws"},
     {"ns-1470.awsdns-55.org","a1.fastcoin.ws"},
+    {"dnsseed.fastcoin.ws","s1.fastcoin.ws"},
+    {"seednode1.fastcoinfoundation.org","a.fastcoinfoundation.org"},
+    {"seednode2.fastcoinfoundation.org","b.fastcoinfoundation.org"},
     {"ns1.netfirms.com","a2.fastcoin.ca"},
     {NULL, NULL}
 };
