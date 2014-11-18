@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = Fastcoin-qt
 macx:TARGET = "Fastcoin-Qt"
-VERSION = 0.8.7.1
+VERSION = 0.8.7.2
 INCLUDEPATH += src src/json src/qt
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -161,7 +161,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/serialize.h \
     src/main.h \
     src/net.h \
-    src/irc.h \
     src/key.h \
     src/db.h \
     src/walletdb.h \
@@ -246,7 +245,6 @@ SOURCES += src/qt/bitcoin.cpp \
     src/main.cpp \
     src/init.cpp \
     src/net.cpp \
-    src/irc.cpp \
     src/bloom.cpp \
     src/checkpoints.cpp \
     src/addrman.cpp \

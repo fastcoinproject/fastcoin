@@ -3,7 +3,6 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "irc.h"
 #include "db.h"
 #include "net.h"
 #include "init.h"
@@ -1191,6 +1190,9 @@ void MapPort(bool)
 static const char *strMainNetDNSSeed[][2] = {
     {"ns-1470.awsdns-55.org","u2.fastcoin.ws"},
     {"ns-1470.awsdns-55.org","a1.fastcoin.ws"},
+    {"dnsseed.fastcoin.ws","s1.fastcoin.ws"},
+    {"seednode1.fastcoinfoundation.org","a.fastcoinfoundation.org"},
+    {"seednode2.fastcoinfoundation.org","b.fastcoinfoundation.org"},
     {"ns1.netfirms.com","a2.fastcoin.ca"},
     {NULL, NULL}
 };
@@ -1773,9 +1775,6 @@ void StartNode(boost::thread_group& threadGroup)
     //
 
     // Send and receive from sockets, accept connections
-
-    // Get addresses from IRC and advertise ours
-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "irc", &ThreadIRCSeed3));
 
     if (!GetBoolArg("-dnsseed", true))
         printf("DNS seeding disabled\n");
