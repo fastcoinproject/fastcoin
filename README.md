@@ -54,12 +54,22 @@ labeled 'stale'.
 ## Forums
 
 * http://fastcointalk.org
+* http://reddit.com/r/fastcoin
 
 ## Social
 
 * https://twitter.com/fast_coin
+* https://twitter.com/fstcoin
+* https://twitter.com/JonMarshallz
 * https://www.facebook.com/pages/Fastcoinca/593923330628082
 * https://webchat.freenode.net/?channels=#fastcoin
 
+## Exchanges Trading Fastcoin
 
+* https://www.cryptsy.com/markets/view/44
+* https://www.coins-e.com/exchange/BTC/FST/
+* https://www.allcrypt.com/market?id=149
+* https://www.ccnex.com/trade/FST/quick
+* https://www.comkort.com/trade/fst_btc
+* https://www.cryptorush.in
 
