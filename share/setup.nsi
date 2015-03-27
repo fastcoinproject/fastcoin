@@ -1,33 +1,36 @@
-Name Fastcoin
+Name "Fastcoin Core (-bit)"
 
 RequestExecutionLevel highest
 SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.8.7.2
-!define COMPANY "Fastcoin project"
+!define VERSION 0.10.0
+!define COMPANY "Fastcoin Core project"
 !define URL http://www.fastcoin.org/
 
 # MUI Symbol Definitions
-!define MUI_ICON "../share/pixmaps/bitcoin.ico"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "../share/pixmaps/nsis-wizard.bmp"
+!define MUI_ICON "/Users/admin/Desktop/fastcoin-0.10.0.2/share/pixmaps/bitcoin.ico"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "/Users/admin/Desktop/fastcoin-0.10.0.2/share/pixmaps/nsis-wizard.bmp"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP "../share/pixmaps/nsis-header.bmp"
+!define MUI_HEADERIMAGE_BITMAP "/Users/admin/Desktop/fastcoin-0.10.0.2/share/pixmaps/nsis-header.bmp"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
-!define MUI_STARTMENUPAGE_DEFAULTFOLDER Fastcoin
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "Fastcoin Core"
 !define MUI_FINISHPAGE_RUN $INSTDIR\fastcoin-qt.exe
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP "../share/pixmaps/nsis-wizard.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "/Users/admin/Desktop/fastcoin-0.10.0.2/share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Included files
 !include Sections.nsh
 !include MUI2.nsh
+!if "" == "64"
+!include x64.nsh
+!endif
 
 # Variables
 Var StartMenuGroup
@@ -35,30 +38,28 @@ Var StartMenuGroup
 # Installer pages
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
-!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_STARTMENU Application $StartMenuGroup
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
 
-
-;Component-selection page
-;Descriptions
-LangString DESC_SecBootstrap ${LANG_ENGLISH} "Downloads and installs bootstrap.dat"
-
 # Installer languages
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile fastcoin-${VERSION}-win32-setup.exe
+OutFile /Users/admin/Desktop/fastcoin-0.10.0.2/fastcoin-${VERSION}-win-setup.exe
+!if "" == "64"
+InstallDir $PROGRAMFILES64\Fastcoin
+!else
 InstallDir $PROGRAMFILES\Fastcoin
+!endif
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion ${VERSION}
-VIAddVersionKey ProductName Fastcoin
+VIProductVersion ${VERSION}.2
+VIAddVersionKey ProductName "Fastcoin Core"
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
 VIAddVersionKey CompanyWebsite "${URL}"
@@ -72,48 +73,20 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File ../release/fastcoin-qt.exe
-    File /oname=COPYING.txt ../COPYING
-    File /oname=readme.txt ../doc/README_windows.txt
+    File /Users/admin/Desktop/fastcoin-0.10.0.2/release/fastcoin-qt.exe
+    File /oname=COPYING.txt /Users/admin/Desktop/fastcoin-0.10.0.2/COPYING
+    File /oname=readme.txt /Users/admin/Desktop/fastcoin-0.10.0.2/doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File ../src/fastcoind.exe
-    SetOutPath $INSTDIR\src
-    File /r /x *.exe /x *.o ../src\*.*
+    File /Users/admin/Desktop/fastcoin-0.10.0.2/release/fastcoind.exe
+    File /Users/admin/Desktop/fastcoin-0.10.0.2/release/fastcoin-cli.exe
+    SetOutPath $INSTDIR\doc
+    File /r /Users/admin/Desktop/fastcoin-0.10.0.2/doc\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 
-    # Remove old wxwidgets-based-bitcoin executable and locales:
+    # Remove old wxwidgets-based-fastcoin executable and locales:
     Delete /REBOOTOK $INSTDIR\fastcoin.exe
     RMDir /r /REBOOTOK $INSTDIR\locale
-SectionEnd
-
-Section /o "Download bootstrap" SecBootstrap
-
-  CreateDirectory "$APPDATA\Fastcoin"
-  SetOutPath "$APPDATA\Fastcoin"
-  DetailPrint "Downloading http://edge.fastcoin.ws/bootstrap.exe"
-  NSISdl::download /TIMEOUT=30000 http://edge.fastcoin.ws/bootstrap.exe "$APPDATA\Fastcoin\bootstrap.exe"
-  
-  Pop $0
-  StrCmp $0 success success
-    SetDetailsView show
-    DetailPrint "download failed from http://edge.fastcoin.ws/bootstrap.xz $0"
-  success:
-
-  ClearErrors
-  
-  DetailPrint "Extracting bootstrap.dat......."
-  nsExec::ExecToLog '"$APPDATA\Fastcoin\bootstrap.exe" -o"$APPDATA\Fastcoin" -y'
-  Rename "$APPDATA\Fastcoin\bootstrap" "$APPDATA\Fastcoin\bootstrap.dat" 
-  ClearErrors
-
-  DetailPrint "Removing existing blockchain files"
-  RMDir /r "$APPDATA\Fastcoin\blocks"
-  RMDir /r "$APPDATA\Fastcoin\chainstate"
-
-  Delete "$APPDATA\Fastcoin\bootstrap.exe"
-
-  DetailPrint "Done"
 SectionEnd
 
 Section -post SEC0001
@@ -122,8 +95,8 @@ Section -post SEC0001
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Fastcoin.lnk" $INSTDIR\fastcoin-qt.exe
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall Fastcoin.lnk" $INSTDIR\uninstall.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\fastcoin-qt.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayVersion "${VERSION}"
@@ -158,14 +131,14 @@ Section /o -un.Main UNSEC0000
     Delete /REBOOTOK $INSTDIR\COPYING.txt
     Delete /REBOOTOK $INSTDIR\readme.txt
     RMDir /r /REBOOTOK $INSTDIR\daemon
-    RMDir /r /REBOOTOK $INSTDIR\src
+    RMDir /r /REBOOTOK $INSTDIR\doc
     DeleteRegValue HKCU "${REGKEY}\Components" Main
 SectionEnd
 
 Section -un.post UNSEC0001
     DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall Fastcoin.lnk"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Fastcoin.lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk"
     Delete /REBOOTOK "$SMSTARTUP\Fastcoin.lnk"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
     Delete /REBOOTOK $INSTDIR\debug.log
@@ -187,6 +160,15 @@ SectionEnd
 # Installer functions
 Function .onInit
     InitPluginsDir
+!if "" == "64"
+    ${If} ${RunningX64}
+      ; disable registry redirection (enable access to 64-bit portion of registry)
+      SetRegView 64
+    ${Else}
+      MessageBox MB_OK|MB_ICONSTOP "Cannot install 64-bit version on a 32-bit system."
+      Abort
+    ${EndIf}
+!endif
 FunctionEnd
 
 # Uninstaller functions
@@ -195,4 +177,3 @@ Function un.onInit
     !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuGroup
     !insertmacro SELECT_UNSECTION Main ${UNSEC0000}
 FunctionEnd
-

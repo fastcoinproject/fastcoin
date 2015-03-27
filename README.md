@@ -1,75 +1,102 @@
-## Fastcoin
+Fastcoin Core integration/staging tree
+=====================================
 
-Fastcoin - a fork of Litecoin version with fast blocks and transactions. Like Litecoin it uses scrypt as a proof of work scheme.
+https://fastcoin.org
 
-	- Total coins will be 165,888,000.
-	- 12 seconds block target
-	- Difficulty retargets once every hour
-	- Each block will have 32 coins, will be halved every year (or 2,592,000 blocks).
-	- 4 confirmations per transaction.
-	- Ports: connection 9526, RPC 9527.
+What is Fastcoin?
+----------------
 
-## Development process
+Fastcoin is an experimental new digital currency that enables instant payments to
+anyone, anywhere in the world. Fastcoin uses peer-to-peer technology to operate
+with no central authority: managing transactions and issuing money are carried
+out collectively by the network. Fastcoin Core is the name of open source
+software which enables the use of this currency.
 
-Developers work in their own trees, then submit pull requests when
-they think their feature or bug fix is ready.
+For more information, as well as an immediately useable, binary version of
+the Fastcoin Core software, see https://fastcoin.org
 
-The patch will be accepted if there is broad consensus that it is a
-good thing.  Developers should expect to rework and resubmit patches
-if they don't match the project's coding conventions (see coding.txt)
-or are controversial.
+License
+-------
 
-The master branch is regularly built and tested, but is not guaranteed
-to be completely stable. Tags are regularly created to indicate new
-official, stable release versions of Litecoin.
+Fastcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+information or see http://opensource.org/licenses/MIT.
 
-Feature branches are created when there are major new features being
-worked on by several people.
+Development process
+-------------------
 
-From time to time a pull request will become outdated. If this occurs, and
-the pull is no longer automatically mergeable; a comment on the pull will
-be used to issue a warning of closure. The pull will be closed 15 days
-after the warning if action is not taken by the author. Pull requests closed
-in this manner will have their corresponding issue labeled 'stagnant'.
+Developers work in their own trees, then submit pull requests when they think
+their feature or bug fix is ready.
 
-Issues with no commits will be given a similar warning, and closed after
-15 days from their last activity. Issues closed in this manner will be 
-labeled 'stale'. 
+If it is a simple/trivial/non-controversial change, then one of the Fastcoin
+development team members simply pulls it.
 
-## Download binaries
+If it is a *more complicated or potentially controversial* change, then the patch
+submitter will be asked to start a discussion (if they haven't already) on the
+[mailing list](https://groups.google.com/forum/#!forum/fastcoin-dev).
 
-* https://github.com/fastcoinproject/fastcoin `Source`
-* https://sourceforge.net/projects/fastcoin/files/win32 `Win32`
-* https://sourceforge.net/projects/fastcoin/files/debian_ubuntu_mint/ `Linux`
-* https://sourceforge.net/projects/fastcoin/files/mac/ `Mac`
-* https://sourceforge.net/projects/fastcoin/files/android/ `Android`
-* https://sourceforge.net/p/fastcoin/code/ci/master/tree/ `Dev`
+The patch will be accepted if there is broad consensus that it is a good thing.
+Developers should expect to rework and resubmit patches if the code doesn't
+match the project's coding conventions (see [doc/coding.md](doc/coding.md)) or are
+controversial.
 
-## Download bootstrap
+The `master-0.10` branch is regularly built and tested, but is not guaranteed to be
+completely stable. [Tags](https://github.com/fastcoin-project/fastcoin/tags) are created
+regularly to indicate new official, stable release versions of Fastcoin.
 
-* https://archive.org/download/fastcoin_bootstrap/bootstrap.dat `bootstrap.dat`
-* https://archive.org/download/fastcoin_bootstrap/bootstrap.dat.xz `bootstrap.dat.xz`
-* https://sourceforge.net/projects/fastcoin/files/bootstrap `bootstrap.dat.xz`
+Testing
+-------
 
-## Forums
+Testing and code review is the bottleneck for development; we get more pull
+requests than we can review and test on short notice. Please be patient and help out by testing
+other people's pull requests, and remember this is a security-critical project where any mistake might cost people
+lots of money.
 
-* http://fastcointalk.org
-* http://reddit.com/r/fastcoin
+### Manual Quality Assurance (QA) Testing
 
-## Social
+Large changes should have a test plan, and should be tested by somebody other
+than the developer who wrote the code.
+See https://github.com/bitcoin/QA/ for how to create a test plan.
 
-* https://twitter.com/fast_coin
-* https://twitter.com/fstcoin
-* https://twitter.com/JonMarshallz
-* https://www.facebook.com/pages/Fastcoinca/593923330628082
-* https://webchat.freenode.net/?channels=#fastcoin
+Translations
+------------
 
-## Exchanges Trading Fastcoin
+**Important**: We do not accept translation changes as GitHub pull requests because the next
+pull from Transifex would automatically overwrite them again.
 
-* https://www.cryptsy.com/markets/view/44
-* https://www.coins-e.com/exchange/BTC/FST/
-* https://www.allcrypt.com/market?id=149
-* https://www.ccnex.com/trade/FST/quick
-* https://www.comkort.com/trade/fst_btc
-* https://www.cryptorush.in
+We only accept translation fixes that are submitted through [Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/bitcoin/).
+Translations are converted to Fastcoin periodically.
 
+Development tips and tricks
+---------------------------
+
+**compiling for debugging**
+
+Run configure with the --enable-debug option, then make. Or run configure with
+CXXFLAGS="-g -ggdb -O0" or whatever debug flags you need.
+
+**debug.log**
+
+If the code is behaving strangely, take a look in the debug.log file in the data directory;
+error and debugging messages are written there.
+
+The -debug=... command-line option controls debugging; running with just -debug will turn
+on all categories (and give you a very large debug.log file).
+
+The Qt code routes qDebug() output to debug.log under category "qt": run with -debug=qt
+to see it.
+
+**testnet and regtest modes**
+
+Run with the -testnet option to run with "play fastcoins" on the test network, if you
+are testing multi-machine code that needs to operate across the internet.
+
+If you are testing something that can run on one machine, run with the -regtest option.
+In regression test mode, blocks can be created on-demand; see qa/rpc-tests/ for tests
+that run in -regtest mode.
+
+**DEBUG_LOCKORDER**
+
+Fastcoin Core is a multithreaded application, and deadlocks or other multithreading bugs
+can be very difficult to track down. Compiling with -DDEBUG_LOCKORDER (configure
+CXXFLAGS="-DDEBUG_LOCKORDER -g") inserts run-time checks to keep track of which locks
+are held, and adds warnings to the debug.log file if inconsistencies are detected.

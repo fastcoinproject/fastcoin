@@ -1,26 +1,113 @@
-src/*.exe
-src/fastcoind
-src/test_fastcoin
-src/build.h
+*.tar.gz
+
+*.exe
+src/litecoin
+src/litecoind
+src/litecoin-cli
+src/litecoin-tx
+src/test/test_litecoin
+src/qt/test/test_litecoin-qt
+
+# autoreconf
+Makefile.in
+aclocal.m4
+autom4te.cache/
+build-aux/config.guess
+build-aux/config.sub
+build-aux/depcomp
+build-aux/install-sh
+build-aux/ltmain.sh
+build-aux/m4/libtool.m4
+build-aux/m4/lt~obsolete.m4
+build-aux/m4/ltoptions.m4
+build-aux/m4/ltsugar.m4
+build-aux/m4/ltversion.m4
+build-aux/missing
+build-aux/compile
+build-aux/test-driver
+config.log
+config.status
+configure
+libtool
+src/config/bitcoin-config.h
+src/config/bitcoin-config.h.in
+src/config/stamp-h1
+share/setup.nsi
+share/qt/Info.plist
+
+src/univalue/gen
+
+src/qt/*.moc
+src/qt/moc_*.cpp
+src/qt/forms/ui_*.h
+
+src/qt/test/moc*.cpp
+
+.deps
+.dirstamp
+.libs
 .*.swp
 *.*~*
 *.bak
 *.rej
 *.orig
+*.pyc
 *.o
+*.o-*
 *.patch
 .bitcoin
-#compilation and Qt preprocessor part
+*.a
+*.pb.cc
+*.pb.h
+
+*.log
+*.trs
+*.dmg
+
+*.json.h
+*.raw.h
+
+#libtool object files
+*.lo
+*.la
+
+# Compilation and Qt preprocessor part
 *.qm
-fastcoin-qt
-#resources cpp
+Makefile
+litecoin-qt
+Litecoin-Qt.app
+
+# Unit-tests
+Makefile.test
+litecoin-qt_test
+src/test/buildenv.py
+
+# Resources cpp
 qrc_*.cpp
-#qt creator
+
+# Qt creator
 *.pro.user
-#mac specific
+
+# Mac specific
 .DS_Store
 build
-debug
-release
-debug/*.*
-release/*.*
+
+#lcov
+*.gcno
+/*.info
+test_bitcoin.coverage/
+total.coverage/
+coverage_percent.txt
+
+#build tests
+linux-coverage-build
+linux-build
+win32-build
+qa/pull-tester/run-bitcoind-for-test.sh
+qa/pull-tester/tests-config.sh
+qa/pull-tester/cache/*
+qa/pull-tester/test.*/*
+
+!src/leveldb*/Makefile
+
+/doc/doxygen/
