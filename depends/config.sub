@@ -306,7 +306,7 @@ case $basic_machine in
 	| score \
 	| sh | sh[1234] | sh[24]a | sh[24]aeb | sh[23]e | sh[34]eb | sheb | shbe | shle | sh[1234]le | sh3ele \
 	| sh64 | sh64le \
-	| sparc | sparc64 | sparc64b | sparc64v | sparc86x | sparclet | sparcfast \
+	| sparc | sparc64 | sparc64b | sparc64v | sparc86x | sparclet | sparclite \
 	| sparcv8 | sparcv9 | sparcv9b | sparcv9v \
 	| spu \
 	| tahoe | tic4x | tic54x | tic55x | tic6x | tic80 | tron \
@@ -427,7 +427,7 @@ case $basic_machine in
 	| sh-* | sh[1234]-* | sh[24]a-* | sh[24]aeb-* | sh[23]e-* | sh[34]eb-* | sheb-* | shbe-* \
 	| shle-* | sh[1234]le-* | sh3ele-* | sh64-* | sh64le-* \
 	| sparc-* | sparc64-* | sparc64b-* | sparc64v-* | sparc86x-* | sparclet-* \
-	| sparcfast-* \
+	| sparclite-* \
 	| sparcv8-* | sparcv9-* | sparcv9b-* | sparcv9v-* | sv1-* | sx?-* \
 	| tahoe-* \
 	| tic30-* | tic4x-* | tic54x-* | tic55x-* | tic6x-* | tic80-* \
@@ -1082,8 +1082,8 @@ case $basic_machine in
 	sh64)
 		basic_machine=sh64-unknown
 		;;
-	sparcfast-wrs | simso-wrs)
-		basic_machine=sparcfast-wrs
+	sparclite-wrs | simso-wrs)
+		basic_machine=sparclite-wrs
 		os=-vxworks
 		;;
 	sps7)
@@ -1368,7 +1368,7 @@ case $os in
 	      | -ekkobsd* | -kfreebsd* | -freebsd* | -riscix* | -lynxos* \
 	      | -bosx* | -nextstep* | -cxux* | -aout* | -elf* | -oabi* \
 	      | -ptx* | -coff* | -ecoff* | -winnt* | -domain* | -vsta* \
-	      | -udi* | -eabi* | -fasts* | -ieee* | -go32* | -aux* \
+	      | -udi* | -eabi* | -lites* | -ieee* | -go32* | -aux* \
 	      | -chorusos* | -chorusrdb* | -cegcc* \
 	      | -cygwin* | -msys* | -pe* | -psos* | -moss* | -proelf* | -rtems* \
 	      | -mingw32* | -mingw64* | -linux-gnu* | -linux-android* \
