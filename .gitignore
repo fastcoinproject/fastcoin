@@ -1,4 +1,14 @@
 *.tar.gz
+aclocal.m4
+autom4te.cache
+autom4te.cache/*
+config.log
+config.status
+configure
+configure.ac
+Makefile
+libtool
+Makefile.in
 
 *.exe
 src/fastcoin
