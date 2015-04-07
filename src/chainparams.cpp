@@ -54,6 +54,7 @@ static void convertSeed6(std::vector<CAddress> &vSeedsOut, const SeedSpec6 *data
  */
 static Checkpoints::MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
+   // (    0, uint256("0xecba185817b726ef62e53afb14241a8095bd9613d2d3df679911029b83c98e5b"))
     (    18, uint256("0x632aa100b8055344be4e765defd1a07a1e3d053eb67332c9a95045eb87b7f3ab"))
     (    70, uint256("0x9f0d4db126647e607a14da83f89b103f0fb5f29c6447c1574a011f7204b6a02f"))
     (   105, uint256("0xbf7bc864ecfb4803df34d1e05024654d9a65159c875f60fe07eeda2203ac734c"))
@@ -62,17 +63,14 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     (599787, uint256("0x464cef0fed8c75ce46b48d19b97d70eb919edcca51523c793b830db1a710167e"))
     (1199646, uint256("0xce0e285eb16b6940dd7dd7b0fea58f3d93ffdfc7544ff1274ca5ff9496773903"))
     (2399216, uint256("0x4720496d86f9fea0a100c678d76192f753ba8da8f9c3d41eb739e479fa8e5bda"))
-    (2899214, uint256("0x8652192d0905663bceed4c10d5759c2691a767768f1f80b30a9447cfa0978ba9"))
-    (3380762, uint256("0x85207e898babf569cf7d59f06d3bbfa80f4041e2747d4b401367380d0f3cc985"))
-    (3621535, uint256("0x0e69ac77ca6336a1d7faf5a37bbb68fe3305a601f1976cca35e9325bec9cd612"))
 
     ;
 static const Checkpoints::CCheckpointData data = {
         &mapCheckpoints,
-    1416303108, // * UNIX timestamp of last checkpoint block
-    4483343,    // * total number of transactions between genesis and last checkpoint
+    1402291952, // * UNIX timestamp of last checkpoint block
+    3113946,    // * total number of transactions between genesis and last checkpoint
     //   (the tx=... number in the SetBestChain debug.log lines)
-    7000.0     // * estimated number of transactions per day after checkpoint
+    16000.0     // * estimated number of transactions per day after checkpoint
     };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
@@ -114,7 +112,7 @@ public:
         vAlertPubKey = ParseHex("04737830629b47e95e0a5bd7ce47a4a4e7414f62009fa4a734cedf579dcbec9a3da6b8b9bd75c46b371a2570f0e48f69afcc95b933bd45ceb8ead4ed200b8f96f8");
         nDefaultPort = 9526;
         bnProofOfWorkLimit = ~uint256(0) >> 20;
-        nSubsidyHalvingInterval = 840000;
+        nSubsidyHalvingInterval = 2592000; // 840000
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
@@ -149,7 +147,8 @@ public:
 
 
         hashGenesisBlock = genesis.GetHash();
-
+        printf(" hash: %s \n", hashGenesisBlock.ToString().c_str());
+        
         assert(hashGenesisBlock == uint256("0xecba185817b726ef62e53afb14241a8095bd9613d2d3df679911029b83c98e5b"));
         assert(genesis.hashMerkleRoot == uint256("0xba3827aaf56440074e5436db36421d3a38645bc0f1a7c378a48b7daf3c078256"));
 
@@ -175,7 +174,7 @@ public:
         fTestnetToBeDeprecatedFieldRPC = false;
 
         // Fastcoin: Mainnet v2 enforced as of block 710k
-       // nEnforceV2AfterHeight = 710000;
+         nEnforceV2AfterHeight = 2990306;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const 
