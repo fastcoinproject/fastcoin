@@ -38,11 +38,16 @@ Var StartMenuGroup
 # Installer pages
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_STARTMENU Application $StartMenuGroup
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
+
+;Component-selection page
+;Descriptions
+LangString DESC_SecBootstrap ${LANG_ENGLISH} "Downloads and installs latest blockchain"
 
 # Installer languages
 !insertmacro MUI_LANGUAGE English
@@ -87,6 +92,35 @@ Section -Main SEC0000
     # Remove old wxwidgets-based-fastcoin executable and locales:
     Delete /REBOOTOK $INSTDIR\fastcoin.exe
     RMDir /r /REBOOTOK $INSTDIR\locale
+SectionEnd
+
+Section /o "Download blockchain" SecBootstrap
+
+  CreateDirectory "$APPDATA\Fastcoin"
+  SetOutPath "$APPDATA\Fastcoin"
+  DetailPrint "Downloading http://edge.fastcoin.ws/blockchain.exe"
+  NSISdl::download /TIMEOUT=30000 http://edge.fastcoin.ws/blockchain.exe "$APPDATA\Fastcoin\bootstrap.exe"
+  
+  Pop $0
+  StrCmp $0 success success
+    SetDetailsView show
+    DetailPrint "download failed from http://edge.fastcoin.ws/blockchain $0"
+  success:
+
+  ClearErrors
+  
+  DetailPrint "Extracting blockchain......."
+  nsExec::ExecToLog '"$APPDATA\Fastcoin\blockchain.exe" -o"$APPDATA\Fastcoin" -y'
+  # Rename "$APPDATA\Fastcoin\bootstrap" "$APPDATA\Fastcoin\blockchain.exe"
+  ClearErrors
+
+  DetailPrint "Removing existing blockchain files"
+  # RMDir /r "$APPDATA\Fastcoin\blocks"
+  # RMDir /r "$APPDATA\Fastcoin\chainstate"
+
+  Delete "$APPDATA\Fastcoin\blockchain.exe"
+
+  DetailPrint "Done"
 SectionEnd
 
 Section -post SEC0001
