@@ -152,9 +152,9 @@ public:
         assert(hashGenesisBlock == uint256("0xecba185817b726ef62e53afb14241a8095bd9613d2d3df679911029b83c98e5b"));
         assert(genesis.hashMerkleRoot == uint256("0xba3827aaf56440074e5436db36421d3a38645bc0f1a7c378a48b7daf3c078256"));
 
-        vSeeds.push_back(CDNSSeedData("fastcoin.ws", "c.fastcoin.ws"));
+        vSeeds.push_back(CDNSSeedData("fastcoin.ws", "a1.fastcoin.ws"));
         vSeeds.push_back(CDNSSeedData("fastcoinfoundation.org", "a.fastcoinfoundation.org"));
-        vSeeds.push_back(CDNSSeedData("a2.fastcoin.ca", "a2.fastcoin.ca"));
+        vSeeds.push_back(CDNSSeedData("a2.fastcoin.ca", "u2.fastcoin.ca"));
         //        vSeeds.push_back(CDNSSeedData("fastcoinpool.org", "dnsseed.fastcoinpool.org"));
  //       vSeeds.push_back(CDNSSeedData("weminemnc.com", "dnsseed.weminemnc.com"));
 
