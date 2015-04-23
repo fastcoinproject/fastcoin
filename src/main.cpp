@@ -3989,6 +3989,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                 Misbehaving(pfrom->GetId(), 20);
                 return error("non-continuous headers sequence");
             }
+			/*
             if (!AcceptBlockHeader(header, state, &pindexLast)) {
                 int nDoS;
                 if (state.IsInvalid(nDoS)) {
@@ -3996,7 +3997,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                         Misbehaving(pfrom->GetId(), nDoS);
                     return error("invalid header received (nDos flag set %d)",nDoS);
                 }
-            }
+            }*/
         }
 
         if (pindexLast)
