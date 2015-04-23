@@ -54,7 +54,6 @@ static void convertSeed6(std::vector<CAddress> &vSeedsOut, const SeedSpec6 *data
  */
 static Checkpoints::MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-   // (    0, uint256("0xecba185817b726ef62e53afb14241a8095bd9613d2d3df679911029b83c98e5b"))
     (    18, uint256("0x632aa100b8055344be4e765defd1a07a1e3d053eb67332c9a95045eb87b7f3ab"))
     (    70, uint256("0x9f0d4db126647e607a14da83f89b103f0fb5f29c6447c1574a011f7204b6a02f"))
     (   105, uint256("0xbf7bc864ecfb4803df34d1e05024654d9a65159c875f60fe07eeda2203ac734c"))
@@ -63,7 +62,7 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     (599787, uint256("0x464cef0fed8c75ce46b48d19b97d70eb919edcca51523c793b830db1a710167e"))
     (1199646, uint256("0xce0e285eb16b6940dd7dd7b0fea58f3d93ffdfc7544ff1274ca5ff9496773903"))
     (2399216, uint256("0x4720496d86f9fea0a100c678d76192f753ba8da8f9c3d41eb739e479fa8e5bda"))
-
+	(2990306, uint256("0x083f7168a31f5c222df1976db96d3a36b3c1d372a280bc7ca846c57194f00945"))
     ;
 static const Checkpoints::CCheckpointData data = {
         &mapCheckpoints,
@@ -152,8 +151,7 @@ public:
         assert(hashGenesisBlock == uint256("0xecba185817b726ef62e53afb14241a8095bd9613d2d3df679911029b83c98e5b"));
         assert(genesis.hashMerkleRoot == uint256("0xba3827aaf56440074e5436db36421d3a38645bc0f1a7c378a48b7daf3c078256"));
 
-        vSeeds.push_back(CDNSSeedData("fastcoin.ws", "a1.fastcoin.ws"));
-        vSeeds.push_back(CDNSSeedData("fastcoinfoundation.org", "a.fastcoinfoundation.org"));
+        vSeeds.push_back(CDNSSeedData("dnsseed.fastcoin.ws", "s1.fastcoin.ws"));
         vSeeds.push_back(CDNSSeedData("a2.fastcoin.ca", "u2.fastcoin.ca"));
         //        vSeeds.push_back(CDNSSeedData("fastcoinpool.org", "dnsseed.fastcoinpool.org"));
  //       vSeeds.push_back(CDNSSeedData("weminemnc.com", "dnsseed.weminemnc.com"));
