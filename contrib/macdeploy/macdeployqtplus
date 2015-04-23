@@ -509,7 +509,7 @@ if not os.path.exists(app_bundle):
         sys.stderr.write("Error: Could not find app bundle \"%s\"\n" % (app_bundle))
     sys.exit(1)
 
-app_bundle_name = os.path.spfastxt(os.path.basename(app_bundle))[0]
+app_bundle_name = os.path.splitext(os.path.basename(app_bundle))[0]
 
 # ------------------------------------------------
 translations_dir = None
