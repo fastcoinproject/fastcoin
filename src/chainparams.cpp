@@ -176,7 +176,7 @@ public:
         fTestnetToBeDeprecatedFieldRPC = false;
 
         // Fastcoin: Mainnet v2 enforced as of block 710k
-         nEnforceV2AfterHeight = 14951530;
+         nEnforceV2AfterHeight = 2990306;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const 
