@@ -154,7 +154,9 @@ public:
 	//	assert(genesis.hashMerkleRoot == uint256("0xba3827aaf56440074e5436db36421d3a38645bc0f1a7c378a48b7daf3c078256"));
 
         vSeeds.push_back(CDNSSeedData("dnsseed.fastcoin.ws", "s1.fastcoin.ws"));
-		//	vSeeds.push_back(CDNSSeedData("a2.fastcoin.ca", "u2.fastcoin.ca"));
+		vSeeds.push_back(CDNSSeedData("ns-1470.awsdns-55.org", "u2.fastcoin.ws"));
+		vSeeds.push_back(CDNSSeedData("ns-1863.awsdns-40.co.uk", "a1.fastcoin.ws"));
+		
         //        vSeeds.push_back(CDNSSeedData("fastcoinpool.org", "dnsseed.fastcoinpool.org"));
 		//       vSeeds.push_back(CDNSSeedData("weminemnc.com", "dnsseed.weminemnc.com"))
 
