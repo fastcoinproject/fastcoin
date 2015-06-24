@@ -1,10 +1,6 @@
-<TS language="he" version="2.0">
+<TS language="he" version="2.1">
 <context>
     <name>AddressBookPage</name>
-    <message>
-        <source>Double-click to edit address or label</source>
-        <translation>לחיצה כפולה לעריכת כתובת או תווית</translation>
-    </message>
     <message>
         <source>Create a new address</source>
         <translation>יצירת כתובת חדשה</translation>
@@ -2149,7 +2145,7 @@ Address: %4
     </message>
     <message>
         <source>The Bitcoin Core developers</source>
-        <translation>מתכנתי ליבת לייטקוין</translation>
+        <translation>מתכנתי ליבת ביטקוין</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -2658,30 +2654,6 @@ Address: %4
         <translation>קבלת חיבורים מבחוץ (בררת מחדל: 1 ללא ‎-proxy או ‎-connect)</translation>
     </message>
     <message>
-        <source>%s, you must set a rpcpassword in the configuration file:
-%s
-It is recommended you use the following random password:
-rpcuser=fastcoinrpc
-rpcpassword=%s
-(you do not need to remember this password)
-The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permissions.
-It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
-</source>
-        <translation>%s, עליך להגדיר את ססמת ה־RPC בקובץ התצורה:
- %s
-מומלץ להשתמש בססמה האקראית הבאה:
-rpcuser=fastcoinrpc
-rpcpassword=%s
-(אין צורך לזכור את הססמה)
-אסור ששם המשתמש והססמה יהיו זהים.
-אם הקובץ אינו קיים, יש ליצור אותו עם הרשאות קריאה לבעלים בלבד.
-כמו כן, מומלץ להגדיר את alertnotify כדי לקבל דיווח על תקלות;
-למשל: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com 
-</translation>
-    </message>
-    <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>להתאגד לכתובת נתונה להאזין לה תמיד. יש להשתמש בצורה ‎[host]:port עבור IPv6.</translation>
     </message>
@@ -2692,14 +2664,6 @@ rpcpassword=%s
     <message>
         <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
         <translation>כניסה למצב בדיקת נסיגה, שמשתמש בשרשרת מיוחדת בה ניתן לפתור את המקטעים במהירות.</translation>
-    </message>
-    <message>
-        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>שגיאה: ההעברה נדחתה! מצב כזה עלול לקרות אם כמה מהמטבעות בארנק שלך כבר נוצלו, למשל אם השתמשת בעותק של wallet.dat ומטבעות נשלחו בעותק אך לא סומנו כמושקעות כאן.</translation>
-    </message>
-    <message>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
-        <translation>שגיאה: ההעברה הזאת דורשת עמלת פעולה של לפחות %s עקב הכמות, המורכבות או השימוש בכספים שהתקבלו לאחרונה!</translation>
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
@@ -2798,10 +2762,6 @@ rpcpassword=%s
         <translation>שגיאה: מעט מקום פנוי בכונן!</translation>
     </message>
     <message>
-        <source>Error: Wallet locked, unable to create transaction!</source>
-        <translation>שגיאה: הארנק נעול, אין אפשרות ליצור העברה!</translation>
-    </message>
-    <message>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
         <translation>האזנה נכשלה בכל פורט. השתמש ב- -listen=0 אם ברצונך בכך.</translation>
     </message>
@@ -2878,8 +2838,8 @@ rpcpassword=%s
         <translation>הרץ פקודה כאשר ההתראה הרלוונטית מתקבלת או כשאנחנו עדים לפיצול ארוך מאוד (%s בשורת הפקודה יוחלף ע"י ההודעה)</translation>
     </message>
     <message>
-        <source>Fees (in BTC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>העמלות (ב־BTC/ק״ב) הנמוכות מהסכום הזה נחשבות לעמלות אפס ליצירת העברה (בררת מחדל: %s)</translation>
+        <source>Fees (in FST/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>העמלות (ב־FST/ק״ב) הנמוכות מהסכום הזה נחשבות לעמלות אפס ליצירת העברה (בררת מחדל: %s)</translation>
     </message>
     <message>
         <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Fastcoin Core will not work properly.</source>
@@ -2894,8 +2854,8 @@ rpcpassword=%s
         <translation>התחברות דרך מתווך SOCKS5</translation>
     </message>
     <message>
-        <source>Copyright (C) 2009-%i The Fastcoin Core Developers</source>
-        <translation>כל הזכויות שמורות (C)‏ 2009‏-%i מתכנתי ליבת לייטקוין</translation>
+        <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
+        <translation>כל הזכויות שמורות (C)‏ 2009‏-%i מתכנתי ליבת ביטקוין</translation>
     </message>
     <message>
         <source>Could not parse -rpcbind value %s as network address</source>
@@ -2910,8 +2870,8 @@ rpcpassword=%s
         <translation>שגיאה: נמצא ארגומנט בלתי נתמך ‎-tor, יש להשתמש ב־‎-onion.</translation>
     </message>
     <message>
-        <source>Fee (in BTC/kB) to add to transactions you send (default: %s)</source>
-        <translation>עמלה (ב־BTC/ק״ב) להוספה להעברות שנשלחות ממך (בררת מחדל: %s)</translation>
+        <source>Fee (in FST/kB) to add to transactions you send (default: %s)</source>
+        <translation>עמלה (ב־FST/ק״ב) להוספה להעברות שנשלחות ממך (בררת מחדל: %s)</translation>
     </message>
     <message>
         <source>Information</source>
@@ -2944,10 +2904,6 @@ rpcpassword=%s
     <message>
         <source>Node relay options:</source>
         <translation>אפשרויות ממסר מפרק:</translation>
-    </message>
-    <message>
-        <source>Print block on startup, if found in block index</source>
-        <translation>הצגת מקטע בהפעלה, אם נמצא במפתח המקטעים</translation>
     </message>
     <message>
         <source>RPC SSL options: (see the Fastcoin Wiki for SSL setup instructions)</source>
@@ -3094,10 +3050,6 @@ rpcpassword=%s
         <translation>כמות לא תקינה עבור ‎-paytxfee=&lt;amount&gt;‎:‏ '%s'</translation>
     </message>
     <message>
-        <source>Invalid amount</source>
-        <translation>כמות לא תקינה</translation>
-    </message>
-    <message>
         <source>Insufficient funds</source>
         <translation>אין מספיק כספים</translation>
     </message>
@@ -3128,10 +3080,6 @@ rpcpassword=%s
     <message>
         <source>Done loading</source>
         <translation>טעינה הושלמה</translation>
-    </message>
-    <message>
-        <source>To use the %s option</source>
-        <translation>שימוש באפשרות %s</translation>
     </message>
     <message>
         <source>Error</source>

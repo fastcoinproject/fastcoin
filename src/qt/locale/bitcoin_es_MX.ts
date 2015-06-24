@@ -1,10 +1,6 @@
-<TS language="es_MX" version="2.0">
+<TS language="es_MX" version="2.1">
 <context>
     <name>AddressBookPage</name>
-    <message>
-        <source>Double-click to edit address or label</source>
-        <translation>Haga doble clic para editar el domicilio o la etiqueta</translation>
-    </message>
     <message>
         <source>Create a new address</source>
         <translation>Crear una dirección nueva</translation>
@@ -834,7 +830,7 @@
     </message>
     <message>
         <source>The Bitcoin Core developers</source>
-        <translation>El nucleo de Fastcoin de desarrolladores</translation>
+        <translation>El nucleo de Bitcoin de desarrolladores</translation>
     </message>
     </context>
 <context>

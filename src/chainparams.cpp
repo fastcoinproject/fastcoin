@@ -54,22 +54,25 @@ static void convertSeed6(std::vector<CAddress> &vSeedsOut, const SeedSpec6 *data
  */
 static Checkpoints::MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-    (    18, uint256("0x632aa100b8055344be4e765defd1a07a1e3d053eb67332c9a95045eb87b7f3ab"))
-    (    70, uint256("0x9f0d4db126647e607a14da83f89b103f0fb5f29c6447c1574a011f7204b6a02f"))
-    (   105, uint256("0xbf7bc864ecfb4803df34d1e05024654d9a65159c875f60fe07eeda2203ac734c"))
-    (   200, uint256("0x3ba4bd313ce1a76e519ebc60c3e82154561c65c4b11ea82de1b3b0cc93f6eebb"))
-    (299893, uint256("0xca07e64a675616af303ec911343b2473904334b043f8e972eb9dc03720995f01"))
-    (599787, uint256("0x464cef0fed8c75ce46b48d19b97d70eb919edcca51523c793b830db1a710167e"))
-    (1199646, uint256("0xce0e285eb16b6940dd7dd7b0fea58f3d93ffdfc7544ff1274ca5ff9496773903"))
-    (2399216, uint256("0x4720496d86f9fea0a100c678d76192f753ba8da8f9c3d41eb739e479fa8e5bda"))
+	(    18, uint256("0x632aa100b8055344be4e765defd1a07a1e3d053eb67332c9a95045eb87b7f3ab"))
+	(    70, uint256("0x9f0d4db126647e607a14da83f89b103f0fb5f29c6447c1574a011f7204b6a02f"))
+	(   105, uint256("0xbf7bc864ecfb4803df34d1e05024654d9a65159c875f60fe07eeda2203ac734c"))
+	(   200, uint256("0x3ba4bd313ce1a76e519ebc60c3e82154561c65c4b11ea82de1b3b0cc93f6eebb"))
+	(299893, uint256("0xca07e64a675616af303ec911343b2473904334b043f8e972eb9dc03720995f01"))
+	(599787, uint256("0x464cef0fed8c75ce46b48d19b97d70eb919edcca51523c793b830db1a710167e"))
+	(1199646, uint256("0xce0e285eb16b6940dd7dd7b0fea58f3d93ffdfc7544ff1274ca5ff9496773903"))
+	(2399216, uint256("0x4720496d86f9fea0a100c678d76192f753ba8da8f9c3d41eb739e479fa8e5bda"))
+	(2899214, uint256("0x8652192d0905663bceed4c10d5759c2691a767768f1f80b30a9447cfa0978ba9"))
 	(2990306, uint256("0x083f7168a31f5c222df1976db96d3a36b3c1d372a280bc7ca846c57194f00945"))
-    ;
+	(3380762, uint256("0x85207e898babf569cf7d59f06d3bbfa80f4041e2747d4b401367380d0f3cc985"))
+	(3621535, uint256("0x0e69ac77ca6336a1d7faf5a37bbb68fe3305a601f1976cca35e9325bec9cd612"))
+	;
 static const Checkpoints::CCheckpointData data = {
         &mapCheckpoints,
-    1402291952, // * UNIX timestamp of last checkpoint block
-    3113946,    // * total number of transactions between genesis and last checkpoint
-    //   (the tx=... number in the SetBestChain debug.log lines)
-    16000.0     // * estimated number of transactions per day after checkpoint
+        1422681363, // * UNIX timestamp of last checkpoint block
+        5502192,   // * total number of transactions between genesis and last checkpoint
+                    //   (the tx=... number in the SetBestChain debug.log lines)
+        5500.0     // * estimated number of transactions per day after checkpoint
     };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
@@ -111,14 +114,14 @@ public:
         vAlertPubKey = ParseHex("04737830629b47e95e0a5bd7ce47a4a4e7414f62009fa4a734cedf579dcbec9a3da6b8b9bd75c46b371a2570f0e48f69afcc95b933bd45ceb8ead4ed200b8f96f8");
         nDefaultPort = 9526;
         bnProofOfWorkLimit = ~uint256(0) >> 20;
-        nSubsidyHalvingInterval = 2592000; // 840000
+        nSubsidyHalvingInterval = 2592000;
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetTimespan = 60 * 60;	// Fastcoin: retarget every 1 hour
+        nTargetTimespan = 60 * 60;	// Fastcoin retarget every 1 hour; // 3.5 days
         nTargetSpacing = 12;			// Fastcoin: 12 seconds
-     
+
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
          * be spent as it did not originally exist in the database.
@@ -144,37 +147,34 @@ public:
         genesis.nBits    = 0x1e0ffff0;
         genesis.nNonce   = 128181112;
 
-
         hashGenesisBlock = genesis.GetHash();
-        //printf(" hash: %s \n", hashGenesisBlock.ToString().c_str());
-        
         assert(hashGenesisBlock == uint256("0xecba185817b726ef62e53afb14241a8095bd9613d2d3df679911029b83c98e5b"));
         assert(genesis.hashMerkleRoot == uint256("0xba3827aaf56440074e5436db36421d3a38645bc0f1a7c378a48b7daf3c078256"));
 
         vSeeds.push_back(CDNSSeedData("dnsseed.fastcoin.ws", "s1.fastcoin.ws"));
-        vSeeds.push_back(CDNSSeedData("a2.fastcoin.ca", "u2.fastcoin.ca"));
+		//	vSeeds.push_back(CDNSSeedData("a2.fastcoin.ca", "u2.fastcoin.ca"));
         //        vSeeds.push_back(CDNSSeedData("fastcoinpool.org", "dnsseed.fastcoinpool.org"));
- //       vSeeds.push_back(CDNSSeedData("weminemnc.com", "dnsseed.weminemnc.com"));
+		//       vSeeds.push_back(CDNSSeedData("weminemnc.com", "dnsseed.weminemnc.com"))
 
         base58Prefixes[PUBKEY_ADDRESS] = list_of(96);
         base58Prefixes[SCRIPT_ADDRESS] = list_of(20);
         base58Prefixes[SECRET_KEY] =     list_of(224);
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB6)(0x1E); //Define
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAF)(0xE4);
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E);
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4);
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
         fRequireRPCPassword = true;
         fMiningRequiresPeers = true;
         fAllowMinDifficultyBlocks = false;
-		fDefaultConsistencyChecks = false;
+        fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
         fSkipProofOfWorkCheck = false;
         fTestnetToBeDeprecatedFieldRPC = false;
 
         // Fastcoin: Mainnet v2 enforced as of block 710k
-         nEnforceV2AfterHeight = 2990306;
+        nEnforceV2AfterHeight = 710000;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const 
@@ -197,20 +197,20 @@ public:
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
         vAlertPubKey = ParseHex("04302390343f91cc401d56d68b123028bf52e5fca1939df127f63c6467cdf9c8e2c14b61104cf817d0b780da337893ecc4aaff1309e536162dabbdb45200ca2b0a");
-        nDefaultPort = 19333;
+        nDefaultPort = 19526;
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetTimespan = 3.5 * 24 * 60 * 60; // 3.5 days
-        nTargetSpacing = 2.5 * 60; // 2.5 minutes
+        nTargetTimespan = 60 * 60;	// Fastcoin retarget every 1 hour; // 3.5 days
+        nTargetSpacing = 12;			// Fastcoin: 12 seconds
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1317798646;
         genesis.nNonce = 385270584;
         hashGenesisBlock = genesis.GetHash();
-        //assert(hashGenesisBlock == uint256("0xf5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f"));
-        
+        assert(hashGenesisBlock == uint256("0xf5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f"));
+
         vFixedSeeds.clear();
         vSeeds.clear();
         vSeeds.push_back(CDNSSeedData("fastcointools.com", "testnet-seed.fastcointools.com"));
@@ -228,7 +228,7 @@ public:
         fRequireRPCPassword = true;
         fMiningRequiresPeers = true;
         fAllowMinDifficultyBlocks = true;
-		fDefaultConsistencyChecks = false;
+        fDefaultConsistencyChecks = false;
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
         fTestnetToBeDeprecatedFieldRPC = true;
@@ -260,15 +260,15 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetTimespan = 3.5 * 24 * 60 * 60; // 3.5 days
-        nTargetSpacing = 2.5 * 60; // 2.5 minutes
+        nTargetTimespan = 60 * 60;	// Fastcoin retarget every 1 hour; // 3.5 days
+        nTargetSpacing = 12;			// Fastcoin: 12 seconds
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1296688602;
         genesis.nBits = 0x207fffff;
         genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 19444;
-       // assert(hashGenesisBlock == uint256("0x530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"));
+        assert(hashGenesisBlock == uint256("0x530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
@@ -276,7 +276,7 @@ public:
         fRequireRPCPassword = false;
         fMiningRequiresPeers = false;
         fAllowMinDifficultyBlocks = true;
-		fDefaultConsistencyChecks = true;
+        fDefaultConsistencyChecks = true;
         fRequireStandard = false;
         fMineBlocksOnDemand = true;
         fTestnetToBeDeprecatedFieldRPC = false;
@@ -305,7 +305,7 @@ public:
 
         fRequireRPCPassword = false;
         fMiningRequiresPeers = false;
-		fDefaultConsistencyChecks = true;
+        fDefaultConsistencyChecks = true;
         fAllowMinDifficultyBlocks = false;
         fMineBlocksOnDemand = true;
 
@@ -324,7 +324,7 @@ public:
     virtual void setEnforceBlockUpgradeMajority(int anEnforceBlockUpgradeMajority)  { nEnforceBlockUpgradeMajority=anEnforceBlockUpgradeMajority; }
     virtual void setRejectBlockOutdatedMajority(int anRejectBlockOutdatedMajority)  { nRejectBlockOutdatedMajority=anRejectBlockOutdatedMajority; }
     virtual void setToCheckBlockUpgradeMajority(int anToCheckBlockUpgradeMajority)  { nToCheckBlockUpgradeMajority=anToCheckBlockUpgradeMajority; }
-	virtual void setDefaultConsistencyChecks(bool afDefaultConsistencyChecks)  { fDefaultConsistencyChecks=afDefaultConsistencyChecks; }
+    virtual void setDefaultConsistencyChecks(bool afDefaultConsistencyChecks)  { fDefaultConsistencyChecks=afDefaultConsistencyChecks; }
     virtual void setAllowMinDifficultyBlocks(bool afAllowMinDifficultyBlocks) {  fAllowMinDifficultyBlocks=afAllowMinDifficultyBlocks; }
     virtual void setSkipProofOfWorkCheck(bool afSkipProofOfWorkCheck) { fSkipProofOfWorkCheck = afSkipProofOfWorkCheck; }
 };

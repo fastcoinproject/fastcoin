@@ -1,10 +1,6 @@
-<TS language="ca@valencia" version="2.0">
+<TS language="ca@valencia" version="2.1">
 <context>
     <name>AddressBookPage</name>
-    <message>
-        <source>Double-click to edit address or label</source>
-        <translation>Feu doble clic per editar l'adreça o l'etiqueta</translation>
-    </message>
     <message>
         <source>Create a new address</source>
         <translation>Crea una nova adreça</translation>
@@ -2138,7 +2134,7 @@ Address: %4
     </message>
     <message>
         <source>The Bitcoin Core developers</source>
-        <translation>Els desenvolupadors del Fastcoin Core</translation>
+        <translation>Els desenvolupadors del Bitcoin Core</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -2631,29 +2627,6 @@ Address: %4
         <translation>Accepta connexions de fora (per defecte: 1 si no -proxy o -connect)</translation>
     </message>
     <message>
-        <source>%s, you must set a rpcpassword in the configuration file:
-%s
-It is recommended you use the following random password:
-rpcuser=fastcoinrpc
-rpcpassword=%s
-(you do not need to remember this password)
-The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permissions.
-It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
-</source>
-        <translation>%s, heu d'establir una contrasenya RPC al fitxer de configuració: %s
-Es recomana que useu la següent contrasenya aleatòria:
-rpcuser=fastcoinrpc
-rpcpassword=%s
-(no necesiteu recordar esta contrasenya)
-El nom d'usuari i la contrasenya NO HAN de ser els mateixos.
-Si el fitxer no existeix, crea'l amb els permisos de fitxer de només lectura per al propietari.
-També es recomana establir la notificació d'alertes i així sereu notificat de les incidències;
-per exemple: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
-</translation>
-    </message>
-    <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>Vincula a una adreça específica i sempre escolta-hi. Utilitza la notació [host]:port per IPv6</translation>
     </message>
@@ -2664,14 +2637,6 @@ per exemple: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
     <message>
         <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
         <translation>Entra en el mode de proves de regressió, que utilitza una cadena especial en què els blocs poden resoldre's al moment.</translation>
-    </message>
-    <message>
-        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Error: La transacció ha estat rebutjada. Això pot passar si alguna de les monedes del teu moneder ja s'han gastat, com si haguesis usat una copia de l'arxiu wallet.dat i s'hagueren gastat monedes de la copia però sense marcar com gastades en este.</translation>
-    </message>
-    <message>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
-        <translation>Error: Esta transacció requereix una comissió d'almenys %s degut al seu import, complexitat o per l'ús de fons recentment rebuts!</translation>
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
@@ -2778,10 +2743,6 @@ per exemple: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
         <translation>Error: Espai al disc baix!</translation>
     </message>
     <message>
-        <source>Error: Wallet locked, unable to create transaction!</source>
-        <translation>Error: El moneder està bloquejat, no és possible crear la transacció!</translation>
-    </message>
-    <message>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
         <translation>Ha fallat escoltar a qualsevol port. Feu servir -listen=0 si voleu fer això.</translation>
     </message>
@@ -2882,12 +2843,12 @@ per exemple: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
         <translation>Executa l'orde quan es reba un avís rellevant o veiem una forquilla molt llarga (%s en cmd és reemplaçat per un missatge)</translation>
     </message>
     <message>
-        <source>Fees (in BTC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Comissions (en BTC/Kb) inferiors a això es consideren de comissió zero per a la transmissió (per defecte: %s)</translation>
+        <source>Fees (in FST/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Comissions (en FST/Kb) inferiors a això es consideren de comissió zero per a la transmissió (per defecte: %s)</translation>
     </message>
     <message>
-        <source>Fees (in BTC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Comissions (en BTC/Kb) inferiors a això es consideren de comissió zero per a la creació de la transacció (per defecte: %s)</translation>
+        <source>Fees (in FST/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Comissions (en FST/Kb) inferiors a això es consideren de comissió zero per a la creació de la transacció (per defecte: %s)</translation>
     </message>
     <message>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
@@ -2918,8 +2879,8 @@ per exemple: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
         <translation>Connecta a través del proxy SOCKS5</translation>
     </message>
     <message>
-        <source>Copyright (C) 2009-%i The Fastcoin Core Developers</source>
-        <translation>Copyright (C) 2009-%i Els desenvolupadors del Fastcoin Core</translation>
+        <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
+        <translation>Copyright (C) 2009-%i Els desenvolupadors del Bitcoin Core</translation>
     </message>
     <message>
         <source>Could not parse -rpcbind value %s as network address</source>
@@ -2934,8 +2895,8 @@ per exemple: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
         <translation>Error: s'ha trobat un argument -tor no acceptat. Feu servir -onion.</translation>
     </message>
     <message>
-        <source>Fee (in BTC/kB) to add to transactions you send (default: %s)</source>
-        <translation>Comissió en (BTC/kB) per afegir a les transaccions que envieu (per defecte: %s)</translation>
+        <source>Fee (in FST/kB) to add to transactions you send (default: %s)</source>
+        <translation>Comissió en (FST/kB) per afegir a les transaccions que envieu (per defecte: %s)</translation>
     </message>
     <message>
         <source>Information</source>
@@ -2962,20 +2923,12 @@ per exemple: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
         <translation>S'ha especificat una màscara de xarxa no vàlida a -whitelist: «%s»</translation>
     </message>
     <message>
-        <source>Keep at most &lt;n&gt; unconnectable blocks in memory (default: %u)</source>
-        <translation>Manté com a màxim &lt;n&gt; blocs no connectables en memòria (per defecte: %u)</translation>
-    </message>
-    <message>
         <source>Need to specify a port with -whitebind: '%s'</source>
         <translation>Cal especificar un port amb -whitebind: «%s»</translation>
     </message>
     <message>
         <source>Node relay options:</source>
         <translation>Opcions de transmissió del node:</translation>
-    </message>
-    <message>
-        <source>Print block on startup, if found in block index</source>
-        <translation>Imprimeix el block a l'inici, si es troba l'índex de blocs</translation>
     </message>
     <message>
         <source>RPC SSL options: (see the Fastcoin Wiki for SSL setup instructions)</source>
@@ -3130,10 +3083,6 @@ per exemple: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
         <translation>Import no vàlid per a -paytxfee=&lt;amount&gt;: «%s»</translation>
     </message>
     <message>
-        <source>Invalid amount</source>
-        <translation>Import no vàlid</translation>
-    </message>
-    <message>
         <source>Insufficient funds</source>
         <translation>Balanç insuficient</translation>
     </message>
@@ -3164,10 +3113,6 @@ per exemple: alertnotify=echo %%s | mail -s "Fastcoin Alert" admin@foo.com
     <message>
         <source>Done loading</source>
         <translation>Ha acabat la càrrega</translation>
-    </message>
-    <message>
-        <source>To use the %s option</source>
-        <translation>Utilitza l'opció %s</translation>
     </message>
     <message>
         <source>Error</source>
