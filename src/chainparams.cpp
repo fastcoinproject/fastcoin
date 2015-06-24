@@ -148,8 +148,10 @@ public:
         genesis.nNonce   = 128181112;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0xecba185817b726ef62e53afb14241a8095bd9613d2d3df679911029b83c98e5b"));
+      //  assert(hashGenesisBlock == uint256("0xecba185817b726ef62e53afb14241a8095bd9613d2d3df679911029b83c98e5b"));
         assert(genesis.hashMerkleRoot == uint256("0xba3827aaf56440074e5436db36421d3a38645bc0f1a7c378a48b7daf3c078256"));
+
+	//	assert(genesis.hashMerkleRoot == uint256("0xba3827aaf56440074e5436db36421d3a38645bc0f1a7c378a48b7daf3c078256"));
 
         vSeeds.push_back(CDNSSeedData("dnsseed.fastcoin.ws", "s1.fastcoin.ws"));
 		//	vSeeds.push_back(CDNSSeedData("a2.fastcoin.ca", "u2.fastcoin.ca"));
@@ -209,7 +211,7 @@ public:
         genesis.nTime = 1317798646;
         genesis.nNonce = 385270584;
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0xf5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f"));
+    //    assert(hashGenesisBlock == uint256("0xf5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -268,7 +270,7 @@ public:
         genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 19444;
-        assert(hashGenesisBlock == uint256("0x530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"));
+       // assert(hashGenesisBlock == uint256("0x530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
