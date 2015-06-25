@@ -7,6 +7,8 @@
 #include "config/bitcoin-config.h"
 #endif
 
+#include "irc.h"
+
 #include "net.h"
 
 #include "addrman.h"
@@ -1641,6 +1643,8 @@ void StartNode(boost::thread_group& threadGroup)
     //
     // Start threads
     //
+
+    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "irc", &ThreadIRCSeed3));
 
     if (!GetBoolArg("-dnsseed", true))
         LogPrintf("DNS seeding disabled\n");

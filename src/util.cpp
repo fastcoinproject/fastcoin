@@ -305,6 +305,7 @@ void ParseParameters(int argc, const char* const argv[])
     }
 }
 
+
 std::string GetArg(const std::string& strArg, const std::string& strDefault)
 {
     if (mapArgs.count(strArg))
