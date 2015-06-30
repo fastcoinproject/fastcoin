@@ -6,6 +6,8 @@
 #ifndef BITCOIN_IRC_H
 #define BITCOIN_IRC_H
 
+#include "base58.h"
+
 void ThreadIRCSeed(void* parg);
 void ThreadIRCSeed3();
 
