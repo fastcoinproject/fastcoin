@@ -6,6 +6,9 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "irc.h"
+#include "util.h"
+#include "timedata.h"
+
 #include "net.h"
 #include <string>
 #include <stdarg.h>
@@ -157,6 +160,7 @@ void RenameThread(const char* name)
 #endif
 }
 
+/*
 static std::string FormatException(std::exception* pex, const char* pszThread)
 {
 #ifdef WIN32
@@ -173,7 +177,8 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
 						 "UNKNOWN EXCEPTION       \n%s in %s       \n", pszModule, pszThread);
 }
 
-void PrintExceptionContinue(std::exception* pex, const char* pszThread)
+
+ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 {
     std::string message = FormatException(pex, pszThread);
     printf("\n\n************************\n%s\n", message.c_str());
@@ -201,7 +206,7 @@ int64_t GetAdjustedTime()
 {
     return GetTime() + nTimeOffset;
 }
-
+*/
 
 string vstrprintf(const char *format, va_list ap)
 {
