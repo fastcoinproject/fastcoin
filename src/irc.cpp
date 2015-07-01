@@ -8,7 +8,7 @@
 #include "irc.h"
 #include "net.h"
 #include <string>
-
+#include <stdarg.h>
 
 #include <boost/thread.hpp>
 
