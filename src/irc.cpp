@@ -142,6 +142,7 @@ inline void Sleep(int64_t n)
     boost::thread::sleep(boost::get_system_time() + boost::posix_time::milliseconds(n>315576000000LL?315576000000LL:n));
 }
 
+/*
 void RenameThread(const char* name)
 {
 #if defined(PR_SET_NAME)
@@ -159,6 +160,7 @@ void RenameThread(const char* name)
     (void)name;
 #endif
 }
+*/
 
 /*
 static std::string FormatException(std::exception* pex, const char* pszThread)
