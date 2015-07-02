@@ -135,7 +135,7 @@ void ParseString(const string& str, char c, vector<string>& v)
     }
 }
 
-inline void Sleep(int64_t n)
+inline void Sleep2(int64_t n)
 {
     /*Boost has a year 2038 problem— if the request sleep time is past epoch+2^31 seconds the sleep returns instantly.
 	 So we clamp our sleeps here to 10 years and hope that boost is fixed by 2028.*/
@@ -366,7 +366,7 @@ bool Wait(int nSeconds)
        if (fShutdown)
             return false;
         boost::this_thread::interruption_point();
-        Sleep(1000);
+        Sleep2(1000);
     }
     return true;
 }
@@ -531,7 +531,7 @@ void ThreadIRCSeed2(void* parg)
             else
                 return;
         }
-        Sleep(500);
+        Sleep2(500);
 
         // Get our external IP from the IRC server and re-nick before joining the channel
         CNetAddr addrFromIRC;
