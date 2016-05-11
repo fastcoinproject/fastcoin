@@ -284,6 +284,9 @@ git clone https://github.com/devrandom/gitian-builder.git
 git clone https://github.com/fastcoin-project/fastcoin.git
 cd fastcoin
 git checkout v${VERSION}
+
+
+
 cd ..
 ```
 
