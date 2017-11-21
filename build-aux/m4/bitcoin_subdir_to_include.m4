@@ -12,4 +12,3 @@ AC_DEFUN([BITCOIN_SUBDIR_TO_INCLUDE],[
     fi
   fi
 ])
-
