@@ -1,72 +1,80 @@
-## Fastcoin
+Fastcoin Core integration/staging tree
+=====================================
 
-Fastcoin - a fork of Litecoin version with fast blocks and transactions. Like Litecoin it uses scrypt as a proof of work scheme.
+https://fastcoin.org
 
-	- Total coins will be 165,888,000.
-	- 12 seconds block target
-	- Difficulty retargets once every hour
-	- Each block will have 32 coins, will be halved every year (or 2,592,000 blocks).
-	- 4 confirmations per transaction.
-	- Ports: connection 9526, RPC 9527.
+What is Fastcoin?
+----------------
 
-## Development process
+Fastcoin is an experimental new digital currency that enables instant payments to
+anyone, anywhere in the world. Fastcoin uses peer-to-peer technology to operate
+with no central authority: managing transactions and issuing money are carried
+out collectively by the network. Fastcoin Core is the name of open source
+software which enables the use of this currency.
 
-Developers work in their own trees, then submit pull requests when
-they think their feature or bug fix is ready.
+For more information, as well as an immediately useable, binary version of
+the Fastcoin Core software, see https://fastcoin.org
 
-The patch will be accepted if there is broad consensus that it is a
-good thing.  Developers should expect to rework and resubmit patches
-if they don't match the project's coding conventions (see coding.txt)
-or are controversial.
+License
+-------
 
 The master branch is regularly built and tested, but is not guaranteed
 to be completely stable. Tags are regularly created to indicate new
 official, stable release versions of Fastcoin.
+=======
+Fastcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+information or see http://opensource.org/licenses/MIT.
 
-Feature branches are created when there are major new features being
-worked on by several people.
 
-From time to time a pull request will become outdated. If this occurs, and
-the pull is no longer automatically mergeable; a comment on the pull will
-be used to issue a warning of closure. The pull will be closed 15 days
-after the warning if action is not taken by the author. Pull requests closed
-in this manner will have their corresponding issue labeled 'stagnant'.
+Development process
+-------------------
 
-Issues with no commits will be given a similar warning, and closed after
-15 days from their last activity. Issues closed in this manner will be 
-labeled 'stale'. 
+Developers work in their own trees, then submit pull requests when they think
+their feature or bug fix is ready.
 
-## Download binaries
+If it is a simple/trivial/non-controversial change, then one of the Fastcoin
+development team members simply pulls it.
 
-* https://github.com/fastcoinproject/fastcoin `Source`
-* https://sourceforge.net/projects/fastcoin/files/win32 `Win32`
-* https://sourceforge.net/projects/fastcoin/files/debian_ubuntu_mint/ `Linux`
-* https://sourceforge.net/projects/fastcoin/files/mac/ `Mac`
-* https://sourceforge.net/projects/fastcoin/files/android/ `Android`
-* https://sourceforge.net/p/fastcoin/code/ci/master/tree/ `Dev`
+If it is a *more complicated or potentially controversial* change, then the patch
+submitter will be asked to start a discussion (if they haven't already) on the
+[mailing list](https://groups.google.com/forum/#!forum/fastcoin-dev).
 
-## Download bootstrap
+The patch will be accepted if there is broad consensus that it is a good thing.
+Developers should expect to rework and resubmit patches if the code doesn't
+match the project's coding conventions (see [doc/coding.md](doc/coding.md)) or are
+controversial.
 
-* https://archive.org/download/fastcoin_bootstrap/bootstrap.dat `bootstrap.dat`
-* https://archive.org/download/fastcoin_bootstrap/bootstrap.dat.xz `bootstrap.dat.xz`
-* https://sourceforge.net/projects/fastcoin/files/bootstrap `bootstrap.dat.xz`
+The `master-0.10` branch is regularly built and tested, but is not guaranteed to be
+completely stable. [Tags](https://github.com/fastcoin-project/fastcoin/tags) are created
+regularly to indicate new official, stable release versions of Fastcoin.
 
-## Forums
+Testing
+-------
 
-* http://fastcointalk.org
-* http://reddit.com/r/fastcoin
+Testing and code review is the bottleneck for development; we get more pull
+requests than we can review and test on short notice. Please be patient and help out by testing
+other people's pull requests, and remember this is a security-critical project where any mistake might cost people
+lots of money.
 
-## Social
+### Manual Quality Assurance (QA) Testing
+
+Large changes should have a test plan, and should be tested by somebody other
+than the developer who wrote the code.
+See https://github.com/bitcoin/QA/ for how to create a test plan.
 
 * https://twitter.com/fast_coin
 * https://twitter.com/FSTFoundation
 * https://twitter.com/JonMarshallz
 * https://www.facebook.com/pages/Fastcoinca/593923330628082
 * https://webchat.freenode.net/?channels=#fastcoin
+=======
+Translations
+------------
 
-## Exchanges Trading Fastcoin
+
+**Important**: We do not accept translation changes as GitHub pull requests because the next
+pull from Transifex would automatically overwrite them again.
 
 * [Cryptopia](https://www.cryptopia.co.nz/Exchange?market=FST_BTC)
 * [LiveCoin](https://www.livecoin.net/)
-
 
