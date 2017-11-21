@@ -18,4 +18,3 @@ index 62234b9..9b11f0b 100644
          ;
      static const CCheckpointData data = {
          &mapCheckpoints,
-
