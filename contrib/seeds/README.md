@@ -8,4 +8,3 @@ The 512 seeds compiled into the 0.10 release were created from pooler's seed dat
 	https://www.fastcoinpool.org/seeds.txt
 
 The seed selection process is sorted by 30d availability, block height and version.
-
