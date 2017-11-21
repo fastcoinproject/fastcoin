@@ -18,3 +18,4 @@ For developers, changes to bitcoin's remote-procedure-call API:
 * -logtimestamps option, to add a timestamp to each line in debug.log.
 
 * Immature blocks (newly generated, under 120 confirmations) are now shown in listtransactions.
+
