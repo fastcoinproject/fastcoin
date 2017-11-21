@@ -924,4 +924,3 @@ case $host in
      chmod 755 libtool
    ;;
 esac
-
