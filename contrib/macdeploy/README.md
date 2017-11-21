@@ -13,4 +13,3 @@ settings are applied. This is normal, please do not interfere.
 
 When finished, it will produce `Bitcoin-Qt.dmg`.
 
-
