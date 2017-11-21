@@ -136,3 +136,4 @@ the "addmultisigaddress" JSON-RPC api call.
 
 Short multisignature address support is included in this
 release, as specified in BIP 13 and BIP 16.
+
