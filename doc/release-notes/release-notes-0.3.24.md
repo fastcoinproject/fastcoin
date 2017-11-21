@@ -18,3 +18,4 @@ C2) UPNP enabled by default in the GUI client.  The percentage of bitcoin client
 C3) Initial unit testing framework.  Bitcoin sorely needs automated tests, and this is a beginning.  Contributions welcome.
 
 C4) Internal wallet code cleanup.  While invisible to an end user, this change provides the basis for v0.4's wallet encryption.
+
