@@ -215,4 +215,3 @@ AC_DEFUN([AX_GCC_FUNC_ATTRIBUTE], [
 
     AS_VAR_POPDEF([ac_var])
 ])
-
