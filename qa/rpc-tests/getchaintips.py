@@ -57,3 +57,5 @@ class GetChainTipsTest (BitcoinTestFramework):
 
 if __name__ == '__main__':
     GetChainTipsTest ().main ()
+
+    
