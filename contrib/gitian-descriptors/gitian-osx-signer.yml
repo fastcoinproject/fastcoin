@@ -35,4 +35,3 @@ script: |
   ./detached-sig-apply.sh ${UNSIGNED} signature.tar.gz
   ${WRAP_DIR}/genisoimage -no-cache-inodes -D -l -probe -V "Fastcoin-Qt" -no-pad -r -apple -o uncompressed.dmg signed-app
   ${WRAP_DIR}/dmg dmg uncompressed.dmg ${OUTDIR}/${SIGNED}
-
