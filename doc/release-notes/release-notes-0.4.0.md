@@ -68,3 +68,4 @@ same passphrase only as your wallet passphrase.
 
 See the doc/README file in the bitcoin source for technical details
 of wallet encryption.
+
