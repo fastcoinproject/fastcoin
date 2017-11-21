@@ -488,4 +488,3 @@ void CAddrMan::Connected_(const CService& addr, int64_t nTime)
     if (nTime - info.nTime > nUpdateInterval)
         info.nTime = nTime;
 }
-
