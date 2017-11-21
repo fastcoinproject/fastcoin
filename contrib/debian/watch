@@ -5,4 +5,3 @@ opts=uversionmangle=s/(\d)(alpha|beta|rc)/$1~$2/;s/\-src//,dversionmangle=s/~dfs
  http://sf.net/bitcoin/bitcoin-(\d.*)-linux\.tar\.gz debian
 opts=uversionmangle=s/(\d)(alpha|beta|rc)/$1~$2/,dversionmangle=s/~dfsg\d*// \
  http://githubredir.debian.net/github/bitcoin/bitcoin v(.*).tar.gz
-
