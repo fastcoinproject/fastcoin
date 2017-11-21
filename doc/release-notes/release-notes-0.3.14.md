@@ -9,3 +9,4 @@ Gavin Andresen:
 * validateaddress RPC command
 eurekafag:
 * Russian translation
+
