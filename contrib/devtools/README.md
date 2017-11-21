@@ -81,4 +81,3 @@ It will do the following automatically:
 
 See doc/translation-process.md for more information.
 
-
