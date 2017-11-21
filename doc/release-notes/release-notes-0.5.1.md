@@ -41,3 +41,4 @@ orphan blocks.
 The wallet passphrase dialog now warns you if the caps lock key was pressed.
 
 Improved searching in addresses and labels in bitcoin-qt.
+
