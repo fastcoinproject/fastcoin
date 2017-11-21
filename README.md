@@ -73,3 +73,4 @@ labeled 'stale'.
 * https://www.comkort.com/trade/fst_btc
 * https://www.cryptorush.in
 **CORE
+**CORE2
