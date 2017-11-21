@@ -36,3 +36,4 @@ IMPORTANT: be sure to request a new bitcoin address before backing up, so that t
 "Security in depth" is always a good idea, so choosing a secure location for the backup and/or encrypting the backup before uploading it is recommended. And as in previous releases, if your machine is infected by malware there are several ways an attacker might steal your bitcoins.
 
 Thanks to Alan Reiner (etotheipi) for finding and reporting this bug.
+
