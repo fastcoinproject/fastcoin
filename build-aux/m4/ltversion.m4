@@ -21,4 +21,3 @@ macro_revision='1.3337'
 _LT_DECL(, macro_version, 0, [Which release of libtool.m4 was used?])
 _LT_DECL(, macro_revision, 0)
 ])
-
