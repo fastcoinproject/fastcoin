@@ -24,3 +24,4 @@ You can still control the SSE2 use manually with -4way and -4way=0.
 
 Version 0.3.13.2 (SVN rev 161) has improvements for the case where you already had 0/unconfirmed transactions that you might have already spent.  Here's a Windows build of it:
 http://www.bitcoin.org/download/bitcoin-0.3.13.2-win32-setup.exe
+
