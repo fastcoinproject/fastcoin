@@ -415,4 +415,3 @@ bitcoin (0.3.19~dfsg-1) unstable; urgency=low
     Closes: bug#578157.
 
  -- Jonas Smedegaard <dr@jones.dk>  Tue, 28 Dec 2010 15:49:22 +0100
-
