@@ -64,4 +64,3 @@ Here's a description of Gavin's setup on OSX 10.6:
 	export USE_LXC=1
 	git clone git://github.com/fastcoin-project/fastcoin.git
 	... etc
-
