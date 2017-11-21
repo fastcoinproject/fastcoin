@@ -64,3 +64,4 @@ define $(package)_postprocess_cmds
   rm -rf mkspecs/ lib/cmake/ lib/*.prl lib/*.la && \
   find native/bin -type f -exec mv {} {}-qt4 \;
 endef
+
