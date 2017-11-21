@@ -184,5 +184,3 @@ if __name__ == '__main__':
     fetch_all_translations()
     postprocess_translations()
 
-
-    
