@@ -7,4 +7,3 @@ if [ -z ${LIBTOOLIZE} ] && GLIBTOOLIZE="`which glibtoolize 2>/dev/null`"; then
   export LIBTOOLIZE
 fi
 autoreconf --install --force --warnings=all
-
