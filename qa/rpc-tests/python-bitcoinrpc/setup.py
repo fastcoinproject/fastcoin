@@ -13,3 +13,4 @@ setup(name='python-bitcoinrpc',
       url='http://www.github.com/jgarzik/python-bitcoinrpc',
       packages=['bitcoinrpc'],
       classifiers=['License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)', 'Operating System :: OS Independent'])
+
