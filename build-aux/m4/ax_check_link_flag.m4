@@ -69,4 +69,3 @@ AS_IF([test x"AS_VAR_GET(CACHEVAR)" = xyes],
   [m4_default([$3], :)])
 AS_VAR_POPDEF([CACHEVAR])dnl
 ])dnl AX_CHECK_LINK_FLAGS
-
