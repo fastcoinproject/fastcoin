@@ -137,4 +137,3 @@ echo ":copy-in-global-log: $gcopy" >> $trs_file
 # time-stamp-time-zone: "UTC"
 # time-stamp-end: "; # UTC"
 # End:
-
