@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <sqlite3.h>
+#include <sqfast3.h>
 #include "util/histogram.h"
 #include "util/random.h"
 #include "util/testutil.h"
@@ -80,16 +80,16 @@ static const char* FLAGS_db = NULL;
 
 inline
 static void ExecErrorCheck(int status, char *err_msg) {
-  if (status != SQLITE_OK) {
+  if (status != SQFAST_OK) {
     fprintf(stderr, "SQL error: %s\n", err_msg);
-    sqlite3_free(err_msg);
+    sqfast3_free(err_msg);
     exit(1);
   }
 }
 
 inline
 static void StepErrorCheck(int status) {
-  if (status != SQLITE_DONE) {
+  if (status != SQFAST_DONE) {
     fprintf(stderr, "SQL step error: status = %d\n", status);
     exit(1);
   }
@@ -97,17 +97,17 @@ static void StepErrorCheck(int status) {
 
 inline
 static void ErrorCheck(int status) {
-  if (status != SQLITE_OK) {
-    fprintf(stderr, "sqlite3 error: status = %d\n", status);
+  if (status != SQFAST_OK) {
+    fprintf(stderr, "sqfast3 error: status = %d\n", status);
     exit(1);
   }
 }
 
 inline
-static void WalCheckpoint(sqlite3* db_) {
+static void WalCheckpoint(sqfast3* db_) {
   // Flush all writes to disk
   if (FLAGS_WAL_enabled) {
-    sqlite3_wal_checkpoint_v2(db_, NULL, SQLITE_CHECKPOINT_FULL, NULL, NULL);
+    sqfast3_wal_checkpoint_v2(db_, NULL, SQFAST_CHECKPOINT_FULL, NULL, NULL);
   }
 }
 
@@ -162,7 +162,7 @@ static Slice TrimSpace(Slice s) {
 
 class Benchmark {
  private:
-  sqlite3* db_;
+  sqfast3* db_;
   int db_num_;
   int num_;
   int reads_;
@@ -204,7 +204,7 @@ class Benchmark {
   }
 
   void PrintEnvironment() {
-    fprintf(stderr, "SQLite:     version %s\n", SQLITE_VERSION);
+    fprintf(stderr, "SQFast:     version %s\n", SQFAST_VERSION);
 
 #if defined(__linux)
     time_t now = time(NULL);
@@ -325,7 +325,7 @@ class Benchmark {
     Env::Default()->GetChildren(test_dir, &files);
     if (!FLAGS_use_existing_db) {
       for (int i = 0; i < files.size(); i++) {
-        if (Slice(files[i]).starts_with("dbbench_sqlite3")) {
+        if (Slice(files[i]).starts_with("dbbench_sqfast3")) {
           std::string file_name(test_dir);
           file_name += "/";
           file_name += files[i];
@@ -336,7 +336,7 @@ class Benchmark {
   }
 
   ~Benchmark() {
-    int status = sqlite3_close(db_);
+    int status = sqfast3_close(db_);
     ErrorCheck(status);
   }
 
@@ -426,20 +426,20 @@ class Benchmark {
     std::string tmp_dir;
     Env::Default()->GetTestDirectory(&tmp_dir);
     snprintf(file_name, sizeof(file_name),
-             "%s/dbbench_sqlite3-%d.db",
+             "%s/dbbench_sqfast3-%d.db",
              tmp_dir.c_str(),
              db_num_);
-    status = sqlite3_open(file_name, &db_);
+    status = sqfast3_open(file_name, &db_);
     if (status) {
-      fprintf(stderr, "open error: %s\n", sqlite3_errmsg(db_));
+      fprintf(stderr, "open error: %s\n", sqfast3_errmsg(db_));
       exit(1);
     }
 
-    // Change SQLite cache size
+    // Change SQFast cache size
     char cache_size[100];
     snprintf(cache_size, sizeof(cache_size), "PRAGMA cache_size = %d",
              FLAGS_num_pages);
-    status = sqlite3_exec(db_, cache_size, NULL, NULL, &err_msg);
+    status = sqfast3_exec(db_, cache_size, NULL, NULL, &err_msg);
     ExecErrorCheck(status, err_msg);
 
     // FLAGS_page_size is defaulted to 1024
@@ -447,7 +447,7 @@ class Benchmark {
       char page_size[100];
       snprintf(page_size, sizeof(page_size), "PRAGMA page_size = %d",
                FLAGS_page_size);
-      status = sqlite3_exec(db_, page_size, NULL, NULL, &err_msg);
+      status = sqfast3_exec(db_, page_size, NULL, NULL, &err_msg);
       ExecErrorCheck(status, err_msg);
     }
 
@@ -457,9 +457,9 @@ class Benchmark {
 
       // LevelDB's default cache size is a combined 4 MB
       std::string WAL_checkpoint = "PRAGMA wal_autocheckpoint = 4096";
-      status = sqlite3_exec(db_, WAL_stmt.c_str(), NULL, NULL, &err_msg);
+      status = sqfast3_exec(db_, WAL_stmt.c_str(), NULL, NULL, &err_msg);
       ExecErrorCheck(status, err_msg);
-      status = sqlite3_exec(db_, WAL_checkpoint.c_str(), NULL, NULL, &err_msg);
+      status = sqfast3_exec(db_, WAL_checkpoint.c_str(), NULL, NULL, &err_msg);
       ExecErrorCheck(status, err_msg);
     }
 
@@ -470,7 +470,7 @@ class Benchmark {
     std::string stmt_array[] = { locking_stmt, create_stmt };
     int stmt_array_length = sizeof(stmt_array) / sizeof(std::string);
     for (int i = 0; i < stmt_array_length; i++) {
-      status = sqlite3_exec(db_, stmt_array[i].c_str(), NULL, NULL, &err_msg);
+      status = sqfast3_exec(db_, stmt_array[i].c_str(), NULL, NULL, &err_msg);
       ExecErrorCheck(status, err_msg);
     }
   }
@@ -483,7 +483,7 @@ class Benchmark {
         message_ = "skipping (--use_existing_db is true)";
         return;
       }
-      sqlite3_close(db_);
+      sqfast3_close(db_);
       db_ = NULL;
       Open();
       Start();
@@ -498,7 +498,7 @@ class Benchmark {
     char* err_msg = NULL;
     int status;
 
-    sqlite3_stmt *replace_stmt, *begin_trans_stmt, *end_trans_stmt;
+    sqfast3_stmt *replace_stmt, *begin_trans_stmt, *end_trans_stmt;
     std::string replace_str = "REPLACE INTO test (key, value) VALUES (?, ?)";
     std::string begin_trans_str = "BEGIN TRANSACTION;";
     std::string end_trans_str = "END TRANSACTION;";
@@ -506,17 +506,17 @@ class Benchmark {
     // Check for synchronous flag in options
     std::string sync_stmt = (write_sync) ? "PRAGMA synchronous = FULL" :
                                            "PRAGMA synchronous = OFF";
-    status = sqlite3_exec(db_, sync_stmt.c_str(), NULL, NULL, &err_msg);
+    status = sqfast3_exec(db_, sync_stmt.c_str(), NULL, NULL, &err_msg);
     ExecErrorCheck(status, err_msg);
 
-    // Preparing sqlite3 statements
-    status = sqlite3_prepare_v2(db_, replace_str.c_str(), -1,
+    // Preparing sqfast3 statements
+    status = sqfast3_prepare_v2(db_, replace_str.c_str(), -1,
                                 &replace_stmt, NULL);
     ErrorCheck(status);
-    status = sqlite3_prepare_v2(db_, begin_trans_str.c_str(), -1,
+    status = sqfast3_prepare_v2(db_, begin_trans_str.c_str(), -1,
                                 &begin_trans_stmt, NULL);
     ErrorCheck(status);
-    status = sqlite3_prepare_v2(db_, end_trans_str.c_str(), -1,
+    status = sqfast3_prepare_v2(db_, end_trans_str.c_str(), -1,
                                 &end_trans_stmt, NULL);
     ErrorCheck(status);
 
@@ -524,9 +524,9 @@ class Benchmark {
     for (int i = 0; i < num_entries; i += entries_per_batch) {
       // Begin write transaction
       if (FLAGS_transaction && transaction) {
-        status = sqlite3_step(begin_trans_stmt);
+        status = sqfast3_step(begin_trans_stmt);
         StepErrorCheck(status);
-        status = sqlite3_reset(begin_trans_stmt);
+        status = sqfast3_reset(begin_trans_stmt);
         ErrorCheck(status);
       }
 
@@ -541,21 +541,21 @@ class Benchmark {
         snprintf(key, sizeof(key), "%016d", k);
 
         // Bind KV values into replace_stmt
-        status = sqlite3_bind_blob(replace_stmt, 1, key, 16, SQLITE_STATIC);
+        status = sqfast3_bind_blob(replace_stmt, 1, key, 16, SQFAST_STATIC);
         ErrorCheck(status);
-        status = sqlite3_bind_blob(replace_stmt, 2, value,
-                                   value_size, SQLITE_STATIC);
+        status = sqfast3_bind_blob(replace_stmt, 2, value,
+                                   value_size, SQFAST_STATIC);
         ErrorCheck(status);
 
         // Execute replace_stmt
         bytes_ += value_size + strlen(key);
-        status = sqlite3_step(replace_stmt);
+        status = sqfast3_step(replace_stmt);
         StepErrorCheck(status);
 
-        // Reset SQLite statement for another use
-        status = sqlite3_clear_bindings(replace_stmt);
+        // Reset SQFast statement for another use
+        status = sqfast3_clear_bindings(replace_stmt);
         ErrorCheck(status);
-        status = sqlite3_reset(replace_stmt);
+        status = sqfast3_reset(replace_stmt);
         ErrorCheck(status);
 
         FinishedSingleOp();
@@ -563,46 +563,46 @@ class Benchmark {
 
       // End write transaction
       if (FLAGS_transaction && transaction) {
-        status = sqlite3_step(end_trans_stmt);
+        status = sqfast3_step(end_trans_stmt);
         StepErrorCheck(status);
-        status = sqlite3_reset(end_trans_stmt);
+        status = sqfast3_reset(end_trans_stmt);
         ErrorCheck(status);
       }
     }
 
-    status = sqlite3_finalize(replace_stmt);
+    status = sqfast3_finalize(replace_stmt);
     ErrorCheck(status);
-    status = sqlite3_finalize(begin_trans_stmt);
+    status = sqfast3_finalize(begin_trans_stmt);
     ErrorCheck(status);
-    status = sqlite3_finalize(end_trans_stmt);
+    status = sqfast3_finalize(end_trans_stmt);
     ErrorCheck(status);
   }
 
   void Read(Order order, int entries_per_batch) {
     int status;
-    sqlite3_stmt *read_stmt, *begin_trans_stmt, *end_trans_stmt;
+    sqfast3_stmt *read_stmt, *begin_trans_stmt, *end_trans_stmt;
 
     std::string read_str = "SELECT * FROM test WHERE key = ?";
     std::string begin_trans_str = "BEGIN TRANSACTION;";
     std::string end_trans_str = "END TRANSACTION;";
 
-    // Preparing sqlite3 statements
-    status = sqlite3_prepare_v2(db_, begin_trans_str.c_str(), -1,
+    // Preparing sqfast3 statements
+    status = sqfast3_prepare_v2(db_, begin_trans_str.c_str(), -1,
                                 &begin_trans_stmt, NULL);
     ErrorCheck(status);
-    status = sqlite3_prepare_v2(db_, end_trans_str.c_str(), -1,
+    status = sqfast3_prepare_v2(db_, end_trans_str.c_str(), -1,
                                 &end_trans_stmt, NULL);
     ErrorCheck(status);
-    status = sqlite3_prepare_v2(db_, read_str.c_str(), -1, &read_stmt, NULL);
+    status = sqfast3_prepare_v2(db_, read_str.c_str(), -1, &read_stmt, NULL);
     ErrorCheck(status);
 
     bool transaction = (entries_per_batch > 1);
     for (int i = 0; i < reads_; i += entries_per_batch) {
       // Begin read transaction
       if (FLAGS_transaction && transaction) {
-        status = sqlite3_step(begin_trans_stmt);
+        status = sqfast3_step(begin_trans_stmt);
         StepErrorCheck(status);
-        status = sqlite3_reset(begin_trans_stmt);
+        status = sqfast3_reset(begin_trans_stmt);
         ErrorCheck(status);
       }
 
@@ -614,51 +614,51 @@ class Benchmark {
         snprintf(key, sizeof(key), "%016d", k);
 
         // Bind key value into read_stmt
-        status = sqlite3_bind_blob(read_stmt, 1, key, 16, SQLITE_STATIC);
+        status = sqfast3_bind_blob(read_stmt, 1, key, 16, SQFAST_STATIC);
         ErrorCheck(status);
 
         // Execute read statement
-        while ((status = sqlite3_step(read_stmt)) == SQLITE_ROW) {}
+        while ((status = sqfast3_step(read_stmt)) == SQFAST_ROW) {}
         StepErrorCheck(status);
 
-        // Reset SQLite statement for another use
-        status = sqlite3_clear_bindings(read_stmt);
+        // Reset SQFast statement for another use
+        status = sqfast3_clear_bindings(read_stmt);
         ErrorCheck(status);
-        status = sqlite3_reset(read_stmt);
+        status = sqfast3_reset(read_stmt);
         ErrorCheck(status);
         FinishedSingleOp();
       }
 
       // End read transaction
       if (FLAGS_transaction && transaction) {
-        status = sqlite3_step(end_trans_stmt);
+        status = sqfast3_step(end_trans_stmt);
         StepErrorCheck(status);
-        status = sqlite3_reset(end_trans_stmt);
+        status = sqfast3_reset(end_trans_stmt);
         ErrorCheck(status);
       }
     }
 
-    status = sqlite3_finalize(read_stmt);
+    status = sqfast3_finalize(read_stmt);
     ErrorCheck(status);
-    status = sqlite3_finalize(begin_trans_stmt);
+    status = sqfast3_finalize(begin_trans_stmt);
     ErrorCheck(status);
-    status = sqlite3_finalize(end_trans_stmt);
+    status = sqfast3_finalize(end_trans_stmt);
     ErrorCheck(status);
   }
 
   void ReadSequential() {
     int status;
-    sqlite3_stmt *pStmt;
+    sqfast3_stmt *pStmt;
     std::string read_str = "SELECT * FROM test ORDER BY key";
 
-    status = sqlite3_prepare_v2(db_, read_str.c_str(), -1, &pStmt, NULL);
+    status = sqfast3_prepare_v2(db_, read_str.c_str(), -1, &pStmt, NULL);
     ErrorCheck(status);
-    for (int i = 0; i < reads_ && SQLITE_ROW == sqlite3_step(pStmt); i++) {
-      bytes_ += sqlite3_column_bytes(pStmt, 1) + sqlite3_column_bytes(pStmt, 2);
+    for (int i = 0; i < reads_ && SQFAST_ROW == sqfast3_step(pStmt); i++) {
+      bytes_ += sqfast3_column_bytes(pStmt, 1) + sqfast3_column_bytes(pStmt, 2);
       FinishedSingleOp();
     }
 
-    status = sqlite3_finalize(pStmt);
+    status = sqfast3_finalize(pStmt);
     ErrorCheck(status);
   }
 

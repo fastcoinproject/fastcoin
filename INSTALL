@@ -1,9 +1,5 @@
-Building Fastcoin
+Building Bitcoin
 
-See doc/readme-qt.rst for instructions on building Fastcoin-Qt,
-the intended-for-end-users, nice-graphical-interface, reference
-implementation of Fastcoin.
-
-See doc/build-*.txt for instructions on building fastcoind,
+See doc/build-*.md for instructions on building bitcoind,
 the intended-for-services, no-graphical-interface, reference
-implementation of Fastcoin.
+implementation of Bitcoin.

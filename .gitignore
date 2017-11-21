@@ -1,26 +1,106 @@
-src/*.exe
+*.tar.gz
+aclocal.m4
+autom4te.cache
+autom4te.cache/*
+config.log
+config.status
+configure
+Makefile
+libtool
+Makefile.in
+
+*.exe
+src/fastcoin
 src/fastcoind
-src/test_fastcoin
-src/build.h
+src/fastcoin-cli
+src/fastcoin-tx
+src/test/test_fastcoin
+src/qt/test/test_fastcoin-qt
+
+# autoreconf
+Makefile.in
+aclocal.m4
+autom4te.cache/
+config.log
+config.status
+libtool
+src/config/bitcoin-config.h
+src/config/bitcoin-config.h.in
+src/config/stamp-h1
+share/setup.nsi
+share/qt/Info.plist
+
+src/univalue/gen
+
+src/qt/*.moc
+src/qt/moc_*.cpp
+src/qt/forms/ui_*.h
+
+src/qt/test/moc*.cpp
+
+.deps
+.dirstamp
+.libs
 .*.swp
 *.*~*
 *.bak
 *.rej
 *.orig
+*.pyc
 *.o
-*.patch
+*.o-*
 .bitcoin
-#compilation and Qt preprocessor part
+*.a
+*.pb.cc
+*.pb.h
+
+*.log
+*.trs
+*.dmg
+
+*.json.h
+*.raw.h
+
+#libtool object files
+*.lo
+*.la
+
+# Compilation and Qt preprocessor part
 *.qm
 fastcoin-qt
-#resources cpp
+fastcoin-Qt.app
+
+# Unit-tests
+Makefile.test
+fastcoin-qt_test
+src/test/buildenv.py
+
+# Resources cpp
 qrc_*.cpp
-#qt creator
+
+# Qt creator
 *.pro.user
-#mac specific
+
+# Mac specific
 .DS_Store
 build
-debug
-release
-debug/*.*
-release/*.*
+
+#lcov
+*.gcno
+/*.info
+test_bitcoin.coverage/
+total.coverage/
+coverage_percent.txt
+
+#build tests
+linux-coverage-build
+linux-build
+win32-build
+qa/pull-tester/run-bitcoind-for-test.sh
+qa/pull-tester/tests-config.sh
+qa/pull-tester/cache/*
+qa/pull-tester/test.*/*
+
+!src/leveldb*/Makefile
+
+/doc/doxygen/
