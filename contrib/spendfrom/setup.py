@@ -7,3 +7,4 @@ setup(name='btcspendfrom',
       requires=['jsonrpc'],
       scripts=['spendfrom.py'],
       )
+
