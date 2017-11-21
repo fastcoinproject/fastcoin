@@ -21,7 +21,7 @@ License
 The master branch is regularly built and tested, but is not guaranteed
 to be completely stable. Tags are regularly created to indicate new
 official, stable release versions of Fastcoin.
--------
+
 Fastcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see http://opensource.org/licenses/MIT.
 
