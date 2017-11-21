@@ -64,3 +64,4 @@ Warning
   A 64-bit executable for Windows is planned for 0.9.
 
 Note: Gavin Andresen's GPG signing key for SHA256SUMS.asc has been changed from  key id 1FC730C1 to sub key 7BF6E212 (see https://github.com/bitcoin/bitcoin.org/pull/279).
+
