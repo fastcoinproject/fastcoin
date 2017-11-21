@@ -67,7 +67,9 @@ See https://github.com/bitcoin/QA/ for how to create a test plan.
 * https://twitter.com/JonMarshallz
 * https://www.facebook.com/pages/Fastcoinca/593923330628082
 * https://webchat.freenode.net/?channels=#fastcoin
+
 =======
+
 Translations
 ------------
 
