@@ -82,4 +82,3 @@ If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
 
 	./bitcoin -onion=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion -discover
-
