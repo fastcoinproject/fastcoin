@@ -132,4 +132,3 @@ download-win:
 	@$(MAKE) -s HOST=x86_64-w64-mingw32 download-one
 download: download-osx download-linux download-win
 .PHONY: install cached download-one download-osx download-linux download-win download
-
