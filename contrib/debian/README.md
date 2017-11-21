@@ -19,3 +19,4 @@ and the `../../share/pixmaps/bitcoin128.png` to `/usr/share/pixmaps`
 
 bitcoin-qt.protocol (KDE)
 
+
