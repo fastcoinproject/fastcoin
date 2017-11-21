@@ -20,3 +20,4 @@ If you are upgrading from version 0.7.2 or earlier, the first time you
 run 0.8.1 your blockchain files will be re-indexed, which will take
 anywhere from 30 minutes to several hours, depending on the speed of
 your machine.
+
