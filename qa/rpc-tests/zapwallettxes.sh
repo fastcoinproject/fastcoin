@@ -163,3 +163,4 @@ CheckBalance $B2ARGS 10 "testaccount"
 echo "Tests successful, cleaning up"
 CleanUp
 exit 0
+
