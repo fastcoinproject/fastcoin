@@ -126,4 +126,3 @@ $($(package)_config_opts) will be appended.
 
 Most autotools projects can be properly staged using:
   $(MAKE) DESTDIR=$($(package)_staging_dir) install
-
