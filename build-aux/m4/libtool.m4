@@ -7999,3 +7999,4 @@ AC_MSG_RESULT([$lt_cv_to_tool_file_cmd])
 _LT_DECL([to_tool_file_cmd], [lt_cv_to_tool_file_cmd],
          [0], [convert $build files to toolchain format])dnl
 ])# _LT_PATH_CONVERSION_FUNCTIONS
+
