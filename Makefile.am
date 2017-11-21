@@ -198,4 +198,3 @@ CLEANFILES = $(OSX_DMG) $(BITCOIN_WIN_INSTALLER)
 
 clean-local:
 	rm -rf test_bitcoin.coverage/ total.coverage/ $(OSX_APP)
-	
