@@ -20,3 +20,4 @@ l2 = set([ re.search(r'bitcoin_(.*).qm', f).group(1) for f in glob.glob(os.path.
 
 print ",".join(sorted(l1.intersection(l2)))
 
+
