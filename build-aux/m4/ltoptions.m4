@@ -382,4 +382,3 @@ LT_OPTION_DEFINE([LTDL_INIT], [installable],
 		 [m4_define([_LTDL_TYPE], [installable])])
 LT_OPTION_DEFINE([LTDL_INIT], [convenience],
 		 [m4_define([_LTDL_TYPE], [convenience])])
-
