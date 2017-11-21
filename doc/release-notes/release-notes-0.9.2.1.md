@@ -205,3 +205,4 @@ Thanks to everyone who contributed to this release:
 - Warren Togami
 - Wladimir J. van der Laan
 - Yoichi Hirai
+- Christopher Tao
