@@ -26,3 +26,4 @@ define $(package)_stage_cmds
 	install *.h $($(package)_staging_prefix_dir)/include/miniupnpc &&\
 	install libminiupnpc.a $($(package)_staging_prefix_dir)/lib
 endef
+
