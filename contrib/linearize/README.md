@@ -31,3 +31,4 @@ Optional config file setting for linearize-data:
 reaching a maximum file size.
 * "file_timestamp": Set each file's last-modified time to that of the
 most recent block in that file.
+
