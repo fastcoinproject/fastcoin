@@ -50,3 +50,4 @@ void OpenURIDialog::on_selectFileButton_clicked()
     QUrl fileUri = QUrl::fromLocalFile(filename);
     ui->uriEdit->setText("fastcoin:?r=" + QUrl::toPercentEncoding(fileUri.toString()));
 }
+
