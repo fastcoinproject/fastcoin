@@ -77,7 +77,7 @@ private slots:
     void selectionChanged();
     /** Spawn contextual menu (right mouse menu) for address book entry */
     void contextualMenu(const QPoint &point);
-    /** New entry/entries were added to address table */
+    /** New entry/entries were added to CORE address table */
     void selectNewAddress(const QModelIndex &parent, int begin, int /*end*/);
 
 signals:
