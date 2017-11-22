@@ -60,3 +60,4 @@ private:
 };
 
 #endif // BITCOIN_COINCONTROL_H
+
