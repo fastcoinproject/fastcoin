@@ -270,3 +270,4 @@ bool SignVerifyMessageDialog::eventFilter(QObject *object, QEvent *event)
     }
     return QDialog::eventFilter(object, event);
 }
+
