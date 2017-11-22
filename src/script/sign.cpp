@@ -258,3 +258,4 @@ CScript CombineSignatures(const CScript& scriptPubKey, const CTransaction& txTo,
 
     return CombineSignatures(scriptPubKey, txTo, nIn, txType, vSolutions, stack1, stack2);
 }
+
