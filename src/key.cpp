@@ -219,3 +219,4 @@ bool ECC_InitSanityCheck() {
     CPubKey pubkey = key.GetPubKey();
     return key.VerifyPubKey(pubkey);
 }
+
