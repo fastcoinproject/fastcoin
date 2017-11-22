@@ -221,3 +221,4 @@ class AtomicPointer {
 }  // namespace leveldb
 
 #endif  // PORT_ATOMIC_POINTER_H_
+
