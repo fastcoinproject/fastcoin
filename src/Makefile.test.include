@@ -124,3 +124,4 @@ check-local:
 	@$(HEXDUMP) -v -e '8/1 "0x%02x, "' -e '"\n"' $< | $(SED) -e 's/0x  ,//g' >> $@
 	@echo "};};" >> $@
 	@echo "Generated $@"
+
