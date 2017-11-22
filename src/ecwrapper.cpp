@@ -193,3 +193,4 @@ bool CECKey::SanityCheck()
     // TODO Is there more EC functionality that could be missing?
     return true;
 }
+
