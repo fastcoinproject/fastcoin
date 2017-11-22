@@ -228,3 +228,4 @@ inline LookupKey::~LookupKey() {
 }  // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_DB_DBFORMAT_H_
+
