@@ -267,3 +267,4 @@ typedef std::vector<char, zero_after_free_allocator<char> > CSerializeData;
 
 #endif // BITCOIN_ALLOCATORS_H
 
+
