@@ -49,3 +49,4 @@ extern Slice CompressibleString(Random* rnd, double compressed_fraction,
 
 }  // namespace test
 }  // namespace leveldb
+
