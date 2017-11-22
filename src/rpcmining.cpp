@@ -731,3 +731,4 @@ Value estimatepriority(const Array& params, bool fHelp)
 
     return mempool.estimatePriority(nBlocks);
 }
+
