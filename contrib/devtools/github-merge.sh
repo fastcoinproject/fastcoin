@@ -174,3 +174,4 @@ read -p "Type 'push' to push the result to $HOST:$REPO, branch $BRANCH. " -r >&2
 if [[ "d$REPLY" =~ ^d[Pp][Uu][Ss][Hh]$ ]]; then
   git push "$HOST":"$REPO" refs/heads/"$BRANCH"
 fi
+
