@@ -232,3 +232,4 @@ extern bool HTTPReq_REST(AcceptedConnection *conn,
                   bool fRun);
 
 #endif // BITCOIN_RPCSERVER_H
+
