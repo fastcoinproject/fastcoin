@@ -111,3 +111,4 @@ public:
 };
 
 #endif // BITCOIN_ALERT_H
+
