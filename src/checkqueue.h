@@ -213,3 +213,4 @@ public:
 };
 
 #endif // BITCOIN_CHECKQUEUE_H
+
