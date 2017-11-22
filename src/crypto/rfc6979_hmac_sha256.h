@@ -34,3 +34,4 @@ public:
 };
 
 #endif // BITCOIN_RFC6979_HMAC_SHA256_H
+
