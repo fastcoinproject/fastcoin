@@ -307,3 +307,4 @@ void WalletView::showProgress(const QString &title, int nProgress)
     else if (progressDialog)
         progressDialog->setValue(nProgress);
 }
+
