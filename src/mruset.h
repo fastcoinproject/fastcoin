@@ -67,3 +67,4 @@ public:
 };
 
 #endif // BITCOIN_MRUSET_H
+
