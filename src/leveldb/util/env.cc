@@ -94,3 +94,4 @@ EnvWrapper::~EnvWrapper() {
 }
 
 }  // namespace leveldb
+
