@@ -194,3 +194,4 @@ bool CloseSocket(SOCKET& hSocket);
 bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking);
 
 #endif // BITCOIN_NETBASE_H
+
