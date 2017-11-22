@@ -79,3 +79,4 @@ bool ParseMoney(const char* pszIn, CAmount& nRet)
     nRet = nValue;
     return true;
 }
+
