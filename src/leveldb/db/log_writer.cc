@@ -101,3 +101,4 @@ Status Writer::EmitPhysicalRecord(RecordType t, const char* ptr, size_t n) {
 
 }  // namespace log
 }  // namespace leveldb
+
