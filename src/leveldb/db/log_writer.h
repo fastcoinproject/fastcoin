@@ -46,3 +46,4 @@ class Writer {
 }  // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_DB_LOG_WRITER_H_
+
