@@ -624,3 +624,4 @@ public:
 };
 
 #endif // BITCOIN_NET_H
+
