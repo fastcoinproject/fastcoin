@@ -593,3 +593,4 @@ int leveldb_minor_version() {
 }
 
 }  // end extern "C"
+
