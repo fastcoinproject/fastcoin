@@ -171,3 +171,4 @@ public:
 };
 
 #endif // BITCOIN_LEVELDBWRAPPER_H
+
