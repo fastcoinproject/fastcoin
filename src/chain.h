@@ -2,6 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// CORE Update Line 7
 
 #ifndef BITCOIN_CHAIN_H
 #define BITCOIN_CHAIN_H
