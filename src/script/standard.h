@@ -92,3 +92,4 @@ CScript GetScriptForDestination(const CTxDestination& dest);
 CScript GetScriptForMultisig(int nRequired, const std::vector<CPubKey>& keys);
 
 #endif // BITCOIN_SCRIPT_STANDARD_H
+
