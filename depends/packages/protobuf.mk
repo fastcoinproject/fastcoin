@@ -26,3 +26,4 @@ endef
 define $(package)_postprocess_cmds
   rm lib/libprotoc.a
 endef
+
