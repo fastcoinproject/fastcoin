@@ -260,3 +260,4 @@ CCoinsModifier::~CCoinsModifier()
         cache.cacheCoins.erase(it);
     }
 }
+
