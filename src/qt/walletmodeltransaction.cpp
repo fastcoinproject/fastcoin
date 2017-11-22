@@ -65,3 +65,4 @@ CReserveKey *WalletModelTransaction::getPossibleKeyChange()
 {
     return keyChange;
 }
+
