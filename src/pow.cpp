@@ -133,3 +133,4 @@ uint256 GetBlockProof(const CBlockIndex& block)
     // or ~bnTarget / (nTarget+1) + 1.
     return (~bnTarget / (bnTarget + 1)) + 1;
 }
+
