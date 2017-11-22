@@ -15,3 +15,4 @@ size_t strnlen_int( const char *start, size_t max_len)
 
     return end ? (size_t)(end - start) : max_len;
 }
+
