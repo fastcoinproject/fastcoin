@@ -140,3 +140,4 @@ private:
 bool BackupWallet(const CWallet& wallet, const std::string& strDest);
 
 #endif // BITCOIN_WALLETDB_H
+
