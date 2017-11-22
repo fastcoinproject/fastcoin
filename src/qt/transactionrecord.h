@@ -141,3 +141,4 @@ public:
 };
 
 #endif // BITCOIN_QT_TRANSACTIONRECORD_H
+
