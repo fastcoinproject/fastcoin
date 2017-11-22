@@ -32,3 +32,4 @@ private:
 };
 
 #endif // BITCOIN_QT_OPENURIDIALOG_H
+
