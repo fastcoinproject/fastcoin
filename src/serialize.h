@@ -809,3 +809,4 @@ public:
 };
 
 #endif // BITCOIN_SERIALIZE_H
+
