@@ -197,3 +197,4 @@ public:
 };
 
 #endif // BITCOIN_CRYPTER_H
+
