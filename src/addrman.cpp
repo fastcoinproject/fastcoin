@@ -489,3 +489,4 @@ void CAddrMan::Connected_(const CService& addr, int64_t nTime)
         info.nTime = nTime;
 }
 
+
