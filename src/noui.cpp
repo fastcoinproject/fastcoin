@@ -50,3 +50,4 @@ void noui_connect()
     uiInterface.ThreadSafeMessageBox.connect(noui_ThreadSafeMessageBox);
     uiInterface.InitMessage.connect(noui_InitMessage);
 }
+
