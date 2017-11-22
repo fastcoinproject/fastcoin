@@ -44,3 +44,4 @@ TEST(VersionEditTest, EncodeDecode) {
 int main(int argc, char** argv) {
   return leveldb::test::RunAllTests();
 }
+
