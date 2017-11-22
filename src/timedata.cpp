@@ -112,3 +112,4 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
         LogPrintf("nTimeOffset = %+d  (%+d minutes)\n", nTimeOffset, nTimeOffset/60);
     }
 }
+
