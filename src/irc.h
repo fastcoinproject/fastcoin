@@ -14,3 +14,4 @@ void ThreadIRCSeed3();
 extern int nGotIRCAddresses;
 
 #endif
+
