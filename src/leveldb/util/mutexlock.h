@@ -39,3 +39,4 @@ class SCOPED_LOCKABLE MutexLock {
 
 
 #endif  // STORAGE_LEVELDB_UTIL_MUTEXLOCK_H_
+
