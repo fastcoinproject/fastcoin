@@ -80,4 +80,3 @@ It will do the following automatically:
 - add missing translations to the build system (TODO)
 
 See doc/translation-process.md for more information.
-
