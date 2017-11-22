@@ -172,3 +172,4 @@ inline bool GetHeapProfile(void (*func)(void*, const char*, int), void* arg) {
 }
 
 #endif  // STORAGE_LEVELDB_PORT_PORT_WIN_H_
+
