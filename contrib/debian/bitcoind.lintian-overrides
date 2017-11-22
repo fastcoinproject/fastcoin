@@ -1,2 +1,3 @@
 # Linked code is Expat - only Debian packaging is GPL-2+
 bitcoind: possible-gpl-code-linked-with-openssl
+
