@@ -24,3 +24,4 @@ public:
 };
 
 #endif // BITCOIN_SCRIPT_SIGCACHE_H
+
