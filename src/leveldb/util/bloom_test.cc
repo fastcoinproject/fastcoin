@@ -159,3 +159,4 @@ TEST(BloomTest, VaryingLengths) {
 int main(int argc, char** argv) {
   return leveldb::test::RunAllTests();
 }
+
