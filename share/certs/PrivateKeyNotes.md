@@ -44,3 +44,4 @@ The long-term solution is something like the 'gitian downloader' system, which
 uses signatures from multiple developers to determine whether or not a binary
 should be trusted. However, that just pushes the problem to "how will
 non-technical users securely get the gitian downloader code to start?"
+
