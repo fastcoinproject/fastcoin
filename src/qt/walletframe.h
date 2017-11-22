@@ -78,3 +78,4 @@ public slots:
 };
 
 #endif // BITCOIN_QT_WALLETFRAME_H
+
