@@ -64,3 +64,4 @@ private slots:
 };
 
 #endif // BITCOIN_QT_OVERVIEWPAGE_H
+
