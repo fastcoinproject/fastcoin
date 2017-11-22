@@ -45,3 +45,4 @@ const NetworkStyle *NetworkStyle::instantiate(const QString &networkId)
     }
     return 0;
 }
+
