@@ -52,3 +52,4 @@ public:
 };
 
 #endif //  BITCOIN_AMOUNT_H
+
