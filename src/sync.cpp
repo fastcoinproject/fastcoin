@@ -150,3 +150,4 @@ void AssertLockHeldInternal(const char* pszName, const char* pszFile, int nLine,
 }
 
 #endif /* DEBUG_LOCKORDER */
+
