@@ -121,3 +121,4 @@ public:
 };
 
 #endif // BITCOIN_COMPRESSOR_H
+
