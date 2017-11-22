@@ -183,3 +183,4 @@ uint64_t CTxOutCompressor::DecompressAmount(uint64_t x)
     }
     return n;
 }
+
