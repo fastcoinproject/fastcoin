@@ -34,3 +34,4 @@ kill $BITCOIND && wait $BITCOIND
 if [ $RETURN -ne 0 ]; then tail -n 200 $DATADIR/regtest/debug.log; fi
 
 exit $RETURN
+
