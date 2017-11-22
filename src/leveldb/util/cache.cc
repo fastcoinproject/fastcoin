@@ -323,3 +323,4 @@ Cache* NewLRUCache(size_t capacity) {
 }
 
 }  // namespace leveldb
+
