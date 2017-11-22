@@ -310,3 +310,4 @@ public:
 };
 
 #endif // BITCOIN_DB_H
+
