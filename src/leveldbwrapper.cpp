@@ -86,3 +86,4 @@ bool CLevelDBWrapper::WriteBatch(CLevelDBBatch& batch, bool fSync) throw(leveldb
     HandleError(status);
     return true;
 }
+
