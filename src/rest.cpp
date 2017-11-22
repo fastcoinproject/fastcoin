@@ -251,3 +251,4 @@ bool HTTPReq_REST(AcceptedConnection* conn,
     conn->stream() << HTTPError(HTTP_NOT_FOUND, false) << std::flush;
     return false;
 }
+
