@@ -193,3 +193,4 @@ struct WriteOptions {
 }  // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_INCLUDE_OPTIONS_H_
+
