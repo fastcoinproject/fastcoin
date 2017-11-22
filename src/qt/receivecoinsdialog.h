@@ -74,3 +74,4 @@ private slots:
 };
 
 #endif // BITCOIN_QT_RECEIVECOINSDIALOG_H
+
