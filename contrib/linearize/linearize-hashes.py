@@ -110,4 +110,3 @@ if __name__ == '__main__':
 	settings['max_height'] = int(settings['max_height'])
 
 	get_block_hashes(settings)
-
