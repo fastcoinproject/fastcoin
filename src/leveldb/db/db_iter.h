@@ -26,3 +26,4 @@ extern Iterator* NewDBIterator(
 }  // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_DB_DB_ITER_H_
+
