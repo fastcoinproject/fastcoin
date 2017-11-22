@@ -105,3 +105,4 @@ void QValidatedLineEdit::setCheckValidator(const QValidator *v)
 {
     checkValidator = v;
 }
+
