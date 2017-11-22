@@ -38,3 +38,4 @@ public:
 };
 
 #endif // BITCOIN_ECWRAPPER_H
+
