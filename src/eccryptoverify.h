@@ -19,3 +19,4 @@ bool CheckSignatureElement(const unsigned char *vch, int len, bool half);
 } // eccrypto namespace
 
 #endif // BITCOIN_ECCRYPTOVERIFY_H
+
