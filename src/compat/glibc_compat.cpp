@@ -27,3 +27,4 @@ extern "C" FDELT_TYPE __fdelt_warn(FDELT_TYPE a)
     return a / __NFDBITS;
 }
 extern "C" FDELT_TYPE __fdelt_chk(FDELT_TYPE) __attribute__((weak, alias("__fdelt_warn")));
+
