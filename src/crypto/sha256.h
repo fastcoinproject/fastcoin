@@ -26,3 +26,4 @@ public:
 };
 
 #endif // BITCOIN_CRYPTO_SHA256_H
+
