@@ -178,3 +178,4 @@ struct CExtKey {
 bool ECC_InitSanityCheck(void);
 
 #endif // BITCOIN_KEY_H
+
