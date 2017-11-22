@@ -167,3 +167,4 @@ std::string JSONRPCReply(const json_spirit::Value& result, const json_spirit::Va
 json_spirit::Object JSONRPCError(int code, const std::string& message);
 
 #endif // BITCOIN_RPCPROTOCOL_H
+
