@@ -88,3 +88,4 @@ bool CachingTransactionSignatureChecker::VerifySignature(const std::vector<unsig
         signatureCache.Set(sighash, vchSig, pubkey);
     return true;
 }
+
