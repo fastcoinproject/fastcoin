@@ -49,3 +49,4 @@ private slots:
 };
 
 #endif // BITCOIN_QT_SIGNVERIFYMESSAGEDIALOG_H
+
