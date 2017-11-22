@@ -150,3 +150,4 @@ enum {
 };
 
 #endif // BITCOIN_PROTOCOL_H
+
