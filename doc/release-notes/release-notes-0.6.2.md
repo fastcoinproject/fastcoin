@@ -48,3 +48,4 @@ Qt user interface:
 - error handling improvements (show message box rather than console exception,
 etc.)
 - by popular request, make 4th bar of connection icon green
+

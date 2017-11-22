@@ -14,4 +14,3 @@ addressbook20         BITMAP  "pixmaps/addressbook20.bmp"
 addressbook20mask     BITMAP  "pixmaps/addressbook20mask.bmp"
 favicon               ICON    "pixmaps/favicon.ico"
 
-

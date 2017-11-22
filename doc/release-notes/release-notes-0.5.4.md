@@ -37,3 +37,4 @@ Use a messagebox to display the error when -server is provided without configuri
 Testing suite build now honours provided CXXFLAGS.
 Removed an extraneous line-break in mature transaction tooltips.
 Fix some grammatical errors in translation process documentation.
+

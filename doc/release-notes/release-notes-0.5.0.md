@@ -68,3 +68,4 @@ signmessage/verifymessage : new RPC commands to sign a message with one of your 
 GENERAL CHANGES
 
 Faster initial block download.
+

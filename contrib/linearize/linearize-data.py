@@ -296,3 +296,4 @@ if __name__ == '__main__':
 	else:
 		BlockDataCopier(settings, blkindex, blkmap).run()
 
+

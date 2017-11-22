@@ -16,3 +16,4 @@ Fix a regression that causes excessive re-writing of the 'peers.dat' file.
 
 Thanks to Peter Todd for responsibly disclosing the vulnerability
 ( CVE-2013-4627 ) and creating a fix.
+

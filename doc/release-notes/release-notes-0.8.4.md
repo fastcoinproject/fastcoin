@@ -81,3 +81,4 @@ grayleonard
 Cory Fields
 Matt Corallo
 Gavin Andresen
+Christopher Tao
