@@ -23,3 +23,4 @@ Status DumpFile(Env* env, const std::string& fname, WritableFile* dst);
 }  // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_INCLUDE_DUMPFILE_H_
+
