@@ -96,3 +96,4 @@ bool TimingResistantEqual(const T& a, const T& b)
 }
 
 #endif // BITCOIN_UTILSTRENCODINGS_H
+
