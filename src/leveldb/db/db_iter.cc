@@ -315,3 +315,4 @@ Iterator* NewDBIterator(
 }
 
 }  // namespace leveldb
+
