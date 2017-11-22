@@ -42,3 +42,4 @@ extern bool fEnabled;
 } //namespace Checkpoints
 
 #endif // BITCOIN_CHECKPOINTS_H
+
