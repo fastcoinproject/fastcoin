@@ -7,3 +7,4 @@ check: FORCE
 	$(MAKE) -C .. test_bitcoin_qt_check
 bitcoin-qt bitcoin-qt.exe: FORCE
 	 $(MAKE) -C .. bitcoin_qt
+
