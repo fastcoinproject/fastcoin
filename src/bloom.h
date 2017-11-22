@@ -98,3 +98,4 @@ public:
 };
 
 #endif // BITCOIN_BLOOM_H
+
