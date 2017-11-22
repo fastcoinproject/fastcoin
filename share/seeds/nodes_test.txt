@@ -1,0 +1,4 @@
+# List of fixed seed nodes for testnet
+
+162.243.72.166:19333
+107.191.58.84:19333
