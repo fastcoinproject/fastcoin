@@ -42,3 +42,4 @@ private:
 };
 
 #endif // BITCOIN_QT_MACDOCKICONHANDLER_H
+
