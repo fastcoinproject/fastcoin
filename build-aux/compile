@@ -1,5 +1,6 @@
 #! /bin/sh
 # Wrapper for compilers which do not understand '-c -o'.
+# CORE Update line 5
 
 scriptversion=2012-10-14.11; # UTC
 
