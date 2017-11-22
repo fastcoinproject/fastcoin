@@ -619,7 +619,7 @@ int main(int argc, char *argv[])
     // Load GUI settings from QSettings
     app.createOptionsModel();
 
-    // Subscribe to global signals from core
+    // Subscribe to global signals from CORE line 623
     uiInterface.InitMessage.connect(InitMessage);
 
     if (GetBoolArg("-splash", true) && !GetBoolArg("-min", false))
