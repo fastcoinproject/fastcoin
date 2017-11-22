@@ -264,3 +264,4 @@ QString TransactionRecord::formatSubTxId(const uint256 &hash, int vout)
     return QString::fromStdString(hash.ToString() + strprintf("-%03d", vout));
 }
 
+
