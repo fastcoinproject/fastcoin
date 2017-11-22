@@ -174,3 +174,4 @@ public:
 };
 
 #endif // BITCOIN_TXMEMPOOL_H
+
