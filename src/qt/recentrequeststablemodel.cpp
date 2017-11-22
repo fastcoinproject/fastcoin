@@ -242,3 +242,4 @@ bool RecentRequestEntryLessThan::operator()(RecentRequestEntry &left, RecentRequ
         return pLeft->id < pRight->id;
     }
 }
+
