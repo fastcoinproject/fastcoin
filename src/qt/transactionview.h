@@ -113,3 +113,4 @@ public slots:
 };
 
 #endif // BITCOIN_QT_TRANSACTIONVIEW_H
+
