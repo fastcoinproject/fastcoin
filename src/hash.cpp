@@ -81,3 +81,4 @@ void BIP32Hash(const unsigned char chainCode[32], unsigned int nChild, unsigned 
                                .Write(num, 4)
                                .Finalize(output);
 }
+
