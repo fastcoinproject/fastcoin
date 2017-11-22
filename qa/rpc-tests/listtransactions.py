@@ -96,4 +96,3 @@ class ListTransactionsTest(BitcoinTestFramework):
 
 if __name__ == '__main__':
     ListTransactionsTest().main()
-
