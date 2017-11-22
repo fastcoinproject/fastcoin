@@ -145,3 +145,4 @@ void AtomicPointer::NoBarrier_Store(void* v) {
 
 }
 }
+
