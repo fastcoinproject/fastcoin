@@ -57,3 +57,4 @@ const CBlockIndex *CChain::FindFork(const CBlockIndex *pindex) const {
         pindex = pindex->pprev;
     return pindex;
 }
+
