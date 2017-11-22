@@ -50,4 +50,3 @@ for extension in extensions:
         os.popen(command % (last_year,year,filePath))
         n = n + 1
 
-
