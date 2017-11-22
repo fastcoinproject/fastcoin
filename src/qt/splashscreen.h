@@ -47,3 +47,4 @@ private:
 };
 
 #endif // BITCOIN_QT_SPLASHSCREEN_H
+
