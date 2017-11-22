@@ -66,3 +66,4 @@ bool CheckSignatureElement(const unsigned char *vch, int len, bool half) {
 }
 
 } // namespace eccrypto
+
