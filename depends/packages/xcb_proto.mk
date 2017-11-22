@@ -25,3 +25,4 @@ define $(package)_postprocess_cmds
   find -name "*.pyc" -delete && \
   find -name "*.pyo" -delete
 endef
+
