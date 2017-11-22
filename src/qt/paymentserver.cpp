@@ -746,3 +746,4 @@ void PaymentServer::handlePaymentACK(const QString& paymentACKMsg)
     // currently we don't futher process or store the paymentACK message
     emit message(tr("Payment acknowledged"), paymentACKMsg, CClientUIInterface::ICON_INFORMATION | CClientUIInterface::MODAL);
 }
+
