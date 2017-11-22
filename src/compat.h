@@ -91,3 +91,4 @@ typedef u_int SOCKET;
 size_t strnlen_int( const char *start, size_t max_len);
 
 #endif // BITCOIN_COMPAT_H
+
