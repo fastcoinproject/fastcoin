@@ -264,3 +264,4 @@ CAlert::Notify(const std::string& strMessage, bool fThread)
     else
         runCommand(strCmd);
 }
+
