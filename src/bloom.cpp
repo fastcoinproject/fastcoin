@@ -197,3 +197,4 @@ void CBloomFilter::UpdateEmptyFull()
     isFull = full;
     isEmpty = empty;
 }
+
