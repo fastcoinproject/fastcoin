@@ -263,3 +263,4 @@ public slots:
 };
 
 #endif // BITCOIN_QT_WALLETMODEL_H
+
