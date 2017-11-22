@@ -37,3 +37,4 @@ private slots:
 };
 
 #endif // BITCOIN_QT_QVALIDATEDLINEEDIT_H
+
