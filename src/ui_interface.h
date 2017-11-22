@@ -113,3 +113,4 @@ inline std::string _(const char* psz)
 }
 
 #endif // BITCOIN_UI_INTERFACE_H
+
