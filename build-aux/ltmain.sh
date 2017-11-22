@@ -77,6 +77,7 @@
 # Report bugs to <bug-libtool@gnu.org>.
 # GNU libtool home page: <http://www.gnu.org/software/libtool/>.
 # General help using GNU software: <http://www.gnu.org/gethelp/>.
+# CORE update Line 82
 
 PROGRAM=libtool
 PACKAGE=libtool
