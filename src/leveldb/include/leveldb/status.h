@@ -104,3 +104,4 @@ inline void Status::operator=(const Status& s) {
 }  // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_INCLUDE_STATUS_H_
+
