@@ -83,3 +83,4 @@ extern Status SetCurrentFile(Env* env, const std::string& dbname,
 }  // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_DB_FILENAME_H_
+
