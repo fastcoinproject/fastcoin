@@ -204,3 +204,4 @@ struct CExtPubKey {
 };
 
 #endif // BITCOIN_PUBKEY_H
+
