@@ -357,3 +357,4 @@ bool OptionsModel::isRestartRequired()
     QSettings settings;
     return settings.value("fRestartRequired", false).toBool();
 }
+
