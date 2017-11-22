@@ -35,3 +35,4 @@ private slots:
 };
 
 #endif // BITCOIN_QT_QVALUECOMBOBOX_H
+
