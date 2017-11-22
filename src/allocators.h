@@ -266,4 +266,3 @@ typedef std::basic_string<char, std::char_traits<char>, secure_allocator<char> >
 typedef std::vector<char, zero_after_free_allocator<char> > CSerializeData;
 
 #endif // BITCOIN_ALLOCATORS_H
-
