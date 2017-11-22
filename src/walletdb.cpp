@@ -985,3 +985,4 @@ bool CWalletDB::EraseDestData(const std::string &address, const std::string &key
     nWalletDBUpdated++;
     return Erase(std::make_pair(std::string("destdata"), std::make_pair(address, key)));
 }
+
