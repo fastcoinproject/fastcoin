@@ -580,3 +580,4 @@ protected:
 };
 
 #endif // BITCOIN_MAIN_H
+
