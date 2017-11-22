@@ -66,3 +66,4 @@ inline char* Arena::Allocate(size_t bytes) {
 }  // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_UTIL_ARENA_H_
+
