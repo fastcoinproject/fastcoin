@@ -140,3 +140,5 @@ class BitcoinTestFramework(object):
         else:
             print("Failed")
             sys.exit(1)
+
+            
