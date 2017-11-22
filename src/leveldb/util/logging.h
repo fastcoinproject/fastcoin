@@ -41,3 +41,4 @@ extern bool ConsumeDecimalNumber(Slice* in, uint64_t* val);
 }  // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_UTIL_LOGGING_H_
+
