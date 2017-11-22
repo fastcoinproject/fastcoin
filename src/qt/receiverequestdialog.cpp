@@ -195,3 +195,4 @@ void ReceiveRequestDialog::on_btnCopyAddress_clicked()
 {
     GUIUtil::setClipboard(info.address);
 }
+
