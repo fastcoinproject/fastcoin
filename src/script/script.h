@@ -601,3 +601,4 @@ public:
 };
 
 #endif // BITCOIN_SCRIPT_SCRIPT_H
+
