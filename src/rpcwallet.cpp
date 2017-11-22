@@ -2011,3 +2011,4 @@ Value getwalletinfo(const Array& params, bool fHelp)
         obj.push_back(Pair("unlocked_until", nWalletUnlockTime));
     return obj;
 }
+
