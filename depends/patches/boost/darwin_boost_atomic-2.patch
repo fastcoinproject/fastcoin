@@ -53,3 +53,4 @@ index a130590..4af99a1 100644
          memcpy(&expected_s, &expected, sizeof(value_type));
          memcpy(&desired_s, &desired, sizeof(value_type));
          const bool success = __atomic_compare_exchange_n(&v_, &expected_s, desired_s, true,
+
