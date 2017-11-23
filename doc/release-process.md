@@ -14,7 +14,7 @@ Release Process
 
 ###write release notes. git shortlog helps a lot, for example:
 
-	git shortlog --no-merges v(current version, e.g. 0.7.2)..v(new version, e.g. 0.8.0)
+	git shortlog --no-merges v(current version, e.g. 0.7.2)..v(new version, e.g. 0.10.2.3)
 
 * * *
 
@@ -128,7 +128,7 @@ rm SHA256SUMS
 
 - Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the fastcoin.ca server
 
-- Update fastcoin.org version
+- Update fastcoin.ca version
 
 - Announce the release:
 
