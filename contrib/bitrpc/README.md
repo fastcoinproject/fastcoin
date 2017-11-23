@@ -6,4 +6,3 @@ BitRPC.py is able to do the exact same thing as `walletchangepass.py` and `walle
 
 	bitrpc.py walletpassphrasechange
 	bitrpc.py walletpassphrase
-	
