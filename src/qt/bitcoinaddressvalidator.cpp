@@ -28,7 +28,7 @@ QValidator::State BitcoinAddressEntryValidator::validate(QString &input, int &po
     if (input.isEmpty())
         return QValidator::Intermediate;
 
-    // Correction to CORE Update line 32
+    // Correction
     for (int idx = 0; idx < input.size();)
     {
         bool removeChar = false;
