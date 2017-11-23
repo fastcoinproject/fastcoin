@@ -14,4 +14,3 @@ RPC changes:
 * 'listtransactions' adds 'from' param, for range queries
 * 'move' may take account balances negative
 * 'settxfee' added, to manually set TX fee
-

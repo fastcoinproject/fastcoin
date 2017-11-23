@@ -27,3 +27,4 @@ Various build fixes.
 If no password is specified to bitcoind, recommend a secure password.
 Update hard-coded fallback seed nodes, choosing recent ones with long uptime and versions at least 0.4.0.
 Add checkpoint at block 168,000.
+

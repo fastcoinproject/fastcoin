@@ -51,4 +51,3 @@ Credits
 --------
 
 Credits go to the OpenSSL team for fixing the vulnerabilities quickly.
-

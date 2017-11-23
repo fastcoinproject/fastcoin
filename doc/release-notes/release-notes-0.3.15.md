@@ -4,4 +4,3 @@
 * make sure generation doesn't start before block 74000 downloaded
 * bugfixes by Dean Gores
 * testnet, keypoololdest and paytxfee added to getinfo
-

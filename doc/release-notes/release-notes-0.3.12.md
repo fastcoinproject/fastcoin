@@ -11,4 +11,3 @@ http://www.bitcoin.org/smf/index.php?topic=969.0
 
 Download:
 http://sourceforge.net/projects/bitcoin/files/Bitcoin/bitcoin-0.3.12/
-

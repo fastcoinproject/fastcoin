@@ -42,4 +42,3 @@ enforces BIP 34 (block height in the coinbase transaction).
 
 Thanks to Gregory Maxwell and Pieter Wuille for quickly
 identifying and fixing the transaction version number bug.
-

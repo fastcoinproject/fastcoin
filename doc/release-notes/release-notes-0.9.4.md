@@ -91,6 +91,5 @@ Thanks to who contributed to this release, at least:
 - Saivann
 - Sergio Demian Lerner
 - Wladimir J. van der Laan
-- Christopher Tao
 
 As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitcoin/).

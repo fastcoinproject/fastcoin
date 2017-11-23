@@ -66,4 +66,3 @@ Philip Kaufmann
 Pieter Wuille
 Wladimir J. van der Laan
 grimd34th
-

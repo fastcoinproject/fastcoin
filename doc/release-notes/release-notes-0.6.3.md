@@ -27,4 +27,3 @@ Fixed minimize-to-dock behavior of Bitcon-Qt on the Mac.
 
 Added a block checkpoint at block 185,333 to speed up initial
 blockchain download.
-

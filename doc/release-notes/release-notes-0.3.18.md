@@ -9,4 +9,3 @@ The main addition in this release is the Accounts-Based JSON-RPC commands that G
 * move
 * getbalance
 * listtransactions
-

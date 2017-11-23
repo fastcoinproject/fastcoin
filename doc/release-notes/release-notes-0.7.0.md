@@ -167,4 +167,3 @@ sje397
 xanatos
 
 Thanks to Sergio Lerner for reporting denial-of-service vulnerabilities fixed in this release.
-

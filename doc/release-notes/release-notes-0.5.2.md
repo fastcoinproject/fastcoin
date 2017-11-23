@@ -20,4 +20,3 @@ Re-enable SSL support for the JSON-RPC interface (it was unintentionally disable
 Use the correct base transaction fee of 0.0005 BTC for accepting transactions into mined blocks (since 0.4.0, it was incorrectly accepting 0.0001 BTC which was only meant to be relayed).
 Don't show "IP" for transactions which are not necessarily IP transactions.
 Add new DNS seeds (maintained by Pieter Wuille and Luke Dashjr).
-

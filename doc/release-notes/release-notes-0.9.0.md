@@ -409,4 +409,3 @@ Thanks to everyone who contributed to this release:
 - Warren Togami
 - Wil Bown
 - Wladimir J. van der Laan
-- Christopher Tao
