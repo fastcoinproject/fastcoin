@@ -5,16 +5,16 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.10.0
+!define VERSION 0.10.2.3
 !define COMPANY "Fastcoin Core project"
-!define URL http://www.fastcoin.org/
+!define URL https://www.fastcoin.ca/
 
 # MUI Symbol Definitions
-!define MUI_ICON "/Users/admin/Desktop/fastcoin-0.10.0.2/share/pixmaps/bitcoin.ico"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "/Users/admin/Desktop/fastcoin-0.10.0.2/share/pixmaps/nsis-wizard.bmp"
+!define MUI_ICON "/Users/admin/Desktop/fastcoin-0.10.2.3/share/pixmaps/bitcoin.ico"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "/Users/admin/Desktop/fastcoin-0.10.2.3/share/pixmaps/nsis-wizard.bmp"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP "/Users/admin/Desktop/fastcoin-0.10.0.2/share/pixmaps/nsis-header.bmp"
+!define MUI_HEADERIMAGE_BITMAP "/Users/admin/Desktop/fastcoin-0.10.2.3/share/pixmaps/nsis-header.bmp"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
@@ -22,7 +22,7 @@ SetCompressor /SOLID lzma
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "Fastcoin Core"
 !define MUI_FINISHPAGE_RUN $INSTDIR\fastcoin-qt.exe
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP "/Users/admin/Desktop/fastcoin-0.10.0.2/share/pixmaps/nsis-wizard.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "/Users/admin/Desktop/fastcoin-0.10.2.3/share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Included files
@@ -53,7 +53,7 @@ LangString DESC_SecBootstrap ${LANG_ENGLISH} "Downloads and installs latest bloc
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile /Users/admin/Desktop/fastcoin-0.10.0.2/fastcoin-${VERSION}-win-setup.exe
+OutFile /Users/admin/Desktop/fastcoin-0.10.2.3/fastcoin-${VERSION}-win-setup.exe
 !if "" == "64"
 InstallDir $PROGRAMFILES64\Fastcoin
 !else
@@ -78,14 +78,14 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File /Users/admin/Desktop/fastcoin-0.10.0.2/release/fastcoin-qt.exe
-    File /oname=COPYING.txt /Users/admin/Desktop/fastcoin-0.10.0.2/COPYING
-    File /oname=readme.txt /Users/admin/Desktop/fastcoin-0.10.0.2/doc/README_windows.txt
+    File /Users/admin/Desktop/fastcoin-0.10.2.3/release/fastcoin-qt.exe
+    File /oname=COPYING.txt /Users/admin/Desktop/fastcoin-0.10.2.3/COPYING
+    File /oname=readme.txt /Users/admin/Desktop/fastcoin-0.10.2.3/doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File /Users/admin/Desktop/fastcoin-0.10.0.2/release/fastcoind.exe
-    File /Users/admin/Desktop/fastcoin-0.10.0.2/release/fastcoin-cli.exe
+    File /Users/admin/Desktop/fastcoin-0.10.2.3/release/fastcoind.exe
+    File /Users/admin/Desktop/fastcoin-0.10.2.3/release/fastcoin-cli.exe
     SetOutPath $INSTDIR\doc
-    File /r /Users/admin/Desktop/fastcoin-0.10.0.2/doc\*.*
+    File /r /Users/admin/Desktop/fastcoin-0.10.2.3/doc\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 
