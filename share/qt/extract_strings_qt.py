@@ -76,4 +76,3 @@ for (msgid, msgstr) in messages:
         f.write('QT_TRANSLATE_NOOP("bitcoin-core", %s),\n' % ('\n'.join(msgid)))
 f.write('};\n')
 f.close()
-

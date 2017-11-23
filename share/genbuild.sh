@@ -49,4 +49,3 @@ if [ "$INFO" != "$NEWINFO" ]; then
         echo "#define BUILD_DATE \"$LAST_COMMIT_DATE\"" >> "$FILE"
     fi
 fi
-

@@ -33,4 +33,3 @@ protobuf_impl.depends  = $${PROTO_DIR}/${QMAKE_FILE_BASE}.pb.h
 protobuf_impl.commands = $$escape_expand(\\n)
 protobuf_impl.variable_out = GENERATED_SOURCES
 QMAKE_EXTRA_COMPILERS += protobuf_impl
-
