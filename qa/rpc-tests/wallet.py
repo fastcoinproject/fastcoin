@@ -98,5 +98,3 @@ class WalletTest (BitcoinTestFramework):
 
 if __name__ == '__main__':
     WalletTest ().main ()
-
-    

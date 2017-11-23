@@ -41,4 +41,3 @@ to recover with:
 rm -rf cache
 killall bitcoind
 ```
-

@@ -11,4 +11,3 @@ CURDIR=$(cd $(dirname "$0"); pwd)
 . "${CURDIR}/tests-config.sh"
 
 "${REAL_BITCOINCLI}" "$@" | sed 's/\r//'
-

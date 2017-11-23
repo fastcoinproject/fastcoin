@@ -62,5 +62,3 @@ class ForkNotifyTest(BitcoinTestFramework):
 
 if __name__ == '__main__':
     ForkNotifyTest().main()
-
-    

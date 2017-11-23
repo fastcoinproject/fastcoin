@@ -180,5 +180,3 @@ class GetBlockTemplateProposalTest(BitcoinTestFramework):
 
 if __name__ == '__main__':
     GetBlockTemplateProposalTest().main()
-
-    

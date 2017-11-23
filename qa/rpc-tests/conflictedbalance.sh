@@ -145,4 +145,3 @@ wait $B1PID
 echo "Tests successful, cleaning up"
 rm -rf $D
 exit 0
-

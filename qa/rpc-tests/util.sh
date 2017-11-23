@@ -101,4 +101,3 @@ function SendRawTxn {
 function GetBlocks {
     $CLI $1 getblockcount
 }
-
