@@ -225,5 +225,3 @@ else
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 endif
-
-
