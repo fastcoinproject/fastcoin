@@ -102,5 +102,3 @@ if __name__ == '__main__':
     assert _tmp == 'DYB3oMS'
     assert b58decode(_tmp, 5) == _ohai
     print("Tests passed")
-
-    
