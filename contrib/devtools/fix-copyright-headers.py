@@ -51,5 +51,3 @@ for extension in extensions:
         n = n + 1
 
 
-
-        
