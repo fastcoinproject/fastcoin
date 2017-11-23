@@ -178,7 +178,7 @@ public:
         fTestnetToBeDeprecatedFieldRPC = false;
 
         // Fastcoin: Mainnet v2 enforced as of block 710k
-        nEnforceV2AfterHeight = -1;
+        nEnforceV2AfterHeight = 5500000;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const 
@@ -238,7 +238,7 @@ public:
         fTestnetToBeDeprecatedFieldRPC = true;
 
         // Fastcoin: Testnet v2 enforced as of block 400k
-        nEnforceV2AfterHeight = -1;
+        nEnforceV2AfterHeight = 400000;
     }
     const Checkpoints::CCheckpointData& Checkpoints() const 
     {

@@ -33,4 +33,3 @@ std::string CFeeRate::ToString() const
 {
     return strprintf("%d.%08d FST/kB", nSatoshisPerK / COIN, nSatoshisPerK % COIN);
 }
-
