@@ -2548,7 +2548,6 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
 
     // Fastcoin: Reject block.nVersion=1 blocks (mainnet >= 710000, testnet >= 400000, regtest uses supermajority)
     bool enforceV2 = false;
-    /*
     if (block.nVersion < 2)
     {
         if (Params().EnforceV2AfterHeight() != -1)
@@ -2572,12 +2571,12 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
     }
 
     // Reject block.nVersion=2 blocks when 95% (75% on testnet) of the network has upgraded:
-      if (block.nVersion < 3 && CBlockIndex::IsSuperMajority(3, pindexPrev, Params().RejectBlockOutdatedMajority()))
+    if (block.nVersion < 3 && CBlockIndex::IsSuperMajority(3, pindexPrev, Params().RejectBlockOutdatedMajority()))
     {
         return state.Invalid(error("%s : rejected nVersion=2 block", __func__),
                              REJECT_OBSOLETE, "bad-version");
     }
-   */
+
     return true;
 }
 
@@ -2594,8 +2593,6 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, CBlockIn
     // Fastcoin: (mainnet >= 710000, testnet >= 400000, regtest uses supermajority)
     // Enforce block.nVersion=2 rule that the coinbase starts with serialized block height
     // if 750 of the last 1,000 blocks are version 2 or greater (51/100 if testnet):
-
-    /*
     bool checkHeightMismatch = false;
     if (block.nVersion >= 2)
     {
@@ -2621,7 +2618,6 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, CBlockIn
             return state.DoS(100, error("%s : block height mismatch in coinbase", __func__), REJECT_INVALID, "bad-cb-height");
         }
     }
-     */
 
     return true;
 }
