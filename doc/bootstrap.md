@@ -54,4 +54,3 @@ Wait until the import finishes. The client will download the last days not cover
 ### Is this safe?
 
 Yes, the above method is safe. The download contains only raw blockchain data and the client verifies this on import. Do not download the blockchain from unofficial sources, especially if they provide `*.rev` and `*.sst` files. These files are not verified and can contain malicious edits.
-

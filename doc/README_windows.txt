@@ -21,4 +21,3 @@ process can take anywhere from a few hours to a day or more.
 See the bitcoin wiki at:
   https://en.bitcoin.it/wiki/Main_Page
 for more help and information.
-

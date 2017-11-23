@@ -16,4 +16,3 @@ To run the bitcoin-qt tests manually, launch src/qt/test/bitcoin-qt_test
 
 To add more bitcoin-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.
-

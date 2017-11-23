@@ -143,4 +143,3 @@ rm SHA256SUMS
 - Add release notes for the new version to the directory `doc/release-notes` in git master
 
 - Celebrate 
-

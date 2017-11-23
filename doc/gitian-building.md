@@ -284,9 +284,6 @@ git clone https://github.com/devrandom/gitian-builder.git
 git clone https://github.com/fastcoin-project/fastcoin.git
 cd fastcoin
 git checkout v${VERSION}
-
-
-
 cd ..
 ```
 
@@ -399,4 +396,3 @@ Uploading signatures
 After building and signing you can push your signatures (both the `.assert` and `.assert.sig` files) to the
 [fastcoin/gitian.sigs](https://github.com/fastcoin-project/gitian.sigs.ltc/) repository, or if that's not possible create a pull
 request. 
-

@@ -136,4 +136,3 @@ Threads
 - BitcoinMiner : Generates bitcoins (if wallet is enabled).
 
 - Shutdown : Does an orderly shutdown of everything.
-

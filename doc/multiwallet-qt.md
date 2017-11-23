@@ -46,4 +46,3 @@ The string parameter is just an arbitrary name given to the default wallet. It's
 The shutdown call `window.setWalletModel(0)` has also been removed. In its place is now:
 
 window.removeAllWallets();
-

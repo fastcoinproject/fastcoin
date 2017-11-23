@@ -21,4 +21,3 @@ Only used before 0.8.0
 Only used before 0.7.0
 ---------------------
 * addr.dat: peer IP address database (BDB); replaced by peers.dat in 0.7.0
-
