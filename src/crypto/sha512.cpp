@@ -205,5 +205,3 @@ CSHA512& CSHA512::Reset()
     sha512::Initialize(s);
     return *this;
 }
-
-

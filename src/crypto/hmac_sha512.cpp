@@ -32,5 +32,3 @@ void CHMAC_SHA512::Finalize(unsigned char hash[OUTPUT_SIZE])
     inner.Finalize(temp);
     outer.Write(temp, 64).Finalize(hash);
 }
-
-

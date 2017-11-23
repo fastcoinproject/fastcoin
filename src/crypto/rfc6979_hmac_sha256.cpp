@@ -45,5 +45,3 @@ void RFC6979_HMAC_SHA256::Generate(unsigned char* output, size_t outputlen)
 
     retry = true;
 }
-
-

@@ -118,5 +118,3 @@ void static inline WriteBE64(unsigned char* ptr, uint64_t x)
 }
 
 #endif // BITCOIN_CRYPTO_COMMON_H
-
-

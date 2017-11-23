@@ -43,5 +43,3 @@ static inline void le32enc(void *pp, uint32_t x)
         p[3] = (x >> 24) & 0xff;
 }
 #endif
-
-

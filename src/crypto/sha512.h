@@ -26,4 +26,3 @@ public:
 };
 
 #endif // BITCOIN_CRYPTO_SHA512_H
-
