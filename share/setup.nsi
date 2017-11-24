@@ -98,13 +98,13 @@ Section /o "Download blockchain" SecBootstrap
 
   CreateDirectory "$APPDATA\Fastcoin"
   SetOutPath "$APPDATA\Fastcoin"
-  DetailPrint "Downloading http://edge.fastcoin.ws/blockchain.exe"
-  NSISdl::download /TIMEOUT=30000 http://edge.fastcoin.ws/blockchain.exe "$APPDATA\Fastcoin\bootstrap.exe"
+  DetailPrint "Downloading https://www.fastcoin.ca/files/blockchain.exe"
+  NSISdl::download /TIMEOUT=30000 https://www.fastcoin.ca/files/blockchain.exe "$APPDATA\Fastcoin\bootstrap.exe"
   
   Pop $0
   StrCmp $0 success success
     SetDetailsView show
-    DetailPrint "download failed from http://edge.fastcoin.ws/blockchain $0"
+    DetailPrint "download failed from https://www.fastcoin.ca/files/blockchain $0"
   success:
 
   ClearErrors
