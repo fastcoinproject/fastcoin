@@ -327,4 +327,3 @@ void scrypt_1024_1_1_256(const char *input, char *output)
 	char scratchpad[SCRYPT_SCRATCHPAD_SIZE];
     scrypt_1024_1_1_256_sp(input, output, scratchpad);
 }
-
