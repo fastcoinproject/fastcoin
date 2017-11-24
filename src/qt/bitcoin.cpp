@@ -264,7 +264,7 @@ void BitcoinCore::initialize()
         if(rv)
         {
             /* Start a dummy RPC thread if no RPC thread is active yet
-             * to handle timeouts.
+             * to handle timeouts from line 273.
              */
             StartDummyRPCThread();
         }
