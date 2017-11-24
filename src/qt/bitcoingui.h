@@ -51,7 +51,7 @@ public:
     ~BitcoinGUI();
 
     /** Set the client model.
-        The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
+        The client model represents the part of the CORE that communicates with the P2P network, and is wallet-agnostic.
     */
     void setClientModel(ClientModel *clientModel);
 
