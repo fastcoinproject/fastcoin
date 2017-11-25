@@ -85,3 +85,4 @@ signals:
 };
 
 #endif // BITCOIN_QT_ADDRESSBOOKPAGE_H
+
