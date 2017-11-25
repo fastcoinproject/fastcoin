@@ -93,3 +93,4 @@ public slots:
 };
 
 #endif // BITCOIN_QT_ADDRESSTABLEMODEL_H
+
