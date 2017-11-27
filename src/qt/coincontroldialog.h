@@ -125,3 +125,4 @@ private slots:
 };
 
 #endif // BITCOIN_QT_COINCONTROLDIALOG_H
+
