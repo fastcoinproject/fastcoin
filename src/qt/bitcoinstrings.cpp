@@ -308,3 +308,4 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Zapping all transactions from wallet..."),
 QT_TRANSLATE_NOOP("bitcoin-core", "on startup"),
 QT_TRANSLATE_NOOP("bitcoin-core", "wallet.dat corrupt, salvage failed"),
 };
+
