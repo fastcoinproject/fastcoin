@@ -103,3 +103,4 @@ public slots:
 };
 
 #endif // BITCOIN_QT_CLIENTMODEL_H
+
