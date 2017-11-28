@@ -291,4 +291,3 @@ QString Intro::getPathToCheck()
     return retval;
 }
 
-
