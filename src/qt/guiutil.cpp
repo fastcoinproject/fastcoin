@@ -863,4 +863,3 @@ QString formatPingTime(double dPingTime)
 }
 
 } // namespace GUIUtil
-
