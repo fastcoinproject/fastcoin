@@ -132,3 +132,4 @@ void MacDockIconHandler::handleDockIconClickEvent()
 
     emit this->dockIconClicked();
 }
+
