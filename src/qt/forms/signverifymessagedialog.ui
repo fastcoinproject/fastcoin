@@ -48,14 +48,17 @@
          <item>
           <widget class="QValidatedLineEdit" name="addressIn_SM">
            <property name="toolTip">
-            <string>The Fastcoin address to sign the message with</string>
+            <string>The address to sign the message with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</string>
+           </property>
+           <property name="maxLength">
+            <number>34</number>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="addressBookButton_SM">
            <property name="toolTip">
-            <string>Choose previously used address</string>
+            <string>Choose an address from the address book</string>
            </property>
            <property name="text">
             <string/>
@@ -258,14 +261,17 @@
          <item>
           <widget class="QValidatedLineEdit" name="addressIn_VM">
            <property name="toolTip">
-            <string>The Fastcoin address the message was signed with</string>
+            <string>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</string>
+           </property>
+           <property name="maxLength">
+            <number>34</number>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="addressBookButton_VM">
            <property name="toolTip">
-            <string>Choose previously used address</string>
+            <string>Choose an address from the address book</string>
            </property>
            <property name="text">
             <string/>
