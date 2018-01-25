@@ -1,30 +1,56 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+/*
+ * Qt4 bitcoin GUI.
+ *
+ * W.J. van der Laan 2011-2012
+ * The Bitcoin Developers 2011-2013
+ */
+#ifndef WALLETSTACK_H
+#define WALLETSTACK_H
 
-#ifndef WALLETFRAME_H
-#define WALLETFRAME_H
-
-#include <QFrame>
+#include <QStackedWidget>
+#include <QMap>
+#include <boost/shared_ptr.hpp>
 
 class BitcoinGUI;
+class TransactionTableModel;
 class ClientModel;
 class WalletModel;
-class WalletStack;
 class WalletView;
+class TransactionView;
+class OverviewPage;
+class AddressBookPage;
+class SendCoinsDialog;
+class SignVerifyMessageDialog;
+class Notificator;
+class RPCConsole;
 
-class WalletFrame : public QFrame
+class CWalletManager;
+
+QT_BEGIN_NAMESPACE
+class QLabel;
+class QModelIndex;
+QT_END_NAMESPACE
+
+/*
+  WalletStack class. This class is a container for WalletView instances. It takes the place of centralWidget.
+  It was added to support multiple wallet functionality. It communicates with both the client and the
+  wallet models to give the user an up-to-date view of the current core state. It manages all the wallet views
+  it contains and updates them accordingly.
+ */
+class WalletStack : public QStackedWidget
 {
     Q_OBJECT
 
 public:
-    explicit WalletFrame(BitcoinGUI *_gui = 0);
-    ~WalletFrame();
+    explicit WalletStack(QWidget *parent = 0);
+    ~WalletStack();
 
-    void setClientModel(ClientModel *clientModel);
+    void setBitcoinGUI(BitcoinGUI *gui) { this->gui = gui; }
+
+    void setClientModel(ClientModel *clientModel) { this->clientModel = clientModel; }
 
     bool addWallet(const QString& name, WalletModel *walletModel);
-    bool setCurrentWallet(const QString& name);
+    bool removeWallet(const QString& name);
 
     void removeAllWallets();
 
@@ -35,11 +61,13 @@ public:
 private:
     BitcoinGUI *gui;
     ClientModel *clientModel;
-    WalletStack *walletStack;
+    QMap<QString, WalletView*> mapWalletViews;
 
-    WalletView *currentWalletView();
+    bool bOutOfSync;
 
 public slots:
+    void setCurrentWallet(const QString& name);
+
     /** Switch to overview (home) page */
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
@@ -72,4 +100,4 @@ public slots:
     void setEncryptionStatus();
 };
 
-#endif // WALLETFRAME_H
+#endif // WALLETSTACK_H

@@ -90,4 +90,3 @@ bool CSVModelWriter::write()
     return file.error() == QFile::NoError;
 }
 
-
