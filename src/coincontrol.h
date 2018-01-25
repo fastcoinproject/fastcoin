@@ -1,11 +1,5 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
-#ifndef BITCOIN_COINCONTROL_H
-#define BITCOIN_COINCONTROL_H
-
-#include "primitives/transaction.h"
+#ifndef COINCONTROL_H
+#define COINCONTROL_H
 
 /** Coin Control Features. */
 class CCoinControl
@@ -17,34 +11,34 @@ public:
     {
         SetNull();
     }
-
+        
     void SetNull()
     {
         destChange = CNoDestination();
         setSelected.clear();
     }
-
+    
     bool HasSelected() const
     {
         return (setSelected.size() > 0);
     }
-
+    
     bool IsSelected(const uint256& hash, unsigned int n) const
     {
         COutPoint outpt(hash, n);
         return (setSelected.count(outpt) > 0);
     }
-
-    void Select(const COutPoint& output)
+    
+    void Select(COutPoint& output)
     {
         setSelected.insert(output);
     }
-
-    void UnSelect(const COutPoint& output)
+    
+    void UnSelect(COutPoint& output)
     {
         setSelected.erase(output);
     }
-
+    
     void UnSelectAll()
     {
         setSelected.clear();
@@ -54,9 +48,10 @@ public:
     {
         vOutpoints.assign(setSelected.begin(), setSelected.end());
     }
-
+        
 private:
     std::set<COutPoint> setSelected;
+
 };
 
-#endif // BITCOIN_COINCONTROL_H
+#endif // COINCONTROL_H
